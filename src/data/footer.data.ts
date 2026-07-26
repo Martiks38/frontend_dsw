@@ -1,31 +1,12 @@
 import type { FooterColumn } from '@/interfaces';
 
+import { navigationItems } from './navigation.data';
+
 export const footerColumns: Array<FooterColumn> = [
   {
     title: 'Navegación',
     variant: 'nav',
-    items: [
-      {
-        label: 'Inicio',
-        href: '#inicio',
-      },
-      {
-        label: 'Guardería',
-        href: '#guarderia',
-      },
-      {
-        label: 'Servicios',
-        href: '#servicios',
-      },
-      {
-        label: 'Nosotros',
-        href: '#nosotros',
-      },
-      {
-        label: 'Contacto',
-        href: '#contacto',
-      },
-    ],
+    items: navigationItems,
   },
   {
     title: 'Servicios',

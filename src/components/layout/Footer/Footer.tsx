@@ -3,22 +3,15 @@ import { ComponentType, ReactNode } from 'react';
 
 import { useToast } from '@/hooks/useToast.hook';
 import type { FooterColumn, FooterProps } from '@/interfaces';
-
-type ColumnWrapperProps = { col: FooterColumn; children: ReactNode };
+import { normalizeString } from '@/utils/normalizeString.util';
 
 const columnWrappers: Record<
-  'nav' | 'address' | 'default',
-  ComponentType<ColumnWrapperProps>
+  'nav' | 'default',
+  ComponentType<{ titleId: string; children: ReactNode }>
 > = {
-  nav: ({ col, children }) => (
-    <nav
-      aria-labelledby={`footer-
-        ${col.title}`}
-    >
-      {children}
-    </nav>
+  nav: ({ titleId, children }) => (
+    <nav aria-labelledby={titleId}>{children}</nav>
   ),
-  address: ({ children }) => <address>{children}</address>,
   default: ({ children }) => <section>{children}</section>,
 };
 
@@ -28,11 +21,11 @@ function FooterItemContent({ item }: { item: FooterColumn['items'][number] }) {
   if (item.action === 'copy') {
     const handleCopy = async () => {
       await navigator.clipboard.writeText(item.label);
-      showToast(item.label);
+      showToast('Copiado al portapapeles');
     };
 
     return (
-      <button onClick={handleCopy} type="button" className="">
+      <button onClick={handleCopy} type="button">
         {item.label}
       </button>
     );
@@ -41,10 +34,28 @@ function FooterItemContent({ item }: { item: FooterColumn['items'][number] }) {
   return item.href ? <a href={item.href}>{item.label}</a> : <>{item.label}</>;
 }
 
-function FooterColumnContent({ col }: { col: FooterColumn }) {
+function FooterItemsList({ items }: { items: FooterColumn['items'] }) {
+  return (
+    <ul>
+      {items.map((item, ind) => (
+        <li key={ind}>
+          <FooterItemContent item={item} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function FooterColumnContent({
+  col,
+  titleId,
+}: {
+  col: FooterColumn;
+  titleId: string;
+}) {
   return (
     <>
-      <h3>{col.title}</h3>
+      <h3 id={titleId}>{col.title}</h3>
       <ul>
         {col.items.map((item, ind) => (
           <li key={ind}>
@@ -61,11 +72,25 @@ export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
     <footer>
       <Image src={logoSrc} alt={logoAlt} width={32} height={32} />
       {columns.map((col) => {
+        const normalizedTitle = normalizeString(col.title);
+        const titleId = `footer-${normalizedTitle}`;
+
+        if (col.variant === 'address') {
+          return (
+            <section key={col.title}>
+              <h3 id={titleId}>{col.title}</h3>
+              <address>
+                <FooterItemsList items={col.items} />
+              </address>
+            </section>
+          );
+        }
+
         const Wrapper = columnWrappers[col.variant ?? 'default'];
 
         return (
-          <Wrapper key={col.title} col={col}>
-            <FooterColumnContent col={col} />
+          <Wrapper key={col.title} titleId={titleId}>
+            <FooterColumnContent col={col} titleId={titleId} />
           </Wrapper>
         );
       })}
