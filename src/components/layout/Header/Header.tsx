@@ -1,11 +1,14 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { navigationItems } from '@/data/navigation.data';
 
 export default function Header() {
   return (
     <header>
-      <Image src="/logo.png" width={32} height={32} alt="Guardería náutica" />
+      <Link href={'/'}>
+        <Image src="/logo.png" width={32} height={32} alt="Guardería náutica" />
+      </Link>
       <nav aria-label="Navegación principal">
         <ul>
           {navigationItems.map(({ href, label }) => {
