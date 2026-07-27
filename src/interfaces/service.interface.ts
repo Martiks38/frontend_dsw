@@ -1,5 +1,5 @@
-export interface Service {
-  id: string;
-  label: string;
-  show: boolean;
+import { HomeFeature } from './homeFeature.interface';
+
+export interface Service extends HomeFeature {
+  showOnHome: boolean;
 }

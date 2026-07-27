@@ -4,31 +4,38 @@ export const services: Array<Service> = [
   {
     id: 'fuel',
     label: 'Combustible',
-    show: true,
+    showOnHome: true,
+    description:
+      'Carga de combustible para que tu embaracación esté siempre lista.',
   },
   {
     id: 'cleaning',
     label: 'Limpieza',
-    show: true,
+    showOnHome: true,
+    description: 'Limpieza exterior e interior profesional.',
   },
   {
     id: 'maintenance',
     label: 'Mantenimiento',
-    show: true,
+    showOnHome: true,
+    description: 'Revisiones y mantenimiento preventivo.',
   },
   {
     id: 'launch-retrieval',
     label: 'Botadura y retiro',
-    show: true,
+    showOnHome: true,
+    description: 'Servicio de botadura y retiro de agua.',
   },
   {
     id: 'battery-charging',
     label: 'Carga de baterías',
-    show: false,
+    showOnHome: false,
+    description: 'Control y carga de baterías durante el guardado.',
   },
   {
     id: 'repairs',
     label: 'Reparaciones',
-    show: false,
+    showOnHome: false,
+    description: 'Gestión de reparaciones y trabajos técnicos.',
   },
 ];
