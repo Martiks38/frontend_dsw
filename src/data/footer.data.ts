@@ -1,6 +1,7 @@
 import type { FooterColumn } from '@/interfaces';
 
 import { navigationItems } from './navigation.data';
+import { services } from './services.data';
 
 export const footerColumns: Array<FooterColumn> = [
   {
@@ -10,26 +11,7 @@ export const footerColumns: Array<FooterColumn> = [
   },
   {
     title: 'Servicios',
-    items: [
-      {
-        label: 'Combustible',
-      },
-      {
-        label: 'Limpieza',
-      },
-      {
-        label: 'Mantenimiento',
-      },
-      {
-        label: 'Botadura y retiro',
-      },
-      {
-        label: 'Carga de baterías',
-      },
-      {
-        label: 'Reparaciones',
-      },
-    ],
+    items: services,
   },
   {
     title: 'Contacto',
