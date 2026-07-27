@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import IconSprite from '@/components/ui/IconSprite/IconSprite';
 import { ToastProvider } from '@/providers/ToastProvider';
 
 const geistSans = Geist({
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
+        <IconSprite />
         <ToastProvider>{children}</ToastProvider>
       </body>
     </html>
