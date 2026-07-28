@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { ImgHTMLAttributes } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { navigationItems } from '@/data/navigation.data';
+import { navigationItems } from '@/data';
 
 import Header from './Header';
 

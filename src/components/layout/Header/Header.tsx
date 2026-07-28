@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { navigationItems } from '@/data/navigation.data';
+import { navigationItems } from '@/data';
 
 export default function Header() {
   return (
