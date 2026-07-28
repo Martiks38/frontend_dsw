@@ -21,7 +21,7 @@ export const services: Array<Service> = [
     description: 'Revisiones y mantenimiento preventivo.',
   },
   {
-    id: 'launch-retrieval',
+    id: 'boat-launch-and-retrieval',
     label: 'Botadura y retiro',
     showOnHome: true,
     description: 'Servicio de botadura y retiro de agua.',
