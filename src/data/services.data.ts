@@ -1,6 +1,6 @@
-import type { Service } from '@/interfaces';
+import type { HomeFeature } from '@/interfaces';
 
-export const services: Array<Service> = [
+export const services: Array<HomeFeature> = [
   {
     id: 'fuel',
     label: 'Combustible',
