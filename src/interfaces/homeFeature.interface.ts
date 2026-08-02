@@ -4,5 +4,4 @@ export interface HomeFeature {
   id: IconId;
   description: string;
   label: string;
-  showOnHome: boolean;
 }
