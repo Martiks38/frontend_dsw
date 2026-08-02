@@ -39,6 +39,7 @@
     "lint-staged": "16.4.0",
     "postcss": "^8.5.24",
     "prettier": "3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5",
     "vitest": "4.1.4"
