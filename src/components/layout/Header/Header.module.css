@@ -1,0 +1,27 @@
+.link span {
+  position: relative;
+}
+
+.link span::after {
+  --line-height: 0.125rem;
+
+  content: '';
+  position: absolute;
+  bottom: calc(-1 * var(--line-height));
+  left: 0;
+  width: 0;
+  height: var(--line-height);
+  background-color: var(--primary-color);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.link:focus span::after {
+  width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover span::after {
+    width: 100%;
+  }
+}
