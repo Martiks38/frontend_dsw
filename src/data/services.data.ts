@@ -1,6 +1,10 @@
 import type { HomeFeature } from '@/interfaces';
 
-export const services: Array<HomeFeature> = [
+interface Service extends HomeFeature {
+  showOnHome: boolean;
+}
+
+export const services: Array<Service> = [
   {
     id: 'fuel',
     label: 'Combustible',
