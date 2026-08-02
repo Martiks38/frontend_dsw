@@ -26,7 +26,7 @@ export const footerColumns: Array<FooterColumn> = [
         action: 'copy',
       },
       {
-        label: 'Av. Costanera 1234,Rosario, Santa Fe',
+        label: 'Av. Costanera 1234, Rosario, Santa Fe',
       },
     ],
   },
