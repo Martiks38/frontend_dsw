@@ -14,17 +14,15 @@ export default function HomeSection({
   className,
 }: HomeSectionProps) {
   return (
-    <section className={className}>
-      <h2>{title}</h2>
+    <section className={`${className ?? ''} mt-12`} aria-label={title}>
+      <h2 className="text-3xl text-center font-semibold">{title}</h2>
       {cardData && (
-        <ul>
-          {cardData
-            .filter((feature) => feature.showOnHome)
-            .map((feature) => (
-              <li key={feature.label}>
-                <Card data={feature} />
-              </li>
-            ))}
+        <ul className="flex gap-10 mt-8">
+          {cardData.map((feature) => (
+            <li className="flex-1" key={feature.label}>
+              <Card data={feature} />
+            </li>
+          ))}
         </ul>
       )}
       {children}
