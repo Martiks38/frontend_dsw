@@ -4,6 +4,7 @@
   --primary-color: #195681;
   --background: #f8fafc;
   --surface: #ffffff;
+  --height-header: 3.5rem;
 }
 
 @theme {

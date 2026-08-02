@@ -8,7 +8,7 @@ import styles from './Header.module.css';
 
 export default function Header() {
   return (
-    <header className="h-14 px-8 flex justify-between items-center bg-background] text-primary font-semibold">
+    <header className="border-primary bg-background text-primary fixed top-0 left-0 z-50 flex h-(--height-header) w-full items-center justify-between border-b-2 px-8 font-semibold">
       <Link href={'/'}>
         <Image
           src="/logo_2.png"
@@ -16,6 +16,7 @@ export default function Header() {
           height={32}
           alt="Guardería náutica"
           className="h-8 w-auto"
+          priority
         />
       </Link>
       <nav aria-label="Navegación principal">

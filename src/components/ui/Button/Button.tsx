@@ -14,13 +14,14 @@ const buttonLinkVariants: Record<ButtonLinkVariants, string> = {
 export default function ButtonLink({
   href,
   children,
+  className,
   variant = 'primary',
 }: ButtonLinkProps) {
   const variantStyles = buttonLinkVariants[variant];
 
   return (
     <Link
-      className={`${variantStyles} border-2 rounded-md px-2 py-1.5`}
+      className={`${variantStyles} ${className ?? ''} rounded-md border-2 px-2 py-1.5`}
       href={href}
     >
       {children}
