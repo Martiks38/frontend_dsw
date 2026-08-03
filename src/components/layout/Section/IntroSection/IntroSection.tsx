@@ -20,9 +20,12 @@ export function IntroSection({
     <section
       style={{ backgroundImage: `url(${heroImageUrl})` }}
       className={`${styles.intro} ${className ?? ''} relative flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 pb-20`}
+      aria-labelledby="intro-title"
     >
       <div>
-        <h1 className="mb-4 text-4xl font-semibold">{title}</h1>
+        <h1 id="intro-title" className="mb-4 text-4xl font-semibold">
+          {title}
+        </h1>
         <p className="w-[35ch] text-2xl">
           Guardería náutica y servicios para que disfrutes de tu embarcación
           cuando quieras.
