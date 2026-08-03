@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="mx-auto flex w-full max-w-screen-2xl grow flex-col justify-center justify-items-center">
       <Header />
-      <main className="mt-(--height-header)">
+      <main id="main-content" className="mt-(--height-header)" tabIndex={-1}>
         <IntroSection
           heroImageUrl="/portada.webp"
           title={
