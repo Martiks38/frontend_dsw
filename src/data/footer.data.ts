@@ -19,7 +19,7 @@ export const footerColumns: Array<FooterColumn> = [
     items: [
       {
         label: '+54 341 123 4567',
-        href: 'tel:+543411234567',
+        action: 'copy',
       },
       {
         label: 'info@guarderianautica.com',

@@ -2,10 +2,6 @@ import { LinkItem } from '@/interfaces';
 
 export const navigationItems: LinkItem[] = [
   {
-    label: 'Inicio',
-    href: '#inicio',
-  },
-  {
     label: 'Guardería',
     href: '#guarderia',
   },
