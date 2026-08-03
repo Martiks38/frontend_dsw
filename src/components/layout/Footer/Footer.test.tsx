@@ -40,7 +40,7 @@ const baseProps: FooterProps = {
       title: 'Contacto',
       variant: 'address',
       items: [
-        { label: '+54 341 123 4567', href: 'tel:+543411234567' },
+        { label: '+54 341 123 4567', action: 'copy' },
         { label: 'info@guarderianautica.com', action: 'copy' },
         { label: 'Av. Costanera 1234, Rosario, Santa Fe' },
       ],
@@ -104,12 +104,12 @@ describe('Footer', () => {
     expect(sections[1]).toHaveTextContent('Contacto');
   });
 
-  it('renderiza el teléfono como link tel:', () => {
+  it('renderiza el teléfono con action="copy" como botón', () => {
     renderWithToast(<Footer {...baseProps} />);
 
-    const phoneLink = screen.getByRole('link', { name: '+54 341 123 4567' });
+    const phoneLink = screen.getByRole('button', { name: '+54 341 123 4567' });
 
-    expect(phoneLink).toHaveAttribute('href', 'tel:+543411234567');
+    expect(phoneLink).toBeInTheDocument();
   });
 
   it('renderiza el email con action="copy" como botón', () => {

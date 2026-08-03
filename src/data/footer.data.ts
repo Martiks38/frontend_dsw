@@ -1,6 +1,7 @@
 import type { FooterColumn } from '@/interfaces';
 
 import { navigationItems } from './navigation.data';
+import { services } from './services.data';
 
 export const footerColumns: Array<FooterColumn> = [
   {
@@ -10,26 +11,7 @@ export const footerColumns: Array<FooterColumn> = [
   },
   {
     title: 'Servicios',
-    items: [
-      {
-        label: 'Combustible',
-      },
-      {
-        label: 'Limpieza',
-      },
-      {
-        label: 'Mantenimiento',
-      },
-      {
-        label: 'Botadura y retiro',
-      },
-      {
-        label: 'Carga de baterías',
-      },
-      {
-        label: 'Reparaciones',
-      },
-    ],
+    items: services,
   },
   {
     title: 'Contacto',
@@ -37,14 +19,14 @@ export const footerColumns: Array<FooterColumn> = [
     items: [
       {
         label: '+54 341 123 4567',
-        href: 'tel:+543411234567',
+        action: 'copy',
       },
       {
         label: 'info@guarderianautica.com',
         action: 'copy',
       },
       {
-        label: 'Av. Costanera 1234,Rosario, Santa Fe',
+        label: 'Av. Costanera 1234, Rosario, Santa Fe',
       },
     ],
   },

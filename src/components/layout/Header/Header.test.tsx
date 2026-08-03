@@ -2,9 +2,14 @@ import { render, screen } from '@testing-library/react';
 import { ImgHTMLAttributes } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { navigationItems } from '@/data/navigation.data';
+import { navigationItems } from '@/data';
 
 import Header from './Header';
+
+const logoProps = {
+  src: 'img.png',
+  alt: 'alt',
+};
 
 vi.mock('next/image', () => ({
   default: ({ alt, ...props }: ImgHTMLAttributes<HTMLImageElement>) => {
@@ -15,16 +20,16 @@ vi.mock('next/image', () => ({
 
 describe('<Header />', () => {
   it('renderiza el logo con src y alt correctos', () => {
-    render(<Header />);
+    render(<Header srcLogo={logoProps.src} altLogo={logoProps.alt} />);
 
-    const logo = screen.getByAltText('Guardería náutica');
+    const logo = screen.getByAltText(logoProps.alt);
 
     expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/logo.png');
+    expect(logo).toHaveAttribute('src', logoProps.src);
   });
 
   it('renderiza el nav con su aria-label', () => {
-    render(<Header />);
+    render(<Header srcLogo={logoProps.src} altLogo={logoProps.alt} />);
 
     expect(
       screen.getByRole('navigation', { name: 'Navegación principal' })
@@ -32,7 +37,7 @@ describe('<Header />', () => {
   });
 
   it('renderiza un link por cada item de navigationItems', () => {
-    render(<Header />);
+    render(<Header srcLogo={logoProps.src} altLogo={logoProps.alt} />);
 
     navigationItems.forEach(({ label, href }) => {
       const link = screen.getByRole('link', { name: label });
@@ -42,7 +47,7 @@ describe('<Header />', () => {
   });
 
   it('renderiza la cantidad correcta de links de navegación', () => {
-    render(<Header />);
+    render(<Header srcLogo={logoProps.src} altLogo={logoProps.alt} />);
 
     const nav = screen.getByRole('navigation', {
       name: 'Navegación principal',

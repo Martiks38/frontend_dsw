@@ -1,66 +1,64 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Footer from '@/components/layout/Footer/Footer';
+import Header from '@/components/layout/Header/Header';
+import { HomeSection, IntroSection } from '@/components/layout/Section';
+import ButtonLink from '@/components/ui/Button/Button';
+import { benefits, footerColumns, services } from '@/data';
+
+import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="mx-auto flex w-full max-w-screen-2xl grow flex-col justify-center justify-items-center">
+      <Header srcLogo="/logo_2.png" altLogo="Guardería náutica" />
+      <main id="main-content" className="mt-(--height-header)" tabIndex={-1}>
+        <IntroSection
+          heroImageUrl="/portada.webp"
+          title={
+            <>
+              Tu embarcación.
+              <br />
+              Nuestro cuidado.
+            </>
+          }
+        >
+          <nav
+            className="mt-10 text-xl font-semibold *:first:mr-6"
+            aria-label="Servicios y solicitudes"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <ButtonLink href={''}>Conocé nuestros servicios</ButtonLink>
+            <ButtonLink href="" variant="secondary">
+              Solicitar guardado
+            </ButtonLink>
+          </nav>
+        </IntroSection>
+        <HomeSection title="¿Por qué elegirnos?" cardData={benefits} />
+        <HomeSection
+          title="Nuestros servicios"
+          cardData={services.filter((s) => s.showOnHome)}
+        >
+          <ButtonLink href={''} className="mx-auto mt-8 block w-fit">
+            Ver todos los servicios
+          </ButtonLink>
+        </HomeSection>
+        <HomeSection
+          title="¿Querés guardar tu embarcación con nosotros?"
+          className={styles.banner}
+        >
+          <p>Consultá disponibilidad y conocé nuestras condiciones.</p>
+          <ButtonLink
+            href={''}
+            variant="secondary"
+            className="text-semibold text-2xl"
           >
-            Documentation
-          </a>
-        </div>
+            Solicitar guardado
+          </ButtonLink>
+        </HomeSection>
       </main>
+      <Footer
+        logoSrc="/logo_2.png"
+        logoAlt="Guardería náutica"
+        columns={footerColumns}
+      />
     </div>
   );
 }

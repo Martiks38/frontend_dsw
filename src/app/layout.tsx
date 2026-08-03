@@ -1,18 +1,15 @@
 import './globals.css';
 
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 
+import IconSprite from '@/components/ui/IconSprite/IconSprite';
 import { ToastProvider } from '@/providers/ToastProvider';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const poppinsSans = Poppins({
   subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
@@ -26,8 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>
+    <html lang="es">
+      <body className={`${poppinsSans.className}`}>
+        <IconSprite />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg focus:outline-2 focus:outline-offset-2"
+        >
+          Saltar al contenido principal
+        </a>
         <ToastProvider>{children}</ToastProvider>
       </body>
     </html>
