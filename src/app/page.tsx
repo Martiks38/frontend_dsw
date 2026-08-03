@@ -9,7 +9,7 @@ import styles from './page.module.css';
 export default function Home() {
   return (
     <div className="mx-auto flex w-full max-w-screen-2xl grow flex-col justify-center justify-items-center">
-      <Header />
+      <Header srcLogo="/logo_2.png" altLogo="Guardería náutica" />
       <main id="main-content" className="mt-(--height-header)" tabIndex={-1}>
         <IntroSection
           heroImageUrl="/portada.webp"

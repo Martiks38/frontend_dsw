@@ -6,15 +6,20 @@ import { navigationItems } from '@/data';
 
 import styles from './Header.module.css';
 
-export default function Header() {
+interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
+  srcLogo: string;
+  altLogo: string;
+}
+
+export default function Header({ altLogo, srcLogo }: HeaderProps) {
   return (
-    <header className="border-primary bg-background text-primary fixed top-0 left-0 z-100 flex h-(--height-header) w-full items-center justify-between border-b-2 px-8 font-semibold">
+    <header className="border-primary bg-background text-primary fixed top-0 left-0 z-40 flex h-(--height-header) w-full items-center justify-between border-b-2 px-8 font-semibold">
       <Link href={'/'}>
         <Image
-          src="/logo_2.png"
+          src={srcLogo}
           width={150}
           height={32}
-          alt="Guardería náutica"
+          alt={altLogo}
           className="h-8 w-auto"
           priority
         />
