@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #195681;
+  --primary-color-60: rgba(25, 86, 129, 0.4);
   --background: #f8fafc;
   --surface: #ffffff;
   --height-header: 3.5rem;

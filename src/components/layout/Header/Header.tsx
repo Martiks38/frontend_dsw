@@ -8,7 +8,7 @@ import styles from './Header.module.css';
 
 export default function Header() {
   return (
-    <header className="border-primary bg-background text-primary fixed top-0 left-0 z-50 flex h-(--height-header) w-full items-center justify-between border-b-2 px-8 font-semibold">
+    <header className="border-primary bg-background text-primary fixed top-0 left-0 z-100 flex h-(--height-header) w-full items-center justify-between border-b-2 px-8 font-semibold">
       <Link href={'/'}>
         <Image
           src="/logo_2.png"
