@@ -52,17 +52,19 @@ function FooterItemContent({ item }: { item: FooterColumn['items'][number] }) {
 
   if (item.action === 'copy') {
     const handleCopy = async () => {
-      await navigator.clipboard.writeText(item.label);
+      const normalizedText = item.label.replaceAll(' ', '');
+
+      await navigator.clipboard.writeText(normalizedText);
       showToast('Copiado al portapapeles');
     };
 
     return (
       <button
-        onClick={handleCopy}
+        onClick={() => handleCopy()}
         type="button"
         className={baseInteractiveStyles}
       >
-        <FormattedItemText text={item.label} />
+        {item.label}
       </button>
     );
   }
@@ -121,15 +123,17 @@ function FooterColumnContent({
 
 export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
   return (
-    <footer className="grid grid-cols-1 items-start gap-8 px-6 pt-12 pb-6 sm:grid-cols-2 md:grid-cols-5">
-      <Image
-        src={logoSrc}
-        alt={logoAlt}
-        width={195}
-        height={65}
-        className="h-auto w-full max-w-45 object-contain"
-        priority
-      />
+    <footer className="grid grid-cols-1 items-start gap-8 px-6 pt-12 pb-6 sm:grid-cols-2 md:grid-cols-[1fr_1fr_1fr_auto_1fr]">
+      <div className="max-w-48">
+        <Image
+          src={logoSrc}
+          alt={logoAlt}
+          width={195}
+          height={65}
+          className="h-auto w-full object-contain"
+          priority
+        />
+      </div>
       {columns.map((col) => {
         const normalizedTitle = normalizeString(col.title);
         const titleId = `footer-${normalizedTitle}`;
