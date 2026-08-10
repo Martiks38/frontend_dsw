@@ -1,33 +1,15 @@
-import { HomeFeature } from '@/interfaces/homeFeature.interface';
-
-import Card from '../../Card/Card';
-
 interface HomeSectionProps extends React.HTMLAttributes<HTMLElement> {
-  title: string;
-  cardData?: HomeFeature[];
+  heading: string;
 }
 
 export function HomeSection({
-  title,
-  cardData,
+  heading,
   children,
   className,
 }: HomeSectionProps) {
   return (
-    <section className={`${className ?? ''} mt-12`} aria-label={title}>
-      <h2 className="text-center text-3xl font-semibold">{title}</h2>
-      {cardData && (
-        <ul className="mt-8 flex justify-around gap-4">
-          {cardData.map((feature) => (
-            <li
-              className="max-w-60 flex-1 justify-items-center"
-              key={feature.label}
-            >
-              <Card data={feature} />
-            </li>
-          ))}
-        </ul>
-      )}
+    <section className={`${className ?? ''} mt-12 px-16`} aria-label={heading}>
+      <h2 className="text-center text-3xl font-semibold">{heading}</h2>
       {children}
     </section>
   );
