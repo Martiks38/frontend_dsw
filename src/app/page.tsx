@@ -1,10 +1,10 @@
 import Footer from '@/components/layout/Footer/Footer';
 import Header from '@/components/layout/Header/Header';
 import { HomeSection, IntroSection } from '@/components/layout/Section';
+import Banner from '@/components/ui/Banner/Banner';
 import ButtonLink from '@/components/ui/Button/Button';
+import CardList from '@/components/ui/Lists/CardList/CardList';
 import { benefits, footerColumns, services } from '@/data';
-
-import styles from './page.module.css';
 
 export default function Home() {
   return (
@@ -21,6 +21,10 @@ export default function Home() {
             </>
           }
         >
+          <p className="w-[35ch] text-2xl">
+            Guardería náutica y servicios para que disfrutes de tu embarcación
+            cuando quieras.
+          </p>
           <nav
             className="mt-10 text-xl font-semibold *:first:mr-6"
             aria-label="Servicios y solicitudes"
@@ -31,28 +35,24 @@ export default function Home() {
             </ButtonLink>
           </nav>
         </IntroSection>
-        <HomeSection title="¿Por qué elegirnos?" cardData={benefits} />
-        <HomeSection
-          title="Nuestros servicios"
-          cardData={services.filter((s) => s.showOnHome)}
-        >
+        <HomeSection heading="¿Por qué elegirnos?">
+          <CardList cards={benefits} />
+        </HomeSection>
+        <HomeSection heading="Nuestros servicios">
+          <CardList cards={services.filter((s) => s.showOnHome)} />
           <ButtonLink href={''} className="mx-auto mt-8 block w-fit">
             Ver todos los servicios
           </ButtonLink>
         </HomeSection>
-        <HomeSection
-          title="¿Querés guardar tu embarcación con nosotros?"
-          className={styles.banner}
-        >
-          <p>Consultá disponibilidad y conocé nuestras condiciones.</p>
-          <ButtonLink
-            href={''}
-            variant="secondary"
-            className="text-semibold text-2xl"
-          >
-            Solicitar guardado
-          </ButtonLink>
-        </HomeSection>
+        <Banner
+          heading="¿Querés guardar tu embarcación con nosotros?"
+          text="Consultá disponibilidad y conocé nuestras condiciones."
+          button={{
+            href: '',
+            text: 'Solicitar guardado',
+            variant: 'secondary',
+          }}
+        />
       </main>
       <Footer
         logoSrc="/logo_2.png"
