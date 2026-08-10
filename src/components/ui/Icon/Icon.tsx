@@ -15,9 +15,16 @@ export type IconId =
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   id: IconId;
   size?: number;
+  title: string;
 }
 
-export default function Icon({ id, size = 24, className, ...rest }: IconProps) {
+export default function Icon({
+  id,
+  size = 24,
+  className,
+  title,
+  ...rest
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -26,6 +33,7 @@ export default function Icon({ id, size = 24, className, ...rest }: IconProps) {
       aria-hidden="true"
       {...rest}
     >
+      <title>{title}</title>
       <use href={`#${id}`} />
     </svg>
   );
