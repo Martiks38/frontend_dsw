@@ -6,7 +6,7 @@ import CheckList from '@/components/ui/Lists/CheckList/CheckList';
 import StepsList from '@/components/ui/Lists/StepsList/StepsList';
 import { CONTRACT_PROCESS, GALLERY_IMAGES, SERVICE_SCOPE } from '@/data';
 
-export default function Home() {
+export default function Marina() {
   return (
     <>
       <IntroSection
