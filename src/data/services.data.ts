@@ -4,7 +4,29 @@ interface Service extends HomeFeature {
   showOnHome: boolean;
 }
 
-export const services: Array<Service> = [
+export const SERVICE_SCOPE: Array<{
+  id: number;
+  description: string;
+}> = [
+  {
+    id: 1,
+    description: 'Espacio de guardado en instalaciones seguras.',
+  },
+  {
+    id: 2,
+    description: 'Control de acceso y monitoreo 24/7.',
+  },
+  {
+    id: 3,
+    description: 'Gestión de ingreso y retiro.',
+  },
+  {
+    id: 4,
+    description: 'Supervisión de la embarcación.',
+  },
+];
+
+export const SERVICES: Array<Service> = [
   {
     id: 'fuel',
     label: 'Combustible',
