@@ -123,7 +123,7 @@ function FooterColumnContent({
 
 export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
   return (
-    <footer className="grid grid-cols-1 items-start gap-8 px-6 pt-12 pb-6 sm:grid-cols-2 md:grid-cols-[1fr_1fr_1fr_auto_1fr]">
+    <footer className="grid grid-cols-1 items-start gap-8 border-t-2 px-6 pt-12 pb-6 sm:grid-cols-2 md:grid-cols-[1fr_1fr_1fr_auto_1fr]">
       <div className="max-w-48">
         <Image
           src={logoSrc}
