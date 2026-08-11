@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ButtonLink from '@/components/ui/Button/Button';
-import { navigationItems } from '@/data';
+import { NAVIGATION_ITEMS } from '@/data';
 
 import styles from './Header.module.css';
 
@@ -26,7 +26,7 @@ export default function Header({ altLogo, srcLogo }: HeaderProps) {
       </Link>
       <nav aria-label="Navegación principal">
         <ul className="flex justify-between gap-x-1">
-          {navigationItems.map(({ href, label }) => {
+          {NAVIGATION_ITEMS.map(({ href, label }) => {
             return (
               <li key={label}>
                 <Link className={`px-2 py-1 ${styles.link}`} href={href}>
