@@ -1,7 +1,7 @@
 import type { FooterColumn } from '@/interfaces';
 
 import { NAVIGATION_ITEMS } from './navigation.data';
-import { SERVICES } from './services.data';
+import { HOME_SERVICES } from './services.data';
 
 export const FOOTER_COLUMNS: Array<FooterColumn> = [
   {
@@ -11,7 +11,7 @@ export const FOOTER_COLUMNS: Array<FooterColumn> = [
   },
   {
     title: 'Servicios',
-    items: SERVICES,
+    items: HOME_SERVICES,
   },
   {
     title: 'Contacto',
