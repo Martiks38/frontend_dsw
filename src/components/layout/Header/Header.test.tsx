@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { ImgHTMLAttributes } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { navigationItems } from '@/data';
+import { NAVIGATION_ITEMS } from '@/data';
 
 import Header from './Header';
 
@@ -39,7 +39,7 @@ describe('<Header />', () => {
   it('renderiza un link por cada item de navigationItems', () => {
     render(<Header srcLogo={logoProps.src} altLogo={logoProps.alt} />);
 
-    navigationItems.forEach(({ label, href }) => {
+    NAVIGATION_ITEMS.forEach(({ label, href }) => {
       const link = screen.getByRole('link', { name: label });
 
       expect(link).toHaveAttribute('href', href);
@@ -54,6 +54,6 @@ describe('<Header />', () => {
     });
     const links = nav.querySelectorAll('a');
 
-    expect(links).toHaveLength(navigationItems.length);
+    expect(links).toHaveLength(NAVIGATION_ITEMS.length);
   });
 });
