@@ -1,17 +1,17 @@
 import type { FooterColumn } from '@/interfaces';
 
-import { navigationItems } from './navigation.data';
-import { services } from './services.data';
+import { NAVIGATION_ITEMS } from './navigation.data';
+import { SERVICES } from './services.data';
 
-export const footerColumns: Array<FooterColumn> = [
+export const FOOTER_COLUMNS: Array<FooterColumn> = [
   {
     title: 'Navegación',
     variant: 'nav',
-    items: navigationItems,
+    items: NAVIGATION_ITEMS,
   },
   {
     title: 'Servicios',
-    items: services,
+    items: SERVICES,
   },
   {
     title: 'Contacto',

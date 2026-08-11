@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-type ButtonLinkVariants = 'primary' | 'secondary';
+export type ButtonLinkVariants = 'primary' | 'secondary';
 
 interface ButtonLinkProps extends React.ComponentPropsWithoutRef<typeof Link> {
   variant?: ButtonLinkVariants;

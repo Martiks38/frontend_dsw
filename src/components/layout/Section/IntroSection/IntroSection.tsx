@@ -26,10 +26,6 @@ export function IntroSection({
         <h1 id="intro-title" className="mb-4 text-4xl font-semibold">
           {title}
         </h1>
-        <p className="w-[35ch] text-2xl">
-          Guardería náutica y servicios para que disfrutes de tu embarcación
-          cuando quieras.
-        </p>
         {children}
       </div>
     </section>

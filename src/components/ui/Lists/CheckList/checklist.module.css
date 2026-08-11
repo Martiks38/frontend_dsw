@@ -1,0 +1,47 @@
+.features_list {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.feature_item {
+  display: flex;
+  gap: 0.8rem;
+  flex: 1;
+  padding-left: 2.25rem;
+}
+
+.feature_icon {
+  --icon-size: 1.5rem;
+
+  position: relative;
+  top: 1px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature_text {
+  max-width: 18ch;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  font-weight: 600;
+  margin: 0;
+}
+
+@media (max-width: 48rem) {
+  .features_list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature_item {
+    padding-left: 2.25rem;
+  }
+}

@@ -1,20 +1,24 @@
 import { LinkItem } from '@/interfaces';
 
-export const navigationItems: LinkItem[] = [
+export const NAVIGATION_ITEMS: LinkItem[] = [
+  {
+    label: 'Inicio',
+    href: '/',
+  },
   {
     label: 'Guardería',
-    href: '#guarderia',
+    href: '/guarderia',
   },
   {
     label: 'Servicios',
-    href: '#servicios',
+    href: '/servicios',
   },
   {
     label: 'Nosotros',
-    href: '#nosotros',
+    href: '/nosotros',
   },
   {
     label: 'Contacto',
-    href: '#contacto',
+    href: '/contacto',
   },
 ];

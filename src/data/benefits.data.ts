@@ -1,6 +1,6 @@
 import { HomeFeature } from '@/interfaces/homeFeature.interface';
 
-export const benefits: Array<HomeFeature> = [
+export const BENEFITS: Array<HomeFeature> = [
   {
     id: 'security',
     label: 'Seguridad',
