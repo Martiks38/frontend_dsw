@@ -1,10 +1,16 @@
 import { HomeSection, IntroSection } from '@/components/layout/Section';
-import Banner from '@/components/ui/Banner/Banner';
+import Banner, { type BannerButton } from '@/components/ui/Banner/Banner';
 import ButtonLink from '@/components/ui/Button/Button';
 import CardList from '@/components/ui/Lists/CardList/CardList';
 import { BENEFITS, HOME_SERVICES } from '@/data';
 
 export default function Home() {
+  const configButton: BannerButton = {
+    href: '',
+    text: 'Solicitar guardado',
+    variant: 'secondary',
+  };
+
   return (
     <>
       <IntroSection
@@ -43,11 +49,8 @@ export default function Home() {
       <Banner
         heading="¿Querés guardar tu embarcación con nosotros?"
         text="Consultá disponibilidad y conocé nuestras condiciones."
-        button={{
-          href: '',
-          text: 'Solicitar guardado',
-          variant: 'secondary',
-        }}
+        button={configButton}
+        rounded={0}
       />
     </>
   );
