@@ -2,7 +2,7 @@ import { HomeSection, IntroSection } from '@/components/layout/Section';
 import Banner from '@/components/ui/Banner/Banner';
 import ButtonLink from '@/components/ui/Button/Button';
 import CardList from '@/components/ui/Lists/CardList/CardList';
-import { BENEFITS, SERVICES } from '@/data';
+import { BENEFITS, HOME_SERVICES } from '@/data';
 
 export default function Home() {
   return (
@@ -35,7 +35,7 @@ export default function Home() {
         <CardList cards={BENEFITS} />
       </HomeSection>
       <HomeSection heading="Nuestros servicios">
-        <CardList cards={SERVICES.filter((s) => s.showOnHome)} />
+        <CardList cards={HOME_SERVICES.filter((s) => s.showOnHome)} />
         <ButtonLink href={''} className="mx-auto mt-8 block w-fit">
           Ver todos los servicios
         </ButtonLink>

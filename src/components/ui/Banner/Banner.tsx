@@ -1,7 +1,7 @@
 import ButtonLink, { type ButtonLinkVariants } from '../Button/Button';
 import styles from './banner.module.css';
 
-interface BannerButton {
+export interface BannerButton {
   href: string;
   text: string;
   variant: ButtonLinkVariants;
