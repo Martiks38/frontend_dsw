@@ -1,15 +1,7 @@
 .banner {
-  display: grid;
-  grid-template-columns: 1fr auto;
   grid-template-areas:
     'title action'
     'text action';
-  align-items: center;
-  gap: 0.5rem 2 rem;
-  margin-top: calc(var(--spacing) * 12);
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-  padding: 1.5rem 3rem;
 
   & > :first-child {
     grid-area: title;

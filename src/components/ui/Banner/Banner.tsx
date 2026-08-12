@@ -11,6 +11,7 @@ interface BannerProps {
   heading: string;
   text: string;
   button: BannerButton;
+  rounded?: number;
   className?: string;
 }
 
@@ -19,10 +20,11 @@ export default function Banner({
   className,
   text,
   heading,
+  rounded = 1.25,
 }: BannerProps) {
   return (
     <section
-      className={`${className ?? ''} ${styles.banner} mt-12`}
+      className={`${styles.banner} bg-primary text-surface mt-12 grid grid-cols-[1fr_auto] items-center gap-[0.5rem_2rem] px-16 py-12 rounded-[${rounded}rem] ${className ?? ''}`}
       aria-label={heading}
     >
       <h2 className="text-center text-3xl font-semibold">{heading}</h2>
