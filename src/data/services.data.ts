@@ -1,15 +1,8 @@
+import type { CardItem } from '@/components/ui/CardGrid/CardGrid';
 import type { HomeFeature } from '@/interfaces';
 
 interface PageService extends HomeFeature {
   showOnHome: boolean;
-}
-
-interface PageServiceItem {
-  id: string;
-  title: string;
-  description: string;
-  imageSrc: string;
-  imageAlt: string;
 }
 
 export const SERVICE_SCOPE: Array<{
@@ -34,7 +27,7 @@ export const SERVICE_SCOPE: Array<{
   },
 ];
 
-export const PAGE_SERVICES: Array<PageServiceItem> = [
+export const PAGE_SERVICES: Array<CardItem> = [
   {
     id: 'fuel',
     title: 'Combustible',
