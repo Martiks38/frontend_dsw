@@ -10,7 +10,7 @@ export default function Marina() {
   return (
     <>
       <IntroSection
-        heroImageUrl="/hero-image-boat-storage.webp"
+        heroImageUrl="/images/heroImages/hero-image-boat-storage.webp"
         title={
           <>
             Guardamos tu embarcación,
