@@ -10,7 +10,12 @@ export type IconId =
   | 'on-demand-availability'
   | 'boat-launch-and-retrieval'
   | 'battery-charging'
-  | 'repairs';
+  | 'repairs'
+  | 'certificate'
+  | 'communication'
+  | 'anchor'
+  | 'handshake'
+  | 'compass';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   id: IconId;
