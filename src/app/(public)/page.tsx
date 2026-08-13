@@ -1,4 +1,4 @@
-import { HomeSection, IntroSection } from '@/components/layout/Section';
+import { IntroSection, PageSection } from '@/components/layout/Section';
 import Banner, { type BannerButton } from '@/components/ui/Banner/Banner';
 import ButtonLink from '@/components/ui/Button/Button';
 import CardList from '@/components/ui/Lists/CardList/CardList';
@@ -37,15 +37,15 @@ export default function Home() {
           </ButtonLink>
         </nav>
       </IntroSection>
-      <HomeSection heading="¿Por qué elegirnos?">
+      <PageSection heading="¿Por qué elegirnos?">
         <CardList cards={BENEFITS} />
-      </HomeSection>
-      <HomeSection heading="Nuestros servicios">
+      </PageSection>
+      <PageSection heading="Nuestros servicios">
         <CardList cards={HOME_SERVICES.filter((s) => s.showOnHome)} />
         <ButtonLink href={''} className="mx-auto mt-8 block w-fit">
           Ver todos los servicios
         </ButtonLink>
-      </HomeSection>
+      </PageSection>
       <Banner
         heading="¿Querés guardar tu embarcación con nosotros?"
         text="Consultá disponibilidad y conocé nuestras condiciones."
