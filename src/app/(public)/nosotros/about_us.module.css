@@ -1,0 +1,61 @@
+.section_mission {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    'icon title'
+    'icon text';
+  gap: 1rem 1.5rem;
+
+  & > h2 {
+    text-align: left;
+    padding: 0;
+    grid-area: title;
+  }
+
+  & > p {
+    max-width: 45ch;
+    grid-area: text;
+  }
+
+  & > svg {
+    --size: 48px;
+
+    width: var(--size);
+    height: var(--size);
+    grid-area: icon;
+  }
+}
+
+.facilities {
+  grid-template-areas:
+    'principal secondary'
+    'principal tertiary';
+}
+
+.facilities > :first-child {
+  grid-area: principal;
+}
+.facilities > :nth-child(2) {
+  grid-area: secondary;
+}
+
+.facilities > :nth-child(3) {
+  grid-area: tertiary;
+}
+
+@media (min-width: 48rem) {
+  .gallery {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+  }
+
+  .facilities {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 16rem 16rem;
+  }
+
+  .item {
+    min-height: auto;
+  }
+}
