@@ -14,7 +14,7 @@
 }
 
 .feature_icon {
-  --icon-size: 1.5rem;
+  --icon-size: 3rem;
 
   position: relative;
   top: 1px;
@@ -29,7 +29,7 @@
 
 .feature_text {
   max-width: 18ch;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   line-height: 1.8;
   font-weight: 600;
   margin: 0;
