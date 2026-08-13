@@ -22,7 +22,7 @@ export default function Header({ altLogo, srcLogo }: HeaderProps) {
             height={32}
             alt={altLogo}
             className="h-8 w-auto"
-            priority
+            preload
           />
         </Link>
         <nav aria-label="Navegación principal">
