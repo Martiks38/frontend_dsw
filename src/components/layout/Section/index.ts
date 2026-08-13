@@ -1,2 +1,2 @@
-export * from './HomeSection/HomeSection';
 export * from './IntroSection/IntroSection';
+export * from './PageSection/PageSection';

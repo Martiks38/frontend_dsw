@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { HomeSection, IntroSection } from '@/components/layout/Section';
+import { IntroSection, PageSection } from '@/components/layout/Section';
 import Banner from '@/components/ui/Banner/Banner';
 import CheckList from '@/components/ui/Lists/CheckList/CheckList';
 import StepsList from '@/components/ui/Lists/StepsList/StepsList';
@@ -10,7 +10,7 @@ export default function Marina() {
   return (
     <>
       <IntroSection
-        heroImageUrl="/portada_2.png"
+        heroImageUrl="/images/heroImages/hero-image-boat-storage.webp"
         title={
           <>
             Guardamos tu embarcación,
@@ -24,17 +24,17 @@ export default function Marina() {
           embarcaiones, con atención personalizada y servicios de primer nivel.
         </p>
       </IntroSection>
-      <HomeSection heading="¿Cómo funciona?" className="[&>h2]:text-left">
+      <PageSection heading="¿Cómo funciona?" className="[&>h2]:text-left">
         <StepsList steps={CONTRACT_PROCESS} />
-      </HomeSection>
+      </PageSection>
       <hr className="mx-16 mt-12 text-(--primary-color-60)" />
-      <HomeSection
+      <PageSection
         heading="¿Qué incluye el sericio?"
         className="[&>h2]:text-left"
       >
         <CheckList items={SERVICE_SCOPE} />
-      </HomeSection>
-      <HomeSection
+      </PageSection>
+      <PageSection
         heading="Nuestras instalaciones"
         className="[&>h2]:text-left"
       >
@@ -55,7 +55,7 @@ export default function Marina() {
             );
           })}
         </ul>
-      </HomeSection>
+      </PageSection>
       <div className="mb-12 px-16">
         <Banner
           className="rounded-[10px]"

@@ -7,13 +7,13 @@ interface ListItem {
 
 export default function CheckList({ items }: { items: ListItem[] }) {
   return (
-    <ul className={`${styles.features_list} mt-8`}>
+    <ul className={styles.features_list}>
       {items.map(({ id, description }) => {
         return (
           <li key={id} className={styles.feature_item}>
             <span className={styles.feature_icon} aria-hidden="true">
               <svg
-                className="relative -top-0.5"
+                className="relative -top-2.25"
                 xmlns="http://www.w3.org/2000/svg"
                 width={32}
                 height={32}
