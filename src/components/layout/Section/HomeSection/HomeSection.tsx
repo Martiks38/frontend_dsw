@@ -8,8 +8,8 @@ export function HomeSection({
   className,
 }: HomeSectionProps) {
   return (
-    <section className={`${className ?? ''} mt-12 px-16`} aria-label={heading}>
-      <h2 className="text-center text-3xl font-semibold">{heading}</h2>
+    <section className={`${className ?? ''} px-16 pt-16`} aria-label={heading}>
+      <h2 className="pb-12 text-center text-3xl font-semibold">{heading}</h2>
       {children}
     </section>
   );
