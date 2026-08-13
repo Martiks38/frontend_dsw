@@ -7,6 +7,8 @@ import { useToast } from '@/hooks/useToast.hook';
 import type { FooterColumn, FooterProps } from '@/interfaces';
 import { normalizeString } from '@/utils/normalizeString.util';
 
+import styles from './Footer.module.css';
+
 const columnWrappers: Record<
   'nav' | 'default',
   ComponentType<{ titleId: string; className: string; children: ReactNode }>
@@ -23,7 +25,7 @@ const columnWrappers: Record<
   ),
 };
 
-const titleStyles = 'font-semibold text-lg mb-2.5';
+const titleStyles = 'font-semibold text-lg mb-4';
 
 function FormattedItemText({ text }: { text: string }) {
   if (text.includes(':') && text.includes('-')) {
@@ -123,15 +125,14 @@ function FooterColumnContent({
 
 export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
   return (
-    <footer className="grid grid-cols-1 items-start gap-8 border-t-2 px-6 pt-12 pb-6 sm:grid-cols-2 md:grid-cols-[1fr_1fr_1fr_auto_1fr]">
-      <div className="max-w-48">
+    <footer className={styles.footer}>
+      <div className="max-w-48 lg:w-full">
         <Image
           src={logoSrc}
           alt={logoAlt}
           width={195}
           height={65}
           className="h-auto w-full object-contain"
-          priority
         />
       </div>
       {columns.map((col) => {
