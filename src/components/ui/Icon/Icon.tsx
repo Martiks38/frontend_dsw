@@ -15,7 +15,8 @@ export type IconId =
   | 'communication'
   | 'anchor'
   | 'handshake'
-  | 'compass';
+  | 'compass'
+  | 'wind-rose-compass';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   id: IconId;
