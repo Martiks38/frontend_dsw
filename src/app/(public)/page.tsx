@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <IntroSection
-        heroImageUrl="/portada.webp"
+        heroImageUrl="/hero-image-boat-home.webp"
         title={
           <>
             Tu embarcación.
