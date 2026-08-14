@@ -31,8 +31,8 @@ export default function Home() {
           className="mt-10 text-xl font-semibold *:first:mr-6"
           aria-label="Servicios y solicitudes"
         >
-          <ButtonLink href={''}>Conocé nuestros servicios</ButtonLink>
-          <ButtonLink href="" variant="secondary">
+          <ButtonLink href="/servicios">Conocé nuestros servicios</ButtonLink>
+          <ButtonLink href="/contacto" variant="secondary">
             Solicitar guardado
           </ButtonLink>
         </nav>

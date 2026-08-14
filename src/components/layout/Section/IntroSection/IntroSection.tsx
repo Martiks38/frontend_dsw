@@ -8,6 +8,7 @@ interface IntroSectionProps extends Omit<
 > {
   title: React.ReactNode;
   heroImageUrl: string;
+  variant?: 'shadowless' | 'default';
 }
 
 export function IntroSection({
@@ -15,11 +16,12 @@ export function IntroSection({
   className,
   heroImageUrl,
   title,
+  variant = 'default',
 }: IntroSectionProps) {
   return (
     <section
       style={{ backgroundImage: `url(${heroImageUrl})` }}
-      className={`${styles.intro} ${className ?? ''} relative flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 pb-20`}
+      className={`${variant === 'default' ? styles.intro : ''} ${className ?? ''} flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 pb-20`}
       aria-labelledby="intro-title"
     >
       <div>

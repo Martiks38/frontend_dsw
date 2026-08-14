@@ -18,6 +18,7 @@ export default function Marina() {
             cuidamos tu tranquilidad
           </>
         }
+        variant="shadowless"
       >
         <p className="w-[35ch] text-xl">
           Contamos con instalaciones diseñadas para el guardado seguro de

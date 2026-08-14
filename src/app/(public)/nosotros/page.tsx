@@ -27,6 +27,7 @@ export default function AboutUs() {
       <IntroSection
         title="Sobre nosotros"
         heroImageUrl="/images/heroImages/hero-image-about-us.webp"
+        variant="shadowless"
       >
         <p className="w-[35ch] text-2xl">
           Somos una guardería náutica dedicada al cuidado y almacenamiento de
