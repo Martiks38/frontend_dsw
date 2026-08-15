@@ -41,7 +41,7 @@ export default function Home() {
         <CardList cards={BENEFITS} />
       </PageSection>
       <PageSection heading="Nuestros servicios">
-        <CardList cards={HOME_SERVICES.filter((s) => s.showOnHome)} />
+        <CardList cards={HOME_SERVICES} />
         <ButtonLink href={''} className="mx-auto mt-8 block w-fit">
           Ver todos los servicios
         </ButtonLink>

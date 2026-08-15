@@ -1,6 +1,6 @@
-import { HomeFeature } from '@/interfaces/homeFeature.interface';
+import type { Benefit } from '@/interfaces/benefit.interface';
 
-export const BENEFITS: Array<HomeFeature> = [
+export const BENEFITS: Benefit[] = [
   {
     id: 'security',
     label: 'Seguridad',
@@ -10,7 +10,7 @@ export const BENEFITS: Array<HomeFeature> = [
     id: 'integral-care',
     label: 'Cuidado integral',
     description:
-      'Personal que cuida tu embaracación para mantenerla en excelentes condiciones.',
+      'Personal que cuida tu embarcación para mantenerla en excelentes condiciones.',
   },
   {
     id: 'secure-storage',

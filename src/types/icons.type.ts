@@ -1,21 +1,29 @@
-export type IconName =
+export type BenefitsIconName =
   | 'security'
+  | 'integral-care'
+  | 'secure-storage'
+  | 'on-demand-availability';
+
+export type ServiceIconName =
   | 'fuel'
   | 'cleaning'
-  | 'integral-care'
   | 'maintenance'
-  | 'secure-storage'
-  | 'on-demand-availability'
   | 'boat-launch-and-retrieval'
   | 'battery-charging'
-  | 'repairs'
-  | 'certificate'
-  | 'communication'
-  | 'anchor'
-  | 'handshake'
-  | 'compass'
+  | 'repairs';
+
+export type CompanyValuesIconName =
   | 'wind-rose-compass'
-  | 'phone'
-  | 'email'
-  | 'clock'
-  | 'direction';
+  | 'handshake'
+  | 'anchor'
+  | 'communication'
+  | 'certificate'
+  | 'compass';
+
+export type ContactIconName = 'address' | 'phone' | 'email';
+
+export type IconName =
+  | BenefitsIconName
+  | CompanyValuesIconName
+  | ServiceIconName
+  | ContactIconName;

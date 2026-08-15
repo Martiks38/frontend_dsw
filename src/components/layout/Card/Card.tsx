@@ -1,7 +1,15 @@
 import Icon from '@/components/ui/Icon/Icon';
-import type { HomeFeature } from '@/interfaces/homeFeature.interface';
+import type { IconName } from '@/types';
 
-export default function Card({ data }: { data: HomeFeature }) {
+interface CardProps {
+  data: {
+    id: IconName;
+    label: string;
+    description: string;
+  };
+}
+
+export default function Card({ data }: CardProps) {
   return (
     <article className="h-full max-w-60 rounded-xl border border-(--primary-color-60) p-4 text-center shadow-md">
       <Icon id={data.id} title={data.label} size={60} className="mx-auto" />

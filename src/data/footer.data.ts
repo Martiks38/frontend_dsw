@@ -1,34 +1,53 @@
-import type { FooterColumn } from '@/interfaces';
+import type { FooterColumn, FooterItem } from '@/interfaces';
 
-import { CONTACT_DATA } from './contact.data';
+import { CONTACT_ITEMS } from './contact.data';
 import { NAVIGATION_ITEMS } from './navigation.data';
 import { SCHEDULE_ITEMS, SCHEDULE_NOTE } from './schedule.data';
 import { HOME_SERVICES } from './services.data';
+
+const navItems: FooterItem[] = NAVIGATION_ITEMS.map(({ label, href }) => ({
+  kind: 'link',
+  label,
+  href,
+}));
+
+const contactItems: FooterItem[] = CONTACT_ITEMS.map(({ label, action }) => ({
+  kind: 'text',
+  label,
+  action,
+}));
+
+const scheduleItems: FooterItem[] = [
+  ...SCHEDULE_ITEMS.map(({ label, value }) => ({
+    kind: 'schedule' as const,
+    label,
+    value,
+  })),
+  { kind: 'text', label: SCHEDULE_NOTE },
+];
+
+const serviceItems: FooterItem[] = HOME_SERVICES.map(({ label }) => ({
+  kind: 'text',
+  label,
+}));
 
 export const FOOTER_COLUMNS: Array<FooterColumn> = [
   {
     title: 'Navegación',
     variant: 'nav',
-    items: NAVIGATION_ITEMS,
+    items: navItems,
   },
   {
     title: 'Servicios',
-    items: HOME_SERVICES,
+    items: serviceItems,
   },
   {
     title: 'Contacto',
     variant: 'address',
-    items: CONTACT_DATA.map(({ value, action }) => ({ label: value, action })),
+    items: contactItems,
   },
   {
     title: 'Horarios',
-    items: [
-      ...SCHEDULE_ITEMS.map(({ label, value }) => ({
-        label: `${label}: ${value}`,
-      })),
-      {
-        label: SCHEDULE_NOTE,
-      },
-    ],
+    items: scheduleItems,
   },
 ];

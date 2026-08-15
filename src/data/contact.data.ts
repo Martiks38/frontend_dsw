@@ -1,10 +1,11 @@
 import type { ContactItem } from '@/interfaces/contact.interface';
 
-export const CONTACT_DATA: Array<ContactItem> = [
+export const CONTACT_ITEMS: Array<ContactItem> = [
   {
     type: 'phone',
     label: 'Teléfono',
     value: '+54 341 123 4567',
+    action: 'copy',
   },
   {
     type: 'email',
