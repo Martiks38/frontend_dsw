@@ -11,9 +11,9 @@ const navItems: FooterItem[] = NAVIGATION_ITEMS.map(({ label, href }) => ({
   href,
 }));
 
-const contactItems: FooterItem[] = CONTACT_ITEMS.map(({ label, action }) => ({
+const contactItems: FooterItem[] = CONTACT_ITEMS.map(({ value, action }) => ({
   kind: 'text',
-  label,
+  label: value,
   action,
 }));
 
