@@ -1,9 +1,6 @@
 import type { CardItem } from '@/components/ui/CardGrid/CardGrid';
-import type { HomeFeature } from '@/interfaces';
-
-interface PageService extends HomeFeature {
-  showOnHome: boolean;
-}
+import type { Service, ServiceCard } from '@/interfaces/service.interface';
+import type { ServiceIconName } from '@/types';
 
 export const SERVICE_SCOPE: Array<{
   id: number;
@@ -27,59 +24,49 @@ export const SERVICE_SCOPE: Array<{
   },
 ];
 
-export const PAGE_SERVICES: Array<CardItem> = [
-  {
-    id: 'fuel',
-    title: 'Combustible',
-    description:
-      'Carga de combustible para que tu embarcación esté siempre lista.',
-    imageSrc: '/images/services/services-fuel.webp',
-    imageAlt: 'Operario realizando carga de combustible en una embarcación',
-  },
-  {
-    id: 'cleaning',
+export const PAGE_SERVICE_MEDIA: Record<
+  ServiceIconName,
+  Pick<ServiceCard, 'title' | 'imageSrc' | 'imageAlt'>
+> = {
+  cleaning: {
     title: 'Limpieza',
-    description: 'Limpieza exterior e interior profesional.',
     imageSrc: '/images/services/services-cleaning.webp',
     imageAlt: 'Trabajo de limpieza y pulido exterior de casco de embarcación',
   },
-  {
-    id: 'maintenance',
+  fuel: {
+    title: 'Combustible',
+    imageSrc: '/images/services/services-fuel.webp',
+    imageAlt: 'Operario realizando carga de combustible en una embarcación',
+  },
+  maintenance: {
     title: 'Mantenimiento',
-    description: 'Revisiones y mantenimiento preventivo.',
     imageSrc: '/images/services/services-maintenance.webp',
     imageAlt: 'Inspección técnica del motor y componentes mecánicos',
   },
-  {
-    id: 'battery-charging',
-    title: 'Carga de baterías',
-    description: 'Control y carga de baterías durante el guardado.',
-    imageSrc: '/images/services/services-battery-charging.webp',
-    imageAlt: 'Baterías náuticas conectadas en estación de carga',
-  },
-  {
-    id: 'launch-retrieval',
+  'boat-launch-and-retrieval': {
     title: 'Botadura y retiro',
-    description: 'Servicio de botadura y retiro de agua.',
     imageSrc: '/images/services/services-launch-retrieval.webp',
     imageAlt: 'Grúa náutica elevando una lancha para botadura al agua',
   },
-  {
-    id: 'repairs',
+  'battery-charging': {
+    title: 'Carga de baterías',
+    imageSrc: '/images/services/services-battery-charging.webp',
+    imageAlt: 'Baterías náuticas conectadas en estación de carga',
+  },
+  repairs: {
     title: 'Reparaciones',
-    description: 'Gestión de reparaciones y trabajos técnicos.',
     imageSrc: '/images/services/services-repairs.webp',
     imageAlt: 'Área de taller y mantenimiento para reparación de embarcaciones',
   },
-];
+};
 
-export const HOME_SERVICES: Array<PageService> = [
+export const SERVICES: Service[] = [
   {
     id: 'fuel',
     label: 'Combustible',
     showOnHome: true,
     description:
-      'Carga de combustible para que tu embaracación esté siempre lista.',
+      'Carga de combustible para que tu embarcación esté siempre lista.',
   },
   {
     id: 'cleaning',
@@ -112,3 +99,12 @@ export const HOME_SERVICES: Array<PageService> = [
     description: 'Gestión de reparaciones y trabajos técnicos.',
   },
 ];
+
+export const HOME_SERVICES: Array<Service> = SERVICES.filter(
+  (s) => s.showOnHome
+);
+
+export const PAGE_SERVICES: Array<CardItem> = SERVICES.map((s) => ({
+  ...s,
+  ...PAGE_SERVICE_MEDIA[s.id],
+}));

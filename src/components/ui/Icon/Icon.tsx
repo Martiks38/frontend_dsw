@@ -1,25 +1,9 @@
 'use client';
 
-export type IconId =
-  | 'security'
-  | 'fuel'
-  | 'cleaning'
-  | 'integral-care'
-  | 'maintenance'
-  | 'secure-storage'
-  | 'on-demand-availability'
-  | 'boat-launch-and-retrieval'
-  | 'battery-charging'
-  | 'repairs'
-  | 'certificate'
-  | 'communication'
-  | 'anchor'
-  | 'handshake'
-  | 'compass'
-  | 'wind-rose-compass';
+import type { IconName } from '@/types';
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
-  id: IconId;
+  id: IconName;
   size?: number;
   title: string;
 }
@@ -37,6 +21,7 @@ export default function Icon({
       height={size}
       className={className}
       aria-hidden="true"
+      focusable={false}
       {...rest}
     >
       <title>{title}</title>

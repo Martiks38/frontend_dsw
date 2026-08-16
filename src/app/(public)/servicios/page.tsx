@@ -2,6 +2,12 @@ import Banner, { type BannerButton } from '@/components/ui/Banner/Banner';
 import CardGrid from '@/components/ui/CardGrid/CardGrid';
 import { PAGE_SERVICES } from '@/data';
 
+export const metadata = {
+  title: 'Servicios Náuticos | Cuidado, Mantenimiento y Bajadas',
+  description:
+    'Descubre nuestros servicios: cama en guardería, carga de batería, lavados, mantenimiento preventivo y bajada y elevación de embarcaciones.',
+};
+
 export default function Services() {
   const configButton: BannerButton = {
     href: '/login',

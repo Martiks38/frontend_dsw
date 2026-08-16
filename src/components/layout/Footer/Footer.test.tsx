@@ -27,22 +27,25 @@ const baseProps: FooterProps = {
       title: 'Navegación',
       variant: 'nav',
       items: [
-        { label: 'Inicio', href: '#inicio' },
-        { label: 'Nosotros', href: '#nosotros' },
-        { label: 'Contacto', href: '#contacto' },
+        { kind: 'link', label: 'Inicio', href: '#inicio' },
+        { kind: 'link', label: 'Nosotros', href: '#nosotros' },
+        { kind: 'link', label: 'Contacto', href: '#contacto' },
       ],
     },
     {
       title: 'Servicios',
-      items: [{ label: 'Combustible' }, { label: 'Limpieza' }],
+      items: [
+        { kind: 'text', label: 'Combustible' },
+        { kind: 'text', label: 'Limpieza' },
+      ],
     },
     {
       title: 'Contacto',
       variant: 'address',
       items: [
-        { label: '+54 341 123 4567', action: 'copy' },
-        { label: 'info@guarderianautica.com', action: 'copy' },
-        { label: 'Av. Costanera 1234, Rosario, Santa Fe' },
+        { kind: 'text', label: '+54 341 123 4567', action: 'copy' },
+        { kind: 'text', label: 'info@guarderianautica.com', action: 'copy' },
+        { kind: 'text', label: 'Av. Costanera 1234, Rosario, Santa Fe' },
       ],
     },
   ],

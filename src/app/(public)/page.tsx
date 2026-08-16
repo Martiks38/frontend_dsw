@@ -4,6 +4,12 @@ import ButtonLink from '@/components/ui/Button/Button';
 import CardList from '@/components/ui/Lists/CardList/CardList';
 import { BENEFITS, HOME_SERVICES } from '@/data';
 
+export const metadata = {
+  title: 'Guardería Náutica | Guardado y Cuidado de Embarcaciones',
+  description:
+    'Servicio integral de guardería náutica, bajada de lanchas, mantenimiento y seguridad las 24 horas. Cuidamos tu embarcación como si fuera nuestra.',
+};
+
 export default function Home() {
   const configButton: BannerButton = {
     href: '',
@@ -31,8 +37,8 @@ export default function Home() {
           className="mt-10 text-xl font-semibold *:first:mr-6"
           aria-label="Servicios y solicitudes"
         >
-          <ButtonLink href={''}>Conocé nuestros servicios</ButtonLink>
-          <ButtonLink href="" variant="secondary">
+          <ButtonLink href="/servicios">Conocé nuestros servicios</ButtonLink>
+          <ButtonLink href="/contacto" variant="secondary">
             Solicitar guardado
           </ButtonLink>
         </nav>
@@ -41,7 +47,7 @@ export default function Home() {
         <CardList cards={BENEFITS} />
       </PageSection>
       <PageSection heading="Nuestros servicios">
-        <CardList cards={HOME_SERVICES.filter((s) => s.showOnHome)} />
+        <CardList cards={HOME_SERVICES} />
         <ButtonLink href={''} className="mx-auto mt-8 block w-fit">
           Ver todos los servicios
         </ButtonLink>

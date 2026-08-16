@@ -1,4 +1,4 @@
-import { type ContractProcessStep } from '@/data/contractProcess.data';
+import { type ContractProcessStep } from '@/data';
 
 import styles from './stepsList.module.css';
 

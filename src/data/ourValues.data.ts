@@ -1,6 +1,6 @@
-import type { IconId } from '@/components/ui/Icon/Icon';
+import type { IconName } from '@/types';
 
-export const COMPANY_VALUES: { id: IconId; label: string }[] = [
+export const COMPANY_VALUES: { id: IconName; label: string }[] = [
   {
     id: 'anchor',
     label: 'Seguridad',

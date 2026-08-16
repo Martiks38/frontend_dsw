@@ -1,41 +1,53 @@
-import type { FooterColumn } from '@/interfaces';
+import type { FooterColumn, FooterItem } from '@/interfaces';
 
+import { CONTACT_ITEMS } from './contact.data';
 import { NAVIGATION_ITEMS } from './navigation.data';
+import { SCHEDULE_ITEMS, SCHEDULE_NOTE } from './schedule.data';
 import { HOME_SERVICES } from './services.data';
+
+const navItems: FooterItem[] = NAVIGATION_ITEMS.map(({ label, href }) => ({
+  kind: 'link',
+  label,
+  href,
+}));
+
+const contactItems: FooterItem[] = CONTACT_ITEMS.map(({ value, action }) => ({
+  kind: 'text',
+  label: value,
+  action,
+}));
+
+const scheduleItems: FooterItem[] = [
+  ...SCHEDULE_ITEMS.map(({ label, value }) => ({
+    kind: 'schedule' as const,
+    label,
+    value,
+  })),
+  { kind: 'text', label: SCHEDULE_NOTE },
+];
+
+const serviceItems: FooterItem[] = HOME_SERVICES.map(({ label }) => ({
+  kind: 'text',
+  label,
+}));
 
 export const FOOTER_COLUMNS: Array<FooterColumn> = [
   {
     title: 'Navegación',
     variant: 'nav',
-    items: NAVIGATION_ITEMS,
+    items: navItems,
   },
   {
     title: 'Servicios',
-    items: HOME_SERVICES,
+    items: serviceItems,
   },
   {
     title: 'Contacto',
     variant: 'address',
-    items: [
-      {
-        label: '+54 341 123 4567',
-        action: 'copy',
-      },
-      {
-        label: 'info@guarderianautica.com',
-        action: 'copy',
-      },
-      {
-        label: 'Av. Costanera 1234, Rosario, Santa Fe',
-      },
-    ],
+    items: contactItems,
   },
   {
     title: 'Horarios',
-    items: [
-      { label: 'Lun, Mié, Jue y Vie: 08:00 - 20:00' },
-      { label: 'Sáb, dom y feriados: 08:00 - 19:00' },
-      { label: 'Última bajada de embarcaciones 30 min. antes del cierre.' },
-    ],
+    items: scheduleItems,
   },
 ];

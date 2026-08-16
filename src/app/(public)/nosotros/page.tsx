@@ -21,12 +21,19 @@ const gallery: { src: string; alt: string }[] = [
   },
 ];
 
+export const metadata = {
+  title: 'Sobre Nosotros | Experiencia y Pasión Náutica',
+  description:
+    'Más de 10 años brindando la máxima seguridad, comodidad y confianza a los navegantes de la región.',
+};
+
 export default function AboutUs() {
   return (
     <>
       <IntroSection
         title="Sobre nosotros"
         heroImageUrl="/images/heroImages/hero-image-about-us.webp"
+        variant="shadowless"
       >
         <p className="w-[35ch] text-2xl">
           Somos una guardería náutica dedicada al cuidado y almacenamiento de
