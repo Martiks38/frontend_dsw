@@ -4,6 +4,12 @@ import ButtonLink from '@/components/ui/Button/Button';
 import CardList from '@/components/ui/Lists/CardList/CardList';
 import { BENEFITS, HOME_SERVICES } from '@/data';
 
+export const metadata = {
+  title: 'Guardería Náutica | Guardado y Cuidado de Embarcaciones',
+  description:
+    'Servicio integral de guardería náutica, bajada de lanchas, mantenimiento y seguridad las 24 horas. Cuidamos tu embarcación como si fuera nuestra.',
+};
+
 export default function Home() {
   const configButton: BannerButton = {
     href: '',

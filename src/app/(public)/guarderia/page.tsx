@@ -6,6 +6,12 @@ import CheckList from '@/components/ui/Lists/CheckList/CheckList';
 import StepsList from '@/components/ui/Lists/StepsList/StepsList';
 import { CONTRACT_PROCESS, GALLERY_IMAGES, SERVICE_SCOPE } from '@/data';
 
+export const metadata = {
+  title: 'Instalaciones y Seguridad | Guardería Náutica',
+  description:
+    'Conoce nuestras instalaciones: galpones techados, sistemas de monitoreo 24/7, elevadores de última generación y rampas accesibles.',
+};
+
 export default function Marina() {
   return (
     <>
@@ -28,7 +34,7 @@ export default function Marina() {
       <PageSection heading="¿Cómo funciona?" className="[&>h2]:text-left">
         <StepsList steps={CONTRACT_PROCESS} />
       </PageSection>
-      <hr className="mx-16 mt-12 text-(--primary-color-60)" />
+      <hr className="mx-16 mt-12 text-(--primary-color-40)" />
       <PageSection
         heading="¿Qué incluye el sericio?"
         className="[&>h2]:text-left"
