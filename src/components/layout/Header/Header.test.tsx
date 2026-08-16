@@ -12,7 +12,11 @@ const logoProps = {
 };
 
 vi.mock('next/image', () => ({
-  default: ({ alt, ...props }: ImgHTMLAttributes<HTMLImageElement>) => {
+  default: ({
+    alt,
+    preload,
+    ...props
+  }: ImgHTMLAttributes<HTMLImageElement> & { preload?: boolean }) => {
     // eslint-disable-next-line @next/next/no-img-element
     return <img alt={alt} {...props} />;
   },
