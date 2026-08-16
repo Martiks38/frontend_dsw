@@ -21,6 +21,7 @@ export default function Icon({
       height={size}
       className={className}
       aria-hidden="true"
+      focusable={false}
       {...rest}
     >
       <title>{title}</title>

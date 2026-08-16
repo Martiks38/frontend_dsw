@@ -1,7 +1,7 @@
-export type ContactType = 'address' | 'phone' | 'email';
+import type { ContactIconName } from '@/types';
 
 export interface ContactItem {
-  type: ContactType;
+  type: ContactIconName;
   label: string;
   value: string;
   action?: 'copy';

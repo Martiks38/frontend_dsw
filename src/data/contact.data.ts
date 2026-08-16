@@ -14,7 +14,7 @@ export const CONTACT_ITEMS: Array<ContactItem> = [
     action: 'copy',
   },
   {
-    type: 'address',
+    type: 'location',
     label: 'Dirección',
     value: 'Av. Costanera 1234, Rosario, Santa Fe',
   },

@@ -20,7 +20,7 @@ export type CompanyValuesIconName =
   | 'certificate'
   | 'compass';
 
-export type ContactIconName = 'address' | 'phone' | 'email';
+export type ContactIconName = 'location' | 'phone' | 'email' | 'clock';
 
 export type IconName =
   | BenefitsIconName
