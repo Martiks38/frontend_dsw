@@ -1,7 +1,7 @@
 import Card from '@/components/layout/Card/Card';
-import { HomeFeature } from '@/interfaces';
+import type { CardFeature } from '@/interfaces';
 
-export default function CardList({ cards }: { cards: HomeFeature[] }) {
+export default function CardList({ cards }: { cards: CardFeature[] }) {
   return (
     <ul className="mt-8 flex justify-around gap-4">
       {cards.map((card) => (

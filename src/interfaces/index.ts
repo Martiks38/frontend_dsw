@@ -1,5 +1,5 @@
 export * from './asideContact.interface';
-export * from './benefit.interface';
+export * from './cardFeature.interface';
 export * from './contact.interface';
 export * from './footer.interface';
 export * from './navigation.interface';

@@ -1,12 +1,8 @@
 import Icon from '@/components/ui/Icon/Icon';
-import type { IconName } from '@/types';
+import type { CardFeature } from '@/interfaces';
 
 interface CardProps {
-  data: {
-    id: IconName;
-    label: string;
-    description: string;
-  };
+  data: CardFeature;
 }
 
 export default function Card({ data }: CardProps) {

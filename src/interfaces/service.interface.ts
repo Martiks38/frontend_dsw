@@ -1,9 +1,8 @@
 import type { ServiceIconName } from '@/types';
 
-export interface Service {
-  id: ServiceIconName;
-  label: string;
-  description: string;
+import type { CardFeature } from './cardFeature.interface';
+
+export interface Service extends CardFeature<ServiceIconName> {
   showOnHome: boolean;
 }
 

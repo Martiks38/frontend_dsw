@@ -1,6 +1,7 @@
-import type { Benefit } from '@/interfaces/benefit.interface';
+import { CardFeature } from '@/interfaces';
+import type { BenefitsIconName } from '@/types';
 
-export const BENEFITS: Benefit[] = [
+export const BENEFITS: CardFeature<BenefitsIconName>[] = [
   {
     id: 'security',
     label: 'Seguridad',
