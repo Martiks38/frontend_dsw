@@ -58,6 +58,11 @@ function FooterItemContent({ item }: { item: FooterItem }) {
         </>
       );
     }
+
+    default: {
+      const _exhaustive: never = item;
+      return _exhaustive;
+    }
   }
 }
 
