@@ -1,28 +1,33 @@
 import { z } from 'zod';
 
 export const SignInFormSchema = z.object({
-  identifier: z.string().min(3, 'Email debe tener al menos 3 caracteres'),
+  email: z
+    .email('Ingresa un email válido')
+    .trim()
+    .min(1, 'El email es requerido')
+    .max(100, 'El email debe tener como máximo 100 caracteres'),
   password: z
     .string()
-    .min(6, 'Password debe tener al menos 6 caracteres')
-    .max(50, 'Contraseña debe tener como máximo 100 caracteres.'),
+    .min(6, 'La contraseña debe tener al menos 6 caracteres')
+    .max(50, 'La contraseña debe tener como máximo 100 caracteres.'),
+  remember: z
+    .string()
+    .nullish()
+    .transform((val) => val === 'on'),
 });
 
 export type SignInFormSchema = z.infer<typeof SignInFormSchema>;
 
 export type FormState = {
-  sucess?: boolean;
+  success?: boolean;
   message?: string;
   data?: {
-    identifier?: string;
-    username?: string;
     email?: string;
-    password?: string;
+    remember?: boolean;
   };
-  apiErrors?: string | null;
   zodErrors?: {
-    identifier?: string[];
     email?: string[];
     password?: string[];
+    remember?: string[];
   } | null;
 };
