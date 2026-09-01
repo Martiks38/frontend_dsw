@@ -2,7 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useActionState } from 'react';
 
+import { actions } from '@/app/actions';
 import { Button } from '@/components/ui/Button/Button';
 import {
   Card,
@@ -12,10 +14,14 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/Card';
+import { FormError } from '@/components/ui/FormError/FormError';
 import { CheckboxInput } from '@/components/ui/Input/CheckboxInput';
 import { Input } from '@/components/ui/Input/Input';
 import { PasswordInput } from '@/components/ui/Input/PasswordInput';
 import { Label } from '@/components/ui/Label/Label';
+import { type FormState } from '@/validations/auth';
+
+import { SIGN_IN_FIELDS } from './constants';
 
 const styles = {
   card: 'rounded-2xl xs:bg-white/95 px-8 py-6 xs:py-10 xs:shadow-[0_0_40px_rgba(0,0,0,0.12)] xs:backdrop-blur-sm',
@@ -26,19 +32,23 @@ const styles = {
     'mb-6 gap-1.5 xs:gap-0 xs:flex-row flex-col flex items-center justify-between',
 };
 
+const INITIAL_STATE: FormState = {
+  success: false,
+  message: undefined,
+  data: {
+    email: '',
+    remember: true,
+  },
+};
 export default function SignInForm() {
+  const [formState, formAction] = useActionState(
+    actions.auth.loginUserAction,
+    INITIAL_STATE
+  );
+
   return (
     <div className="xs:max-w-md w-full">
-      {/*
-      {error && (
-        <p
-          role="alert"
-          className="mb-4 rounded-md bg-red-50 px-3 py-2 text-red-700"
-        >
-          {error}
-        </p>
-      )} */}
-      <form noValidate className="flex flex-col gap-5">
+      <form action={formAction} className="flex flex-col gap-5">
         <Card className={styles.card}>
           <CardHeader className={styles.header}>
             <Link href={'/'} aria-label="Ir a la página de inicio">
@@ -59,35 +69,41 @@ export default function SignInForm() {
 
           <CardContent className={styles.content}>
             <div className={styles.fieldGroup}>
-              <Label htmlFor="signIn-email" className="font-medium">
+              <Label htmlFor={SIGN_IN_FIELDS.email} className="font-medium">
                 Email
               </Label>
               <Input
                 type="email"
-                id="signIn-email"
-                name="signIn-email"
+                id={SIGN_IN_FIELDS.email}
+                name={SIGN_IN_FIELDS.email}
                 placeholder="Ej: juan@correo.com"
                 autoComplete="email"
+                defaultValue={formState.data?.email}
                 required
               />
+              <FormError error={formState.zodErrors?.email} />
             </div>
 
             <div className={styles.fieldGroup}>
-              <Label htmlFor="signIn-password" className="font-medium">
+              <Label htmlFor={SIGN_IN_FIELDS.password} className="font-medium">
                 Contraseña
               </Label>
-              <PasswordInput id="signIn-password" name="signIn-paswword" />
+              <PasswordInput
+                id={SIGN_IN_FIELDS.password}
+                name={SIGN_IN_FIELDS.password}
+              />
+              <FormError error={formState.zodErrors?.password} />
             </div>
 
             <div className={styles.formActions}>
               <div className="flex items-center gap-2">
                 <CheckboxInput
-                  id="signIn-remember"
-                  name="signIn-remember"
-                  defaultChecked={true}
+                  id={SIGN_IN_FIELDS.remember}
+                  name={SIGN_IN_FIELDS.remember}
+                  defaultChecked={formState.data?.remember}
                   readOnly
                 />
-                <Label htmlFor="signIn-remember">Recordar</Label>
+                <Label htmlFor={SIGN_IN_FIELDS.remember}>Recordar</Label>
               </div>
               <Link href="/recuperar-cuenta" className="hover:underline">
                 ¿Olvidaste tu contraseña?
