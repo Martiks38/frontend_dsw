@@ -1,4 +1,4 @@
-import type { CardItem } from '@/components/ui/CardGrid/CardGrid';
+import type { CardItem } from '@/components/ui/Card/CardGrid/CardGrid';
 import type { Service, ServiceCard } from '@/interfaces/service.interface';
 import type { ServiceIconName } from '@/types';
 

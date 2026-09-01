@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import ButtonLink from '@/components/ui/Button/Button';
+import { ButtonLink } from '@/components/ui/Button/ButtonLink';
 import { NAVIGATION_ITEMS } from '@/data';
 
 import styles from './Header.module.css';
@@ -38,7 +38,7 @@ export default function Header({ altLogo, srcLogo }: HeaderProps) {
             })}
           </ul>
         </nav>
-        <ButtonLink href="">Iniciar sesión</ButtonLink>
+        <ButtonLink href="/iniciar-sesion">Iniciar sesión</ButtonLink>
       </div>
     </header>
   );

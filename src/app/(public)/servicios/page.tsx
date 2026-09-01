@@ -1,5 +1,5 @@
 import Banner, { type BannerButton } from '@/components/ui/Banner/Banner';
-import CardGrid from '@/components/ui/CardGrid/CardGrid';
+import CardGrid from '@/components/ui/Card/CardGrid/CardGrid';
 import { PAGE_SERVICES } from '@/data';
 
 export const metadata = {

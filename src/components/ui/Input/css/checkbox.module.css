@@ -1,0 +1,20 @@
+.checkbox {
+  appearance: none;
+
+  &::before {
+    --size: 1.5rem;
+
+    content: '';
+    display: block;
+    border: 2px solid var(--primary-color-40);
+    height: var(--size);
+    width: var(--size);
+    text-align: center;
+    border-radius: 4px;
+    line-height: 1.25rem;
+  }
+
+  &:checked::before {
+    content: '\2713';
+  }
+}

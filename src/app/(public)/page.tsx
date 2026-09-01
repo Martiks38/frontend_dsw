@@ -1,6 +1,6 @@
 import { IntroSection, PageSection } from '@/components/layout/Section';
 import Banner, { type BannerButton } from '@/components/ui/Banner/Banner';
-import ButtonLink from '@/components/ui/Button/Button';
+import { ButtonLink } from '@/components/ui/Button/ButtonLink';
 import CardList from '@/components/ui/Lists/CardList/CardList';
 import { BENEFITS, HOME_SERVICES } from '@/data';
 
