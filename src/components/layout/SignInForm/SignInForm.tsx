@@ -19,7 +19,7 @@ import { CheckboxInput } from '@/components/ui/Input/CheckboxInput';
 import { Input } from '@/components/ui/Input/Input';
 import { PasswordInput } from '@/components/ui/Input/PasswordInput';
 import { Label } from '@/components/ui/Label/Label';
-import { type FormState } from '@/validations/auth';
+import { type SignInFormState } from '@/validations/auth';
 
 import { SIGN_IN_FIELDS } from './constants';
 
@@ -32,7 +32,7 @@ const styles = {
     'mb-6 gap-1.5 xs:gap-0 xs:flex-row flex-col flex items-center justify-between',
 };
 
-const INITIAL_STATE: FormState = {
+const INITIAL_STATE: SignInFormState = {
   success: false,
   message: undefined,
   data: {

@@ -5,12 +5,12 @@ import z from 'zod';
 
 import { SIGN_IN_FIELDS } from '@/components/layout/SignInForm/constants';
 import { loginUserService } from '@/lib/login';
-import { type FormState, SignInFormSchema } from '@/validations/auth';
+import { SignInFormSchema, type SignInFormState } from '@/validations/auth';
 
 export async function loginUserAction(
-  prevState: FormState,
+  prevState: SignInFormState,
   formData: FormData
-): Promise<FormState> {
+): Promise<SignInFormState> {
   const fields = {
     email: formData.get(SIGN_IN_FIELDS.email),
     password: formData.get(SIGN_IN_FIELDS.password),

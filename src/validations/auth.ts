@@ -18,7 +18,7 @@ export const SignInFormSchema = z.object({
 
 export type SignInFormSchema = z.infer<typeof SignInFormSchema>;
 
-export type FormState = {
+export type SignInFormState = {
   success?: boolean;
   message?: string;
   data?: {
