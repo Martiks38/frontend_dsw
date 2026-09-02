@@ -4,4 +4,10 @@ import { createContext } from 'react';
 
 import type { AuthenticatedUser } from '@/lib/auth';
 
-export const SessionContext = createContext<AuthenticatedUser | null>(null);
+interface SessionContextType {
+  user: AuthenticatedUser | null;
+}
+
+export const SessionContext = createContext<SessionContextType | undefined>(
+  undefined
+);

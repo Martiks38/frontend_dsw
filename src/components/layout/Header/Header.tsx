@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { ButtonLink } from '@/components/ui/Button/ButtonLink';
-import { getCurrentUser, type UserRole } from '@/lib/auth';
+import { useSession } from '@/hooks/useSession.hook';
+import { type UserRole } from '@/lib/auth';
 
 import { HeaderNav } from './HeaderNav';
 
@@ -17,8 +20,8 @@ const DASHBOARD_LABEL: Record<UserRole, string> = {
   MEMBER: 'Mi cuenta',
 };
 
-export default async function Header({ altLogo, srcLogo }: HeaderProps) {
-  const user = await getCurrentUser();
+export default function Header({ altLogo, srcLogo }: HeaderProps) {
+  const { user } = useSession();
 
   const buttonLink = user
     ? { href: '/dashboard', label: DASHBOARD_LABEL[user.role] }
