@@ -1,6 +1,7 @@
 export * from './benefits.data';
 export * from './contact.data';
 export * from './contractProcess.data';
+export * from './dashboard-nav.data';
 export * from './footer.data';
 export * from './marinaImages.data';
 export * from './navigation.data';
