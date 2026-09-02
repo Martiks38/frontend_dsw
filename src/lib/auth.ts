@@ -6,8 +6,9 @@ import { cache } from 'react';
 export type UserRole = 'ADMIN' | 'OPERATOR' | 'MEMBER';
 
 export interface AuthenticatedUser {
-  sub: string;
+  id: string;
   role: UserRole;
+  name: string;
 }
 
 export const getCurrentUser = cache(
