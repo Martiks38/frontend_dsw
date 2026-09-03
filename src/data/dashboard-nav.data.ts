@@ -1,4 +1,4 @@
-import { type NavIconItem } from '@/interfaces/sidebar.interface';
+import { type NavIconItem } from '@/interfaces';
 import { getDashboardPath } from '@/utils/routes';
 
 export const DASHBOARD_NAV: NavIconItem[] = [
