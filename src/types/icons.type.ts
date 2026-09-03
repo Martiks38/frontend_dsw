@@ -29,7 +29,8 @@ export type NavigationIconName =
   | 'user'
   | 'documents'
   | 'ship-wheel'
-  | 'users';
+  | 'users'
+  | 'logout';
 
 export type IconName =
   | BenefitsIconName

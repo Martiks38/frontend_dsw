@@ -313,6 +313,20 @@ export default function IconSprite() {
         <path d="M12,6a5,5,0,1,0-4,8" />
         <path d="M8,17a7,7,0,0,0-7,7H7" />
       </symbol>
+
+      <symbol
+        id="logout"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21 12L13 12" />
+        <path d="M18 15L20.913 12.087V12.087C20.961 12.039 20.961 11.961 20.913 11.913V11.913L18 9" />
+        <path d="M16 5V4.5V4.5C16 3.67157 15.3284 3 14.5 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H14.5C15.3284 21 16 20.3284 16 19.5V19.5V19" />
+      </symbol>
     </svg>
   );
 }
