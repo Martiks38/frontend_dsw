@@ -14,12 +14,14 @@ export function Button({
   children,
   className,
   variant = 'primary',
+  ...props
 }: ButtonProps) {
   const variantStyles = buttonLinkVariants[variant];
 
   return (
     <button
       className={`${variantStyles} ${className ?? ''} focus-visible:ring-primary rounded-md border-2 px-2 py-1.5 font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none`}
+      {...props}
     >
       {children}
     </button>
