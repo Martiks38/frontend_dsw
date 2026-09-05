@@ -32,10 +32,20 @@ export type NavigationIconName =
   | 'users'
   | 'logout';
 
+export type DecorativeIcon =
+  | 'calendar'
+  | 'clipboard-list'
+  | 'loader'
+  | 'list-check'
+  | 'check-circle'
+  | 'user-circle'
+  | 'chevron-down';
+
 export type IconName =
   | BenefitsIconName
   | CompanyValuesIconName
   | ServiceIconName
   | ContactIconName
   | PasswordIconName
-  | NavigationIconName;
+  | NavigationIconName
+  | DecorativeIcon;
