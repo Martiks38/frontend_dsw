@@ -25,7 +25,7 @@ export default function Header({ altLogo, srcLogo }: HeaderProps) {
 
   const buttonLink = user
     ? { href: '/dashboard', label: DASHBOARD_LABEL[user.role] }
-    : { href: '/signin', label: 'Iniciar sesión' };
+    : { href: '/iniciar-sesion', label: 'Iniciar sesión' };
 
   return (
     <header className="border-primary bg-background text-primary fixed top-0 left-0 z-40 h-(--height-header) w-full border-b-2 font-semibold">
