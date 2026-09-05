@@ -68,6 +68,14 @@ export default function SignInForm() {
           </CardHeader>
 
           <CardContent className={styles.content}>
+            <FormError
+              error={
+                !formState.success && formState.message
+                  ? [formState.message]
+                  : undefined
+              }
+            />
+
             <div className={styles.fieldGroup}>
               <Label htmlFor={SIGN_IN_FIELDS.email} className="font-medium">
                 Email
