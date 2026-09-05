@@ -37,11 +37,11 @@ export async function loginUserAction(
   } catch (error: unknown) {
     return {
       success: false,
-      message: 'No se puedo iniciar sesión',
+      message: 'No se pudo iniciar sesión',
       zodErrors: null,
       data: { email: validatedFields.data.email },
     };
   }
 
-  redirect('/');
+  redirect('/dashboard');
 }
