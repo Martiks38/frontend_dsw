@@ -1,3 +1,5 @@
+import { cn } from '@/lib/cn';
+
 export type ButtonLinkVariants = 'primary' | 'secondary';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -16,11 +18,14 @@ export function Button({
   variant = 'primary',
   ...props
 }: ButtonProps) {
-  const variantStyles = buttonLinkVariants[variant];
-
   return (
     <button
-      className={`${variantStyles} ${className ?? ''} focus-visible:ring-primary rounded-md border-2 px-2 py-1.5 font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none`}
+      className={cn(
+        buttonLinkVariants[variant],
+        className,
+        'rounded-md border-2 px-2 py-1.5 font-medium transition-colors duration-200',
+        'focus-visible:ring-primary focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none'
+      )}
       {...props}
     >
       {children}

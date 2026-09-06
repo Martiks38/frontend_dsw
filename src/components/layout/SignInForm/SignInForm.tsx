@@ -62,7 +62,7 @@ export default function SignInForm() {
             </Link>
             <CardTitle>Iniciar sesión</CardTitle>
 
-            <CardDescription className="">
+            <CardDescription>
               Ingresa tus datos para ingresar a tu cuenta
             </CardDescription>
           </CardHeader>

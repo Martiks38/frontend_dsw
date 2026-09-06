@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { NAVIGATION_ITEMS } from '@/data';
+import { cn } from '@/lib/cn';
 
 import styles from './headernav.module.css';
 
@@ -19,7 +20,11 @@ export function HeaderNav() {
           return (
             <li key={label}>
               <Link
-                className={`px-2 py-1 ${styles.link} ${isActive ? styles.activedLink : ''}`}
+                className={cn(
+                  styles.link,
+                  'px-2 py-1',
+                  isActive && styles.activedLink
+                )}
                 href={href}
                 aria-current={isActive ? 'page' : undefined}
               >
