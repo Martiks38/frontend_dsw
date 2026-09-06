@@ -362,7 +362,7 @@ export default function IconSprite() {
       </symbol>
 
       <symbol
-        id="check-circle-2"
+        id="check-circle"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
