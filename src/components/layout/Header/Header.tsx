@@ -6,12 +6,14 @@ import Link from 'next/link';
 import { ButtonLink } from '@/components/ui/Button/ButtonLink';
 import { useSession } from '@/hooks/useSession.hook';
 import { type UserRole } from '@/lib/auth';
+import { cn } from '@/lib/cn';
 
 import { HeaderNav } from './HeaderNav';
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   srcLogo: string;
   altLogo: string;
+  className?: string;
 }
 
 const DASHBOARD_LABEL: Record<UserRole, string> = {
@@ -20,7 +22,7 @@ const DASHBOARD_LABEL: Record<UserRole, string> = {
   MEMBER: 'Mi cuenta',
 };
 
-export default function Header({ altLogo, srcLogo }: HeaderProps) {
+export default function Header({ altLogo, srcLogo, className }: HeaderProps) {
   const { user } = useSession();
 
   const buttonLink = user
@@ -28,7 +30,12 @@ export default function Header({ altLogo, srcLogo }: HeaderProps) {
     : { href: '/iniciar-sesion', label: 'Iniciar sesión' };
 
   return (
-    <header className="border-primary bg-background text-primary fixed top-0 left-0 z-40 h-(--height-header) w-full border-b-2 font-semibold">
+    <header
+      className={cn(
+        'border-primary bg-background text-primary sticky top-0 z-40 h-(--height-header) w-full border-b-2 font-semibold transition-opacity duration-200',
+        className
+      )}
+    >
       <div className="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-16">
         <Link href={'/'}>
           <Image
