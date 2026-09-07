@@ -9,6 +9,10 @@ interface ColumnHeader {
   isSrOnly?: boolean;
 }
 
+interface PendingRequestsTableProps extends React.ComponentPropsWithRef<'section'> {
+  rows: PendingRequestRow[];
+}
+
 const COLUMN_HEADERS: ColumnHeader[] = [
   { label: 'ID' },
   { label: 'Cliente' },
@@ -17,9 +21,12 @@ const COLUMN_HEADERS: ColumnHeader[] = [
   { label: 'Acciones', isSrOnly: true },
 ];
 
-export function PendingRequestsTable({ rows }: { rows: PendingRequestRow[] }) {
+export function PendingRequestsTable({
+  rows,
+  className,
+}: PendingRequestsTableProps) {
   return (
-    <section aria-labelledby="pending-req-heading">
+    <section aria-labelledby="pending-req-heading" className={className}>
       <h2
         id="pending-req-heading"
         className="mb-4 text-base font-semibold text-slate-900"
