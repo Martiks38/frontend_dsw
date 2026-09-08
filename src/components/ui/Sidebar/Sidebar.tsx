@@ -23,7 +23,7 @@ export function Sidebar() {
   return (
     <aside
       aria-label="Navegación principal"
-      className="bg-primary text-surface sticky top-0 flex h-screen w-60 shrink-0 flex-col justify-start gap-8 self-start p-8 pr-6"
+      className="bg-primary text-surface sticky top-0 flex h-screen w-74 shrink-0 flex-col justify-start gap-8 self-start p-8 pr-6"
     >
       <div className="max-w-48 rounded-xl bg-slate-100 p-4 lg:w-full">
         <Image
@@ -53,7 +53,7 @@ export function Sidebar() {
                       : 'border-transparent hover:bg-white/5 hover:text-white'
                   )}
                 >
-                  <Icon id={item.iconId} />
+                  <Icon id={item.iconId} className="h-6 w-6" />
                   <span>{item.label}</span>
                 </Link>
               </li>
