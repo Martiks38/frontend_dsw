@@ -42,7 +42,7 @@ export function StatCard({
         />
       </span>
       <div>
-        <dt className="text-sm text-slate-500">{label}</dt>
+        <dt className="text-base text-slate-800">{label}</dt>
         <dd className="mt-1 text-2xl font-semibold text-slate-900">{value}</dd>
         {helperText && (
           <p className="mt-0.5 text-sm text-slate-500">{helperText}</p>
