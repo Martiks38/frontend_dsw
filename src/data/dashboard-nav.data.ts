@@ -10,7 +10,8 @@ export const DASHBOARD_NAV: NavIconItem[] = [
   },
   {
     label: 'Mis embarcaciones',
-    href: getDashboardPath('embarcaciones'),
+    helperText: 'Visualizá tus embarcaciones y sus datos.',
+    href: getDashboardPath('mis-embarcaciones'),
     iconId: 'boat-launch-and-retrieval',
     roles: ['MEMBER'],
   },
