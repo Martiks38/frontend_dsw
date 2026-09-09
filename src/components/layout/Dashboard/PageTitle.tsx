@@ -12,8 +12,16 @@ export function PageTitle({ role }: { role: UserRole }) {
   );
 
   return (
-    <h1 className="text-xl font-semibold text-slate-900">
-      {currentPage?.label ?? 'Dashboard'}
-    </h1>
+    <div>
+      <h1
+        id="dashboard-heading"
+        className="text-xl font-semibold text-slate-900"
+      >
+        {currentPage?.label ?? 'Dashboard'}
+      </h1>
+      {currentPage?.helperText && (
+        <p className="text-sm text-slate-700">{currentPage.helperText}</p>
+      )}
+    </div>
   );
 }
