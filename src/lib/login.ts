@@ -1,3 +1,5 @@
+'use server';
+
 import * as cookie from 'cookie';
 import { cookies } from 'next/headers';
 
