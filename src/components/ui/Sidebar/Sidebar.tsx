@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { DASHBOARD_NAV } from '@/data';
+import { DASHBOARD_SIDEBAR_NAV } from '@/data';
 import { useSession } from '@/hooks/useSession.hook';
 import { cn } from '@/lib/cn';
 
@@ -17,7 +17,7 @@ export function Sidebar() {
   const role = user?.role;
 
   const itemsVisibles = role
-    ? DASHBOARD_NAV.filter((item) => item.roles.includes(role))
+    ? DASHBOARD_SIDEBAR_NAV.filter((item) => item.roles.includes(role))
     : [];
 
   return (
