@@ -6,5 +6,5 @@ import { type LinkItem } from './navigation.interface';
 export interface NavIconItem extends LinkItem {
   iconId: IconName;
   roles: UserRole[];
-  helperText?: string;
+  helperText?: Partial<Record<UserRole, string>>;
 }
