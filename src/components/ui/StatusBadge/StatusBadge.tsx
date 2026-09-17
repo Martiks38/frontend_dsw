@@ -1,4 +1,5 @@
 import { type RequestStatus } from '@/interfaces/dashboard.interface';
+import { cn } from '@/lib/cn';
 
 const STATUS_CONFIG: Record<
   RequestStatus,
@@ -19,8 +20,12 @@ export function StatusBadge({ status }: { status: RequestStatus }) {
 
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 font-medium ${config.className}`}
+      className={cn(
+        'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium',
+        config.className
+      )}
     >
+      <span className="sr-only">Estado: </span>
       {config.label}
     </span>
   );
