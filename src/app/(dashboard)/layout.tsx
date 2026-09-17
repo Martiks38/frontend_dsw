@@ -19,7 +19,7 @@ export default async function DashboardLayout({
 
       <div className="flex flex-1 flex-col">
         <HeaderDashboard userName={user.name} role={user.role} />
-        <main id="main-content" className="flex-1 p-8">
+        <main id="main-content" className="flex-1 p-6.5">
           {children}
         </main>
       </div>
