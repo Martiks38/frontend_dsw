@@ -34,9 +34,12 @@ export default function Marina() {
       <PageSection heading="¿Cómo funciona?" className="[&>h2]:text-left">
         <StepsList steps={CONTRACT_PROCESS} />
       </PageSection>
-      <hr className="mx-16 mt-12 text-(--primary-color-40)" />
+      <hr
+        className="mx-16 mt-12 text-(--primary-color-40)"
+        aria-hidden="true"
+      />
       <PageSection
-        heading="¿Qué incluye el sericio?"
+        heading="¿Qué incluye el servicio?"
         className="[&>h2]:text-left"
       >
         <CheckList items={SERVICE_SCOPE} />

@@ -37,7 +37,7 @@ export function MemberDashboard({ data }: MemberDashboardProps) {
         />
       </StatGrid>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
         <TaskList
           title="Solicitudes pendientes"
           items={data.pendingTasks}
