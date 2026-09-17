@@ -2,14 +2,14 @@ import { z } from 'zod';
 
 export const SignInFormSchema = z.object({
   email: z
-    .email('Ingresa un email válido')
+    .email('No es un email válido.')
     .trim()
-    .min(1, 'El email es requerido')
-    .max(100, 'El email debe tener como máximo 100 caracteres'),
+    .min(1, 'El email es requerido.')
+    .max(100, 'El email debe tener como máximo 100 caracteres.'),
   password: z
     .string()
-    .min(6, 'La contraseña debe tener al menos 6 caracteres')
-    .max(50, 'La contraseña debe tener como máximo 100 caracteres.'),
+    .min(8, 'La contraseña debe tener al menos 8 caracteres.')
+    .max(50, 'La contraseña debe tener como máximo 50 caracteres.'),
   remember: z
     .string()
     .nullish()
