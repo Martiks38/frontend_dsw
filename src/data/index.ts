@@ -6,5 +6,7 @@ export * from './footer.data';
 export * from './marinaImages.data';
 export * from './navigation.data';
 export * from './ourValues.data';
+export * from './request-status.data';
 export * from './schedule.data';
 export * from './services.data';
+export * from './services-catalog.data';
