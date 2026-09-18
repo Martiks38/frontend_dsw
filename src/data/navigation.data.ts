@@ -1,4 +1,4 @@
-import { type LinkItem } from '@/interfaces';
+import { LinkItem } from '@/interfaces';
 
 export const NAVIGATION_ITEMS: LinkItem[] = [
   {

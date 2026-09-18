@@ -1,41 +1,19 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { ButtonLink } from '@/components/ui/Button/ButtonLink';
-import { useSession } from '@/hooks/useSession.hook';
-import { type UserRole } from '@/lib/auth';
-import { cn } from '@/lib/cn';
+import { NAVIGATION_ITEMS } from '@/data';
 
-import { HeaderNav } from './HeaderNav';
+import styles from './Header.module.css';
 
 interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   srcLogo: string;
   altLogo: string;
-  className?: string;
 }
 
-const DASHBOARD_LABEL: Record<UserRole, string> = {
-  ADMIN: 'Ir al panel',
-  OPERATOR: 'Ir al panel',
-  MEMBER: 'Mi cuenta',
-};
-
-export default function Header({ altLogo, srcLogo, className }: HeaderProps) {
-  const { user } = useSession();
-
-  const buttonLink = user
-    ? { href: '/dashboard', label: DASHBOARD_LABEL[user.role] }
-    : { href: '/iniciar-sesion', label: 'Iniciar sesión' };
-
+export default function Header({ altLogo, srcLogo }: HeaderProps) {
   return (
-    <header
-      className={cn(
-        'border-primary bg-background text-primary sticky top-0 z-40 h-(--height-header) w-full border-b-2 font-semibold transition-opacity duration-200',
-        className
-      )}
-    >
+    <header className="border-primary bg-background text-primary fixed top-0 left-0 z-40 h-(--height-header) w-full border-b-2 font-semibold">
       <div className="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-16">
         <Link href={'/'}>
           <Image
@@ -47,8 +25,20 @@ export default function Header({ altLogo, srcLogo, className }: HeaderProps) {
             preload
           />
         </Link>
-        <HeaderNav />
-        <ButtonLink href={buttonLink.href}>{buttonLink.label}</ButtonLink>
+        <nav aria-label="Navegación principal">
+          <ul className="flex justify-between gap-x-1">
+            {NAVIGATION_ITEMS.map(({ href, label }) => {
+              return (
+                <li key={label}>
+                  <Link className={`px-2 py-1 ${styles.link}`} href={href}>
+                    <span>{label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+        <ButtonLink href="/iniciar-sesion">Iniciar sesión</ButtonLink>
       </div>
     </header>
   );

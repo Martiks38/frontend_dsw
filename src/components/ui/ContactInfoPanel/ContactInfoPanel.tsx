@@ -2,7 +2,6 @@
 
 import { useToast } from '@/hooks/useToast.hook';
 import type { ContactItem } from '@/interfaces';
-import { cn } from '@/lib/cn';
 
 import Icon from '../Icon/Icon';
 
@@ -35,10 +34,7 @@ function ContactInfoItem({
           <button
             type="button"
             onClick={handleCopy}
-            className={cn(
-              'w-full rounded text-left transition-colors duration-200',
-              'hover:text-blue-900 focus-visible:outline-2 focus-visible:outline-blue-900'
-            )}
+            className="'hover:text-blue-900 w-full' rounded text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-blue-900"
           >
             {item.value}
           </button>
@@ -54,11 +50,11 @@ export default function ContactInfoPanel({ items }: { items: ContactItem[] }) {
   return (
     <address className="not-italic">
       <ul className="flex flex-col gap-y-7" role="list">
-        {items.map((item) => (
+        {items.map((item, ind) => (
           <ContactInfoItem
             key={item.label}
             item={item}
-            className="last:-order-1"
+            className={ind === items.length - 1 ? '-order-1' : ''}
           />
         ))}
       </ul>

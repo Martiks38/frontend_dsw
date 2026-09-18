@@ -6,7 +6,6 @@ import { ComponentType, ReactNode } from 'react';
 
 import { useToast } from '@/hooks/useToast.hook';
 import type { FooterColumn, FooterItem, FooterProps } from '@/interfaces';
-import { cn } from '@/lib/cn';
 import { normalizeString } from '@/utils/normalizeString.util';
 
 import styles from './Footer.module.css';
@@ -30,10 +29,7 @@ function FooterItemContent({ item }: { item: FooterItem }) {
           <button
             onClick={handleCopy}
             type="button"
-            className={cn(
-              baseInteractiveStyles,
-              'hover:border-primary border-b-2 border-transparent transition-colors duration-200'
-            )}
+            className={`${baseInteractiveStyles} hover:border-primary border-b-2 border-transparent transition-colors duration-200`}
           >
             {item.label}
           </button>
@@ -47,10 +43,7 @@ function FooterItemContent({ item }: { item: FooterItem }) {
       return (
         <Link
           href={item.href}
-          className={cn(
-            baseInteractiveStyles,
-            'hover:border-primary border-b-2 border-transparent transition-colors duration-200'
-          )}
+          className={`${baseInteractiveStyles} hover:border-primary border-b-2 border-transparent transition-colors duration-200`}
         >
           {item.label}
         </Link>

@@ -16,7 +16,6 @@
   transition: width 0.3s ease;
 }
 
-.activedLink span::after,
 .link:focus span::after {
   width: 100%;
 }

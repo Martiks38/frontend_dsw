@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { IntroSection, PageSection } from '@/components/layout/Section';
 import Icon from '@/components/ui/Icon/Icon';
 import { COMPANY_VALUES } from '@/data';
-import { cn } from '@/lib/cn';
 
 import styles from './about_us.module.css';
 
@@ -51,10 +50,7 @@ export default function AboutUs() {
       </PageSection>
       <PageSection heading="Nuestros valores">
         <ul
-          className={cn(
-            styles.gallery,
-            'grid list-none grid-cols-2 place-items-center gap-[2rem_1rem]'
-          )}
+          className={`${styles.gallery} grid list-none grid-cols-2 place-items-center gap-[2rem_1rem]`}
           role="list"
         >
           {COMPANY_VALUES.map(({ id, label }) => {
@@ -72,12 +68,14 @@ export default function AboutUs() {
       </PageSection>
       <PageSection heading="Nuestras instalaciones">
         <figure className="pb-12">
-          <div className={cn(styles.facilities, 'grid grid-cols-[1fr] gap-6')}>
+          <div className={`${styles.facilities} grid grid-cols-[1fr] gap-6`}>
             {gallery.map(({ src, alt }) => {
               return (
                 <div
                   key={alt}
-                  className="relative min-h-64 w-full overflow-hidden rounded-3xl"
+                  className={
+                    'relative min-h-64 w-full overflow-hidden rounded-3xl'
+                  }
                 >
                   <Image src={src} alt={alt} fill className="object-cover" />
                 </div>
