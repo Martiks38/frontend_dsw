@@ -7,6 +7,8 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./vitest-setup.ts'],
     exclude: ['**/node_modules/**', '**/e2e/**'],
+    pool: 'threads',
+    maxWorkers: 4,
   },
   resolve: {
     alias: {

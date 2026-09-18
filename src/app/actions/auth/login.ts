@@ -34,7 +34,7 @@ export async function loginUserAction(
 
   try {
     await loginUserService(validatedFields.data);
-  } catch (error: unknown) {
+  } catch {
     return {
       success: false,
       message: 'No se pudo iniciar sesión',

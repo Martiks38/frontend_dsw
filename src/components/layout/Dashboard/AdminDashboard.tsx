@@ -4,7 +4,6 @@ import { type AdminDashboardProps } from '@/interfaces/dashboard.interface';
 import { PendingRequestsTable } from './PendingRequestsTask';
 
 export function AdminDashboard({ data }: AdminDashboardProps) {
-  console.log(data);
   return (
     <>
       <StatGrid heading="Resumen general">
