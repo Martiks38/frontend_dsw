@@ -62,12 +62,20 @@ export default function SignInForm() {
             </Link>
             <CardTitle>Iniciar sesión</CardTitle>
 
-            <CardDescription className="">
+            <CardDescription>
               Ingresa tus datos para ingresar a tu cuenta
             </CardDescription>
           </CardHeader>
 
           <CardContent className={styles.content}>
+            <FormError
+              error={
+                !formState.success && formState.message
+                  ? [formState.message]
+                  : undefined
+              }
+            />
+
             <div className={styles.fieldGroup}>
               <Label htmlFor={SIGN_IN_FIELDS.email} className="font-medium">
                 Email

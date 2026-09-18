@@ -30,7 +30,7 @@ export default function ContactPage() {
       </IntroSection>
       <PageSection heading="Contacto" className="pb-12 [&>h2]:sr-only">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_23.75rem]">
-          <div className="">
+          <div>
             <ContactForm />
           </div>
           <aside

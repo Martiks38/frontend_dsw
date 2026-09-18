@@ -4,7 +4,7 @@ import { ImgHTMLAttributes } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { FooterProps } from '@/interfaces';
-import { ToastProvider } from '@/providers/ToastProvider';
+import { ToastProvider } from '@/providers/Toast/ToastProvider';
 
 import Footer from './Footer';
 
