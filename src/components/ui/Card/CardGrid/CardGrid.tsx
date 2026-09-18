@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { cn } from '@/lib/cn';
+
 import styles from './CardGrid.module.css';
 
 export interface CardItem {
@@ -14,7 +16,7 @@ export default function CardGrid({ cards }: { cards: CardItem[] }) {
   return (
     <ul
       role="list"
-      className={`${styles.grid} m-0 grid list-none grid-cols-1 gap-7 p-0`}
+      className={cn(styles.grid, 'm-0 grid list-none grid-cols-1 gap-7 p-0')}
     >
       {cards.map(({ id, title, description, imageSrc, imageAlt }) => {
         return (

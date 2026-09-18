@@ -5,7 +5,7 @@ import type { IconName } from '@/types';
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   id: IconName;
   size?: number;
-  title: string;
+  title?: string;
 }
 
 export default function Icon({
@@ -24,7 +24,7 @@ export default function Icon({
       focusable={false}
       {...rest}
     >
-      <title>{title}</title>
+      {title && <title>{title}</title>}
       <use href={`#${id}`} />
     </svg>
   );

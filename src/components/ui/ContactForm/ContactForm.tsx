@@ -4,6 +4,7 @@ import { useActionState, useEffect, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 
 import { FormState, submitContactForm } from '@/app/actions/contact';
+import { cn } from '@/lib/cn';
 
 import styles from './contactForm.module.css';
 
@@ -17,9 +18,10 @@ function SubmitButton() {
 
   return (
     <button
-      className={
-        'bg-primary text-surface focus-visibile:outline-none focus-visible:ring-primary w-full rounded-md border-2 px-12 py-4 font-medium transition-colors duration-200 hover:bg-[#114062] focus-visible:ring-2 focus-visible:ring-offset-2 active:bg-[#114062] disabled:cursor-not-allowed disabled:opacity-70'
-      }
+      className={cn(
+        'bg-primary text-surface w-full rounded-md border-2 px-12 py-4 font-medium transition-colors duration-200',
+        'focus-visibile:outline-none focus-visible:ring-primary hover:bg-[#114062] focus-visible:ring-2 focus-visible:ring-offset-2 active:bg-[#114062] disabled:cursor-not-allowed disabled:opacity-70'
+      )}
       disabled={pending}
       type="submit"
     >
@@ -43,7 +45,10 @@ export default function ContactForm() {
       {state.message && (
         <p
           role="alert"
-          className={`${styles.alert} ${state.success ? styles.alert__success : styles.alert__error}`}
+          className={cn(styles.alert, {
+            [styles.alert__success]: state.success,
+            [styles.alert__error]: !state.success,
+          })}
         >
           {state.message}
         </p>

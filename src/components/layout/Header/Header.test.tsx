@@ -22,6 +22,12 @@ vi.mock('next/image', () => ({
   },
 }));
 
+vi.mock('@/hooks/useSession.hook', () => ({
+  useSession: () => ({
+    user: { id: '1', name: 'User', role: 'MEMBER' },
+  }),
+}));
+
 describe('<Header />', () => {
   it('renderiza el logo con src y alt correctos', () => {
     render(<Header srcLogo={logoProps.src} altLogo={logoProps.alt} />);
