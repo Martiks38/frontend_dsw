@@ -1,5 +1,5 @@
-import { loginUserAction, logoutUserAction } from './auth';
+import { loginUserAction } from './auth';
 
 export const actions = {
-  auth: { loginUserAction, logoutUserAction },
+  auth: { loginUserAction },
 };

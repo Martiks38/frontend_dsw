@@ -1,7 +1,5 @@
 'use client';
 
-import { cn } from '@/lib/cn';
-
 import styles from './IntroSection.module.css';
 
 interface IntroSectionProps extends Omit<
@@ -23,11 +21,7 @@ export function IntroSection({
   return (
     <section
       style={{ backgroundImage: `url(${heroImageUrl})` }}
-      className={cn(
-        variant === 'default' && styles.intro,
-        className,
-        'flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 pb-20'
-      )}
+      className={`${variant === 'default' ? styles.intro : ''} ${className ?? ''} flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 pb-20`}
       aria-labelledby="intro-title"
     >
       <div>

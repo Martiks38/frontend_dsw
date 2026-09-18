@@ -1,5 +1,3 @@
-import { cn } from '@/lib/cn';
-
 import { type ButtonLinkVariants } from '../Button/Button';
 import { ButtonLink } from '../Button/ButtonLink';
 import styles from './banner.module.css';
@@ -27,12 +25,7 @@ export default function Banner({
 }: BannerProps) {
   return (
     <section
-      role="banner"
-      className={cn(
-        styles.banner,
-        `bg-primary text-surface rounded-[${rounded}rem] mt-12 grid grid-cols-[1fr_auto] items-center gap-[0.5rem_2rem] px-16 py-12`,
-        className
-      )}
+      className={`${styles.banner} bg-primary text-surface mt-12 grid grid-cols-[1fr_auto] items-center gap-[0.5rem_2rem] px-16 py-12 rounded-[${rounded}rem] ${className ?? ''}`}
       aria-label={heading}
     >
       <h2 className="text-center text-3xl font-semibold">{heading}</h2>

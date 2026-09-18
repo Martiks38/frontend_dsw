@@ -1,7 +1,5 @@
 import Link from 'next/link';
 
-import { cn } from '@/lib/cn';
-
 import { type ButtonLinkVariants, buttonLinkVariants } from './Button';
 
 interface ButtonLinkProps extends React.ComponentPropsWithoutRef<typeof Link> {
@@ -14,14 +12,11 @@ export function ButtonLink({
   className,
   variant = 'primary',
 }: ButtonLinkProps) {
+  const variantStyles = buttonLinkVariants[variant];
+
   return (
     <Link
-      className={cn(
-        'rounded-md border-2 px-2 py-1.5 font-medium transition-colors duration-200',
-        'focus-visibile:outline-none focus-visible:ring-primary focus-visible:ring-2 focus-visible:ring-offset-2',
-        className,
-        buttonLinkVariants[variant]
-      )}
+      className={`${variantStyles} ${className ?? ''} focus-visibile:outline-none focus-visible:ring-primary rounded-md border-2 px-2 py-1.5 font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-2`}
       href={href}
     >
       {children}

@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function Home() {
   const configButton: BannerButton = {
-    href: '/contacto',
+    href: '',
     text: 'Solicitar guardado',
     variant: 'secondary',
   };
@@ -48,7 +48,7 @@ export default function Home() {
       </PageSection>
       <PageSection heading="Nuestros servicios">
         <CardList cards={HOME_SERVICES} />
-        <ButtonLink href="/servicios" className="mx-auto mt-8 block w-fit">
+        <ButtonLink href={''} className="mx-auto mt-8 block w-fit">
           Ver todos los servicios
         </ButtonLink>
       </PageSection>

@@ -11,7 +11,6 @@ type LoginResponse = {
   user: {
     id: string;
     role: string;
-    name: string;
   };
 };
 
