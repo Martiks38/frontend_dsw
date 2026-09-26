@@ -1,10 +1,10 @@
 import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
-import { type OperatorDashboardProps } from '@/interfaces/dashboard.interface';
+import { type DashboardVariant } from '@/interfaces/dashboard.interface';
 
 import { ServiceRankingList } from './ServiceRankingList';
 import { TaskList } from './TaskList';
 
-export function OperatorDashboard({ data }: OperatorDashboardProps) {
+export function OperatorDashboard({ data }: DashboardVariant<'OPERATOR'>) {
   const nextTask = data.todayTasks[0] ?? null;
 
   return (

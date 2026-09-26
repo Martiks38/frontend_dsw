@@ -44,17 +44,6 @@ const DASHBOARD_DATA: NavIconItem[] = [
     },
   },
   {
-    label: 'Mi perfil',
-    href: getDashboardPath('perfil'),
-    iconId: 'user',
-    roles: ['MEMBER', 'OPERATOR', 'ADMIN'],
-    helperText: {
-      MEMBER: 'Actualizá tus datos personales y de acceso.',
-      ADMIN: 'Actualizá tus datos personales y de acceso.',
-      OPERATOR: 'Actualizá tus datos personales y de acceso.',
-    },
-  },
-  {
     label: 'Clientes',
     href: getDashboardPath('clientes'),
     iconId: 'users',
@@ -76,11 +65,24 @@ const DASHBOARD_DATA: NavIconItem[] = [
     helperText: { OPERATOR: 'Solicitudes asignadas para el día de hoy.' },
   },
   {
-    label: 'Operaciones',
-    href: getDashboardPath('operaciones'),
-    iconId: 'ship-wheel',
+    iconId: 'boat-launch-and-retrieval',
+    href: '/dashboard/guarderia',
+    label: 'Ingreso/Retiro',
     roles: ['OPERATOR'],
-    helperText: { MEMBER: '' },
+    helperText: {
+      OPERATOR: 'Registro de ingreso y retiro de embarcaciones.',
+    },
+  },
+  {
+    label: 'Mi perfil',
+    href: getDashboardPath('perfil'),
+    iconId: 'user',
+    roles: ['MEMBER', 'OPERATOR', 'ADMIN'],
+    helperText: {
+      MEMBER: 'Actualizá tus datos personales y de acceso.',
+      ADMIN: 'Actualizá tus datos personales y de acceso.',
+      OPERATOR: 'Actualizá tus datos personales y de acceso.',
+    },
   },
 ];
 

@@ -1,9 +1,9 @@
 import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
-import { type AdminDashboardProps } from '@/interfaces/dashboard.interface';
+import { type DashboardVariant } from '@/interfaces/dashboard.interface';
 
 import { PendingRequestsTable } from './PendingRequestsTask';
 
-export function AdminDashboard({ data }: AdminDashboardProps) {
+export function AdminDashboard({ data }: DashboardVariant<'ADMIN'>) {
   return (
     <>
       <StatGrid heading="Resumen general">

@@ -1,3 +1,5 @@
+import { type UserRole } from '@/lib/auth';
+
 export type RequestStatus =
   | 'PENDING'
   | 'SCHEDULED'
@@ -30,6 +32,10 @@ export interface ServiceRankingItem {
   name: string;
   count: number;
 }
+
+// ----------------------------------------------------------------------
+// 1. STATS & DATA POR ROL
+// ----------------------------------------------------------------------
 
 export interface MemberDashboardStats {
   activeBoats: number;
@@ -71,19 +77,20 @@ export interface AdminDashboardData {
   pendingRequests: PendingRequestRow[];
 }
 
-export interface MemberDashboardProps {
-  data: MemberDashboardData;
+// ----------------------------------------------------------------------
+// 2. PROPS Y VARIANTES DEL DASHBOARD (Optimizado con Generics)
+// ----------------------------------------------------------------------
+
+interface DashboardProps<T> {
+  data: T;
 }
 
-export interface OperatorDashboardProps {
-  data: OperatorDashboardData;
-}
+type DashboardDataByRole = {
+  ADMIN: AdminDashboardData;
+  OPERATOR: OperatorDashboardData;
+  MEMBER: MemberDashboardData;
+};
 
-export interface AdminDashboardProps {
-  data: AdminDashboardData;
-}
-
-export type DashboardVariant =
-  | ({ role: 'MEMBER' } & MemberDashboardProps)
-  | ({ role: 'OPERATOR' } & OperatorDashboardProps)
-  | ({ role: 'ADMIN' } & AdminDashboardProps);
+export type DashboardVariant<R extends UserRole> = DashboardProps<
+  DashboardDataByRole[R]
+>;

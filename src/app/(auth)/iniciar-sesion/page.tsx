@@ -1,4 +1,12 @@
+import { type Metadata } from 'next';
+
 import SignInForm from '@/components/layout/SignInForm/SignInForm';
+
+export const metadata: Metadata = {
+  title: 'Iniciar sesión',
+  description:
+    'Accedé a tu cuenta para gestionar tus embarcaciones y servicios.',
+};
 
 export default function SignInRoute() {
   return (

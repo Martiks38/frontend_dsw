@@ -1,10 +1,10 @@
 import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
-import { type MemberDashboardProps } from '@/interfaces/dashboard.interface';
+import { type DashboardVariant } from '@/interfaces/dashboard.interface';
 
 import { ServiceRankingList } from './ServiceRankingList';
 import { TaskList } from './TaskList';
 
-export function MemberDashboard({ data }: MemberDashboardProps) {
+export function MemberDashboard({ data }: DashboardVariant<'MEMBER'>) {
   return (
     <>
       <StatGrid heading="Resumen de tu cuenta">

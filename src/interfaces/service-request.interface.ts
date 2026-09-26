@@ -2,15 +2,9 @@ import { type LucideIcon } from 'lucide-react';
 
 import { type RequestStatus } from './dashboard.interface';
 
-export interface ServiceRequestRow {
-  id: number;
-  serviceTypeName: string;
-  boatName: string;
-  dateLabel: string;
-  dateISO: string;
-  status: RequestStatus;
-  href: string;
-}
+// ----------------------------------------------------------------------
+// 1. COMPONENTES / FILTROS / OPCIONES BÁSICAS
+// ----------------------------------------------------------------------
 
 export interface PaginationMeta {
   total: number;
@@ -19,20 +13,25 @@ export interface PaginationMeta {
   totalPages: number;
 }
 
-export interface ServiceRequestListResponse {
-  data: ServiceRequestRow[];
-  meta: PaginationMeta;
-}
 export interface ServiceTypeOption {
   serviceTypeId: number;
   name: string;
 }
+
+export interface OperatorOption {
+  publicId: string;
+  firstName: string;
+  lastName: string;
+  totalThisMonth: number;
+}
+
 export interface ServiceRequestSearchParams {
   status?: string;
   serviceTypeId?: string;
   from?: string;
   until?: string;
   page?: string;
+  search?: string;
 }
 
 export interface ServiceRequestData {
@@ -41,4 +40,74 @@ export interface ServiceRequestData {
   name: string;
   description: string;
   icon: LucideIcon;
+}
+
+// ----------------------------------------------------------------------
+// 2. MODELOS PRINCIPALES (Usando herencia para evitar duplicación)
+// ----------------------------------------------------------------------
+
+interface BaseServiceRequest {
+  id: number;
+  status: RequestStatus;
+  serviceTypeName: string;
+  boatName: string;
+  clientName: string;
+}
+
+export interface ServiceRequestRow extends BaseServiceRequest {
+  dateLabel: string;
+  dateISO: string;
+  href: string;
+}
+
+export interface ServiceRequestDetail extends BaseServiceRequest {
+  requestedAtLabel: string;
+  scheduledDateLabel: string | null;
+  scheduledTime: string | null;
+  sector: string | null;
+  observations: string | null;
+  internalComment: string | null;
+  employeeName: string | null;
+  canCancel: boolean;
+  canUpdateStatus: boolean;
+  canEditComment: boolean;
+  isDepartureService: boolean;
+  departure: {
+    exitedAtLabel: string;
+    estimatedReturnLabel: string;
+    realReturnLabel: string | null;
+  } | null;
+}
+
+export interface AssignmentForm {
+  employeeId: string;
+  scheduledDate: string;
+  scheduledTime: string;
+  sector: string;
+}
+
+export interface Operator {
+  id: string;
+  firstName: string;
+  lastName: string;
+  totalThisMonth: number;
+}
+
+// ----------------------------------------------------------------------
+// 3. RESPUESTAS Y ACCIONES
+// ----------------------------------------------------------------------
+
+export type StatusCounts = Record<RequestStatus, number> & { ALL: number };
+
+export interface ServiceRequestListResponse {
+  data: ServiceRequestRow[];
+  meta: PaginationMeta;
+  statusCounts?: StatusCounts;
+}
+
+export interface AssignServiceRequestInput {
+  employeeId: string;
+  scheduledDate: string;
+  scheduledTime: string;
+  sector?: string;
 }
