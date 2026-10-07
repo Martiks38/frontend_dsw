@@ -1,12 +1,12 @@
-import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
-import { type DashboardVariant } from '@/interfaces/dashboard.interface';
+// import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
+import { type DashboardVariant } from '@/interfaces';
 
 import { PendingRequestsTable } from './PendingRequestsTask';
 
 export function AdminDashboard({ data }: DashboardVariant<'ADMIN'>) {
   return (
     <>
-      <StatGrid heading="Resumen general">
+      {/* <StatGrid heading="Resumen general">
         <StatCard
           label="Clientes"
           value={data.stats.clients}
@@ -34,7 +34,7 @@ export function AdminDashboard({ data }: DashboardVariant<'ADMIN'>) {
           iconName="maintenance"
           accent="green"
         />
-      </StatGrid>
+      </StatGrid> */}
 
       <PendingRequestsTable rows={data.pendingRequests} className="mt-8" />
     </>

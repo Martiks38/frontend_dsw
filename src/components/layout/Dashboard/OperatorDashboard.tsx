@@ -1,5 +1,5 @@
-import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
-import { type DashboardVariant } from '@/interfaces/dashboard.interface';
+// import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
+import { type DashboardVariant } from '@/interfaces';
 
 import { ServiceRankingList } from './ServiceRankingList';
 import { TaskList } from './TaskList';
@@ -9,7 +9,7 @@ export function OperatorDashboard({ data }: DashboardVariant<'OPERATOR'>) {
 
   return (
     <div className="flex flex-col gap-4">
-      <StatGrid heading="Resumen de hoy">
+      {/* <StatGrid heading="Resumen de hoy">
         <StatCard
           label="Tareas hoy"
           value={data.stats.tasksToday}
@@ -37,7 +37,7 @@ export function OperatorDashboard({ data }: DashboardVariant<'OPERATOR'>) {
           iconName="list-check"
           accent="amber"
         />
-      </StatGrid>
+      </StatGrid> */}
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2">

@@ -68,6 +68,7 @@ export function DepartureBoard({
               >
                 <div>
                   <p className="font-medium text-slate-900">{r.boatName}</p>
+                  {/* // ! Ver por que no viene el nombre del cliente */}
                   <p className="text-sm text-slate-500">{r.clientName}</p>
                 </div>
                 <StatusBadge status={r.status} />

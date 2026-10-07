@@ -90,6 +90,7 @@ export function ServiceRequestDetailView({ detail, role, operators }: Props) {
       {detail.canUpdateStatus && (
         <StatusActionButton
           status={detail.status}
+          // ! Falta isDepartureService en ServiceRequestDetail
           isDepartureService={detail.isDepartureService}
           disabled={isPending}
           onUpdate={(status, estimatedReturnDatetime) =>
