@@ -1,5 +1,8 @@
 import { loginUserAction, logoutUserAction } from './auth';
+import { createBoatAction } from './boat/createBoatAction';
+import { createClientAction } from './client/createClientAction';
 import { submitContactForm } from './contact';
+import { createEmployeeAction } from './employee/createEmployeeAction';
 import { changePasswordAction, updateProfileAction } from './profile';
 import {
   assignServiceRequest,
@@ -18,4 +21,7 @@ export const actions = {
     cancelServiceRequest,
   },
   profile: { changePasswordAction, updateProfileAction },
+  client: { createClientAction },
+  employee: { createEmployeeAction },
+  boat: { createBoatAction },
 };
