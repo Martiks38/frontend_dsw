@@ -24,7 +24,7 @@ export const SERVICE_SCOPE: Array<{
   },
 ];
 
-export const PAGE_SERVICE_MEDIA: Record<
+const PAGE_SERVICE_MEDIA: Record<
   ServiceIconName,
   Pick<ServiceCard, 'title' | 'imageSrc' | 'imageAlt'>
 > = {
@@ -60,7 +60,7 @@ export const PAGE_SERVICE_MEDIA: Record<
   },
 };
 
-export const SERVICES: Service[] = [
+const SERVICES: Service[] = [
   {
     id: 'fuel',
     label: 'Combustible',
