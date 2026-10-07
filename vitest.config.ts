@@ -8,7 +8,7 @@ export default defineConfig({
     setupFiles: ['./vitest-setup.ts'],
     exclude: ['**/node_modules/**', '**/e2e/**'],
     pool: 'threads',
-    maxWorkers: 4,
+    maxWorkers: 2,
   },
   resolve: {
     alias: {
