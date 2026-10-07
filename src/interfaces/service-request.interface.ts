@@ -52,6 +52,7 @@ interface BaseServiceRequest {
   serviceTypeName: string;
   boatName: string;
   clientName: string;
+  employeeName: string | null;
 }
 
 export interface ServiceRequestRow extends BaseServiceRequest {
@@ -67,7 +68,6 @@ export interface ServiceRequestDetail extends BaseServiceRequest {
   sector: string | null;
   observations: string | null;
   internalComment: string | null;
-  employeeName: string | null;
   canCancel: boolean;
   canUpdateStatus: boolean;
   canEditComment: boolean;
