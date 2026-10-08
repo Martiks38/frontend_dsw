@@ -31,9 +31,9 @@ async function patchStatus(path: string, isActive: boolean): Promise<void> {
 }
 
 export async function setClientStatus(publicId: string, isActive: boolean) {
-  await patchStatus(`/api/clientes/${publicId}/estado`, isActive);
+  await patchStatus(`/api/clientes/${publicId}/status`, isActive);
 }
 
 export async function setEmployeeStatus(publicId: string, isActive: boolean) {
-  await patchStatus(`/api/empleados/${publicId}/estado`, isActive);
+  await patchStatus(`/api/empleados/${publicId}/status`, isActive);
 }
