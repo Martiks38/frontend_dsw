@@ -1,5 +1,5 @@
 import { CardFeature } from '@/interfaces';
-import type { BenefitsIconName } from '@/types';
+import { type BenefitsIconName } from '@/types';
 
 export const BENEFITS: CardFeature<BenefitsIconName>[] = [
   {

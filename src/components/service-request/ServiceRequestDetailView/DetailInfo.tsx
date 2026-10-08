@@ -36,7 +36,6 @@ export function DetailInfo({ detail }: { detail: ServiceRequestDetail }) {
           </>
         )}
 
-        {/* // ! no s eporq no estan los siguientes attr */}
         {detail.departure && (
           <>
             <Dt>Salida</Dt>

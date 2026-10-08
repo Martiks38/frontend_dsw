@@ -8,13 +8,8 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   title?: string;
 }
 
-export default function Icon({
-  id,
-  size = 24,
-  className,
-  title,
-  ...rest
-}: IconProps) {
+/** @deprecated Usar íconos de lucide-react */
+export function Icon({ id, size = 24, className, title, ...rest }: IconProps) {
   return (
     <svg
       width={size}

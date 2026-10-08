@@ -1,7 +1,7 @@
+import { LogOut } from 'lucide-react';
+
 import { actions } from '@/app/actions';
 import { cn } from '@/lib/cn';
-
-import Icon from '../Icon/Icon';
 
 interface LogoutProps extends React.FormHTMLAttributes<HTMLFormElement> {
   iconVisible?: boolean;
@@ -22,7 +22,7 @@ export function Logout({
           className
         )}
       >
-        {iconVisible && <Icon id="logout" />}
+        {iconVisible && <LogOut aria-hidden="true" />}
         <span>Cerrar sesión</span>
       </button>
     </form>

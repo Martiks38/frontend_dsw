@@ -1,7 +1,8 @@
+import { Clock } from 'lucide-react';
+
 import { IntroSection, PageSection } from '@/components/layout/Section';
 import ContactForm from '@/components/ui/ContactForm/ContactForm';
 import ContactInfoPanel from '@/components/ui/ContactInfoPanel/ContactInfoPanel';
-import Icon from '@/components/ui/Icon/Icon';
 import { CONTACT_ITEMS, SCHEDULE_ITEMS, SCHEDULE_NOTE } from '@/data';
 
 export const metadata = {
@@ -47,12 +48,7 @@ export default function ContactPage() {
             <ContactInfoPanel items={CONTACT_ITEMS} />
 
             <div className="mt-7 flex items-start gap-6">
-              <Icon
-                id="clock"
-                title="Horarios de atención"
-                size={32}
-                className="mt-0.5 shrink-0"
-              />
+              <Clock size={32} className="mt-0.5 shrink-0" aria-hidden="true" />
               <div>
                 <h3 className="mb-2 flex items-center gap-2 text-lg font-semibold">
                   Horarios de atención

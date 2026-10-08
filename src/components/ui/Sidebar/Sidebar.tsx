@@ -8,7 +8,6 @@ import { DASHBOARD_SIDEBAR_NAV } from '@/data';
 import { useSession } from '@/hooks/useSession.hook';
 import { cn } from '@/lib/cn';
 
-import Icon from '../Icon/Icon';
 import { Logout } from '../Logout/Logout';
 
 export function Sidebar() {
@@ -38,6 +37,7 @@ export function Sidebar() {
         <ul className="text-surface space-y-2">
           {itemsVisibles.map((item) => {
             const active = pathname === item.href;
+            const ItemIcon = item.icon;
 
             return (
               <li key={item.label}>
@@ -53,7 +53,7 @@ export function Sidebar() {
                       : 'border-transparent hover:bg-white/5 hover:text-white'
                   )}
                 >
-                  <Icon id={item.iconId} className="h-6 w-6" />
+                  <ItemIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
                   <span>{item.label}</span>
                 </Link>
               </li>

@@ -1,4 +1,6 @@
-// import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
+import { Calendar, FileText, Ship, Wrench } from 'lucide-react';
+
+import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { type DashboardVariant } from '@/interfaces';
 
 import { ServiceRankingList } from './ServiceRankingList';
@@ -7,22 +9,22 @@ import { TaskList } from './TaskList';
 export function MemberDashboard({ data }: DashboardVariant<'MEMBER'>) {
   return (
     <>
-      {/* <StatGrid heading="Resumen de tu cuenta">
+      <StatGrid heading="Resumen de tu cuenta">
         <StatCard
           label="Embarcaciones activas"
           value={data.stats.activeBoats}
-          iconName="anchor"
+          icon={Ship}
         />
         <StatCard
           label="Solicitudes pendientes"
           value={data.stats.pendingRequests}
-          iconName="documents"
+          icon={FileText}
           accent="amber"
         />
         <StatCard
           label="Servicios este mes"
           value={data.stats.servicesThisMonth}
-          iconName="maintenance"
+          icon={Wrench}
           accent="blue"
         />
         <StatCard
@@ -32,10 +34,10 @@ export function MemberDashboard({ data }: DashboardVariant<'MEMBER'>) {
               ? `${data.stats.nextServiceInDays} días`
               : '—'
           }
-          iconName="calendar"
+          icon={Calendar}
           accent="green"
         />
-      </StatGrid> */}
+      </StatGrid>
 
       <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
         <TaskList

@@ -1,10 +1,11 @@
 'use client';
 
+import { UserCheck, UserPlus, Users, UserX } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-// import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
+import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { type ClientsOverview } from '@/interfaces';
 import { setClientStatus } from '@/lib/account-status';
 import { cn } from '@/lib/cn';
@@ -164,31 +165,31 @@ export function AdminClientsTable({ overview, currentParams }: Props) {
         </nav>
       )}
 
-      {/* <StatGrid heading="Resumen">
+      <StatGrid heading="Resumen">
         <StatCard
           label="Total clientes"
           value={overview.stats.total}
-          iconName="users"
+          icon={Users}
         />
         <StatCard
           label="Clientes activos"
           value={overview.stats.active}
-          iconName="users"
+          icon={UserCheck}
           accent="green"
         />
         <StatCard
           label="Clientes inactivos"
           value={overview.stats.inactive}
-          iconName="users"
+          icon={UserX}
           accent="red"
         />
         <StatCard
           label="Nuevos este mes"
           value={overview.stats.newThisMonth}
-          iconName="users"
+          icon={UserPlus}
           accent="blue"
         />
-      </StatGrid> */}
+      </StatGrid>
     </div>
   );
 }

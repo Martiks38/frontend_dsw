@@ -1,8 +1,9 @@
 'use client';
 
+import { Anchor, Ship, Waves, Wrench } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
-// import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
+import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { BoatStatusBadge } from '@/components/ui/StatusBadge/BoatStatusBadge';
 import type { BoatAdminStatus, BoatsAdminOverview } from '@/interfaces';
 import { cn } from '@/lib/cn';
@@ -129,31 +130,31 @@ export function AdminBoatsTable({
         </div>
       )}
 
-      {/* <StatGrid heading="Resumen">
+      <StatGrid heading="Resumen">
         <StatCard
           label="Total embarcaciones"
           value={overview.stats.total}
-          icon="anchor"
+          icon={Ship}
         />
         <StatCard
           label="En agua"
           value={overview.stats.enAgua}
-          iconName="anchor"
+          icon={Waves}
           accent="blue"
         />
         <StatCard
           label="En guardería"
           value={overview.stats.enGuardia}
-          iconName="anchor"
+          icon={Anchor}
           accent="green"
         />
         <StatCard
           label="En mantenimiento"
           value={overview.stats.enMantenimiento}
-          iconName="maintenance"
+          icon={Wrench}
           accent="amber"
         />
-      </StatGrid> */}
+      </StatGrid>
     </div>
   );
 }

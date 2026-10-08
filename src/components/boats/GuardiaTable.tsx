@@ -1,8 +1,9 @@
 'use client';
 
+import { Anchor, CalendarClock, LayoutGrid, Timer } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
-// import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
+import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { BoatStatusBadge } from '@/components/ui/StatusBadge/BoatStatusBadge';
 import { type GuardiaOverview } from '@/interfaces';
 import { cn } from '@/lib/cn';
@@ -86,30 +87,32 @@ export function GuardiaTable({ overview }: { overview: GuardiaOverview }) {
         </div>
       )}
 
-      {/* <StatGrid heading="Resumen de guardería">
+      <StatGrid heading="Resumen de guardería">
         <StatCard
           label="Total en guardería"
           value={overview.stats.totalEnGuardia}
-          iconName="anchor"
+          icon={Anchor}
         />
         <StatCard
           label="Sectores ocupados"
           value={`${overview.stats.occupiedCradles} / ${overview.stats.totalCradles}`}
-          iconName="anchor"
+          icon={LayoutGrid}
           accent="blue"
         />
         <StatCard
           label="Próximas salidas"
           value={overview.stats.upcomingDepartures}
           helperText="30 días"
+          icon={CalendarClock}
           accent="amber"
         />
         <StatCard
           label="Estadía promedio"
           value={`${overview.stats.avgStayDays} días`}
+          icon={Timer}
           accent="green"
         />
-      </StatGrid> */}
+      </StatGrid>
     </div>
   );
 }

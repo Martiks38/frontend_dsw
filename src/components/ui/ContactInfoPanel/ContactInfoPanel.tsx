@@ -1,10 +1,8 @@
 'use client';
 
 import { useToast } from '@/hooks/useToast.hook';
-import type { ContactItem } from '@/interfaces';
+import { type ContactItem } from '@/interfaces';
 import { cn } from '@/lib/cn';
-
-import Icon from '../Icon/Icon';
 
 function ContactInfoItem({
   item,
@@ -14,6 +12,7 @@ function ContactInfoItem({
   className?: string;
 }) {
   const showToast = useToast();
+  const { label, value, action } = item;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(item.value.replaceAll(' ', ''));
@@ -22,16 +21,11 @@ function ContactInfoItem({
 
   return (
     <li className={`${className} flex items-start gap-6`}>
-      <Icon
-        id={item.type}
-        title={item.label}
-        size={32}
-        className="mt-0.5 shrink-0"
-      />
+      {/* <Icon aria-hidden="true" size={32} className="mt-0.5 shrink-0" /> */}
       <div>
-        <h3 className="mb-2 text-lg font-semibold">{item.label}</h3>
+        <h3 className="mb-2 text-lg font-semibold">{label}</h3>
 
-        {item.action === 'copy' ? (
+        {action === 'copy' ? (
           <button
             type="button"
             onClick={handleCopy}
@@ -40,10 +34,10 @@ function ContactInfoItem({
               'hover:text-blue-900 focus-visible:outline-2 focus-visible:outline-blue-900'
             )}
           >
-            {item.value}
+            {value}
           </button>
         ) : (
-          <p className="leading-8">{item.value}</p>
+          <p className="leading-8">{value}</p>
         )}
       </div>
     </li>

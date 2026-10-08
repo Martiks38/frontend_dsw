@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import { IntroSection, PageSection } from '@/components/layout/Section';
-import Icon from '@/components/ui/Icon/Icon';
 import { COMPANY_VALUES } from '@/data';
 import { cn } from '@/lib/cn';
 
@@ -47,7 +46,7 @@ export default function AboutUs() {
           Brindar soluciones integrales para el cuidado de embarcaciones,
           garantizando seguridad, calidad y atención personalizada.
         </p>
-        <Icon id="wind-rose-compass" title="Nuesta misión" size={48} />
+        {/* <Icon id="wind-rose-compass" title="Nuesta misión" size={48} /> */}
       </PageSection>
       <PageSection heading="Nuestros valores">
         <ul
@@ -57,13 +56,13 @@ export default function AboutUs() {
           )}
           role="list"
         >
-          {COMPANY_VALUES.map(({ id, label }) => {
+          {COMPANY_VALUES.map(({ icon: Icon, label }) => {
             return (
               <li
-                key={id}
+                key={label}
                 className="flex max-w-24 flex-col items-center text-center"
               >
-                <Icon id={id} title={label} size={60} />
+                <Icon size={60} />
                 <span className="pt-6 text-xl font-bold">{label}</span>
               </li>
             );

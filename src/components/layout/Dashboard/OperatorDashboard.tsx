@@ -1,4 +1,11 @@
-// import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
+import {
+  CircleCheck,
+  ClipboardList,
+  Hourglass,
+  ListChecks,
+} from 'lucide-react';
+
+import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { type DashboardVariant } from '@/interfaces';
 
 import { ServiceRankingList } from './ServiceRankingList';
@@ -9,35 +16,35 @@ export function OperatorDashboard({ data }: DashboardVariant<'OPERATOR'>) {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* <StatGrid heading="Resumen de hoy">
+      <StatGrid heading="Resumen de hoy">
         <StatCard
           label="Tareas hoy"
           value={data.stats.tasksToday}
           helperText="por atender"
-          iconName="clipboard-list"
+          icon={ClipboardList}
         />
         <StatCard
           label="En proceso"
           value={data.stats.inProgress}
           helperText="hoy"
-          iconName="loader"
+          icon={Hourglass}
           accent="blue"
         />
         <StatCard
           label="Completadas"
           value={data.stats.completedToday}
           helperText="hoy"
-          iconName="check-circle"
+          icon={CircleCheck}
           accent="green"
         />
         <StatCard
           label="Total solicitudes"
           value={data.stats.totalThisMonth}
           helperText="este mes"
-          iconName="list-check"
+          icon={ListChecks}
           accent="amber"
         />
-      </StatGrid> */}
+      </StatGrid>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <div className="lg:col-span-2">

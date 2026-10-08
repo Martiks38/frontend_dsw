@@ -1,6 +1,6 @@
+import { Eye } from 'lucide-react';
 import Link from 'next/link';
 
-import Icon from '@/components/ui/Icon/Icon';
 import { Td, Th } from '@/components/ui/Table';
 import { type PendingRequestRow } from '@/interfaces/dashboard.interface';
 
@@ -63,7 +63,7 @@ export function PendingRequestsTable({
                     aria-label={`Ver solicitud #${row.id} de ${row.clientName}`}
                     className="inline-flex rounded p-1 text-slate-500 hover:text-blue-600 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
                   >
-                    <Icon id="eye" className="h-4 w-4" />
+                    <Eye className="h-4 w-4" />
                   </Link>
                 </Td>
               </tr>
