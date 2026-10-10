@@ -24,15 +24,17 @@ export function Sidebar() {
       aria-label="Navegación principal"
       className="bg-primary text-surface sticky top-0 flex h-screen w-74 shrink-0 flex-col justify-start gap-8 self-start p-8 pr-6"
     >
-      <div className="max-w-48 rounded-xl bg-slate-100 p-4 lg:w-full">
-        <Image
-          src="/logo_2.png"
-          alt="Guardería náutica"
-          width={195}
-          height={65}
-          className="h-auto w-full object-contain"
-        />
-      </div>
+      <Link href="/" className="block w-fit">
+        <div className="max-w-48 rounded-xl bg-slate-100 p-4 lg:w-full">
+          <Image
+            src="/logo_2.png"
+            alt="Inicio - Guardería náutica"
+            width={195}
+            height={65}
+            className="h-auto w-full object-contain"
+          />
+        </div>
+      </Link>
       <nav aria-label="Secciones de disponibles">
         <ul className="text-surface space-y-2">
           {itemsVisibles.map((item) => {
