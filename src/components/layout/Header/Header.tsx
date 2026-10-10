@@ -47,8 +47,10 @@ export default function Header({ altLogo, srcLogo, className }: HeaderProps) {
             preload
           />
         </Link>
-        <HeaderNav />
-        <ButtonLink href={buttonLink.href}>{buttonLink.label}</ButtonLink>
+        <div>
+          <HeaderNav />
+          <ButtonLink href={buttonLink.href}>{buttonLink.label}</ButtonLink>
+        </div>
       </div>
     </header>
   );
