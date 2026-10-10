@@ -1,3 +1,4 @@
+import { Compass } from 'lucide-react';
 import Image from 'next/image';
 
 import { IntroSection, PageSection } from '@/components/layout/Section';
@@ -46,7 +47,7 @@ export default function AboutUs() {
           Brindar soluciones integrales para el cuidado de embarcaciones,
           garantizando seguridad, calidad y atención personalizada.
         </p>
-        {/* <Icon id="wind-rose-compass" title="Nuesta misión" size={48} /> */}
+        <Compass aria-hidden="true" size={48} />
       </PageSection>
       <PageSection heading="Nuestros valores">
         <ul

@@ -1,4 +1,3 @@
-export * from './asideContact.interface';
 export * from './boat.interface';
 export * from './boat-admin.interface';
 export * from './boat-form.interface';

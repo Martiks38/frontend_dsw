@@ -1,3 +1,4 @@
+import { type LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 
 import { cn } from '@/lib/cn';
@@ -6,6 +7,7 @@ import styles from './CardGrid.module.css';
 
 export interface CardItem {
   id: string;
+  icon: LucideIcon;
   title: string;
   description: string;
   imageSrc: string;

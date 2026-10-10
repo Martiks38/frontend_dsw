@@ -12,7 +12,7 @@ function ContactInfoItem({
   className?: string;
 }) {
   const showToast = useToast();
-  const { label, value, action } = item;
+  const { label, value, action, icon: Icon } = item;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(item.value.replaceAll(' ', ''));
@@ -21,7 +21,7 @@ function ContactInfoItem({
 
   return (
     <li className={`${className} flex items-start gap-6`}>
-      {/* <Icon aria-hidden="true" size={32} className="mt-0.5 shrink-0" /> */}
+      <Icon aria-hidden="true" size={32} className="mt-0.5 shrink-0" />
       <div>
         <h3 className="mb-2 text-lg font-semibold">{label}</h3>
 

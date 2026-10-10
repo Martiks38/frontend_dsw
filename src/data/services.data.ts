@@ -1,6 +1,15 @@
-import type { CardItem } from '@/components/ui/Card/CardGrid/CardGrid';
+import {
+  BatteryCharging,
+  Fuel,
+  Settings,
+  Ship,
+  Sparkles,
+  Wrench,
+} from 'lucide-react';
+
+import { type CardItem } from '@/components/ui/Card/CardGrid/CardGrid';
 import type { Service, ServiceCard } from '@/interfaces/service.interface';
-import type { ServiceIconName } from '@/types';
+import { type ServiceIconName } from '@/types';
 
 export const SERVICE_SCOPE: Array<{
   id: number;
@@ -24,10 +33,7 @@ export const SERVICE_SCOPE: Array<{
   },
 ];
 
-const PAGE_SERVICE_MEDIA: Record<
-  ServiceIconName,
-  Pick<ServiceCard, 'title' | 'imageSrc' | 'imageAlt'>
-> = {
+const PAGE_SERVICE_MEDIA: Record<ServiceIconName, ServiceCard> = {
   cleaning: {
     title: 'Limpieza',
     imageSrc: '/images/services/services-cleaning.webp',
@@ -63,6 +69,7 @@ const PAGE_SERVICE_MEDIA: Record<
 const SERVICES: Service[] = [
   {
     id: 'fuel',
+    icon: Fuel,
     label: 'Combustible',
     showOnHome: true,
     description:
@@ -70,30 +77,35 @@ const SERVICES: Service[] = [
   },
   {
     id: 'cleaning',
+    icon: Sparkles,
     label: 'Limpieza',
     showOnHome: true,
     description: 'Limpieza exterior e interior profesional.',
   },
   {
     id: 'maintenance',
+    icon: Wrench,
     label: 'Mantenimiento',
     showOnHome: true,
     description: 'Revisiones y mantenimiento preventivo.',
   },
   {
     id: 'boat-launch-and-retrieval',
+    icon: Ship,
     label: 'Botadura y retiro',
     showOnHome: true,
     description: 'Servicio de botadura y retiro de agua.',
   },
   {
     id: 'battery-charging',
+    icon: BatteryCharging,
     label: 'Carga de baterías',
     showOnHome: false,
     description: 'Control y carga de baterías durante el guardado.',
   },
   {
     id: 'repairs',
+    icon: Settings,
     label: 'Reparaciones',
     showOnHome: false,
     description: 'Gestión de reparaciones y trabajos técnicos.',
