@@ -30,7 +30,7 @@ function SubmitButton() {
   );
 }
 
-export default function ContactForm() {
+export function ContactForm({ className }: { className?: string }) {
   const [state, formAction] = useActionState(submitContactForm, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -41,7 +41,11 @@ export default function ContactForm() {
   }, [state.success]);
 
   return (
-    <form ref={formRef} action={formAction} className={styles.contact_form}>
+    <form
+      ref={formRef}
+      action={formAction}
+      className={cn(styles.contact_form, className)}
+    >
       {state.message && (
         <p
           role="alert"

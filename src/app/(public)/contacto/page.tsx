@@ -1,8 +1,8 @@
 import { Clock } from 'lucide-react';
 
 import { IntroSection, PageSection } from '@/components/layout/Section';
-import ContactForm from '@/components/ui/ContactForm/ContactForm';
-import ContactInfoPanel from '@/components/ui/ContactInfoPanel/ContactInfoPanel';
+import { ContactForm } from '@/components/ui/ContactForm/ContactForm';
+import { ContactInfoPanel } from '@/components/ui/ContactInfoPanel/ContactInfoPanel';
 import { CONTACT_ITEMS, SCHEDULE_ITEMS, SCHEDULE_NOTE } from '@/data';
 
 export const metadata = {
@@ -30,10 +30,8 @@ export default function ContactPage() {
         </p>
       </IntroSection>
       <PageSection heading="Contacto" className="pb-12 [&>h2]:sr-only">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_23.75rem]">
-          <div>
-            <ContactForm />
-          </div>
+        <div className="custom-md:grid-cols-[1fr_23.75rem] custom-md:gap-8 grid grid-cols-1 gap-10">
+          <ContactForm className="place-self-center" />
           <aside
             className="flex h-fit flex-col rounded-xl bg-[#d7e1eb54] p-6 shadow-md"
             aria-labelledby="contact-info-heading"
@@ -48,7 +46,9 @@ export default function ContactPage() {
             <ContactInfoPanel items={CONTACT_ITEMS} />
 
             <div className="mt-7 flex items-start gap-6">
-              <Clock size={32} className="mt-0.5 shrink-0" aria-hidden="true" />
+              <div className="xs:block hidden">
+                <Clock className="mt-0.5 h-8 w-8 shrink-0" aria-hidden="true" />
+              </div>
               <div>
                 <h3 className="mb-2 flex items-center gap-2 text-lg font-semibold">
                   Horarios de atención

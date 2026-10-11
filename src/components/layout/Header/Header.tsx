@@ -59,7 +59,7 @@ export default function Header({ altLogo, srcLogo, className }: HeaderProps) {
           aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
           className={cn(
             headerStyles.menu,
-            'xmd:hidden',
+            'custom-md:hidden',
             isOpen && headerStyles.isOpen
           )}
         />
@@ -70,16 +70,16 @@ export default function Header({ altLogo, srcLogo, className }: HeaderProps) {
             'items-center gap-8',
             isOpen
               ? 'xs:w-[20ch] bg-background border-primary xs:h-auto xs:top-[120%] xs:rounded-lg xs:border-x xs:right-8 absolute top-full right-0 z-50 flex h-[calc(75vh)] w-screen flex-col border-2 border-x-0 p-6 shadow-xl'
-              : 'xmd:flex hidden'
+              : 'custom-md:flex hidden'
           )}
         >
           <HeaderNav
-            className="xmd:flex-row xmd:text-left w-full flex-col text-center"
+            className="custom-md:flex-row custom-md:text-left w-full flex-col text-center"
             onItemClick={() => setIsOpen(false)}
           />
           <div
             onClick={() => setIsOpen(false)}
-            className="xmd:w-auto w-full text-center"
+            className="custom-md:w-auto w-full text-center"
           >
             <ButtonLink href={buttonLink.href}>{buttonLink.label}</ButtonLink>
           </div>

@@ -9,7 +9,6 @@ import type { FooterColumn, FooterItem, FooterProps } from '@/interfaces';
 import { cn } from '@/lib/cn';
 import { normalizeString } from '@/utils/normalizeString.util';
 
-const titleStyles = 'font-semibold text-lg mb-4';
 const baseInteractiveStyles =
   'hover:text-blue-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-blue-900 w-full';
 
@@ -57,10 +56,10 @@ function FooterItemContent({ item }: { item: FooterItem }) {
 
     case 'schedule': {
       return (
-        <>
-          {item.label}{' '}
-          <span className="inline-block whitespace-nowrap">{item.value}</span>
-        </>
+        <div className="flex flex-wrap justify-center gap-x-2 lg:justify-start">
+          <span>{item.label}</span>
+          <span className="whitespace-nowrap">{item.value}</span>
+        </div>
       );
     }
 
@@ -73,10 +72,11 @@ function FooterItemContent({ item }: { item: FooterItem }) {
 
 function FooterItemsList({ items }: { items: FooterItem[] }) {
   return (
-    <ul className="m-[0_auto] flex w-max flex-col gap-y-1.5 font-medium">
+    <ul className="m-[0_auto] flex w-max flex-col gap-y-2 font-medium lg:m-0">
       {items.map((item) => {
         return (
-          <li key={item.label} className="max-w-[25ch] leading-relaxed">
+          // Aquí aplicamos el max-w-[25ch] junto con un ancho automático seguro
+          <li key={item.label} className="w-auto max-w-[25ch] leading-relaxed">
             <FooterItemContent item={item} />
           </li>
         );
@@ -112,7 +112,7 @@ function FooterColumnContent({
 
   return (
     <>
-      <h3 id={titleId} className={titleStyles}>
+      <h3 id={titleId} className="mb-4 text-lg font-semibold">
         {col.title}
       </h3>
       {col.variant === 'address' ? (
@@ -136,7 +136,7 @@ export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
           className="aspect-3/1 h-auto w-full object-contain"
         />
       </div>
-      <div className="grid grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:grid-cols-[auto_auto_1fr_1fr] lg:gap-10 lg:text-left">
+      <div className="custom-lg:grid-cols-[repeat(4,auto)] grid grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:gap-10 lg:text-left">
         {columns.map((col) => {
           const titleId = `footer-${normalizeString(col.title)}`;
           const wrapperKey = col.variant === 'nav' ? 'nav' : 'default';
