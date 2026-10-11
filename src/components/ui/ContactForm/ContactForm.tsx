@@ -20,7 +20,7 @@ function SubmitButton() {
     <button
       className={cn(
         'bg-primary text-surface w-full rounded-md border-2 px-12 py-4 font-medium transition-colors duration-200',
-        'focus-visibile:outline-none focus-visible:ring-primary hover:bg-[#114062] focus-visible:ring-2 focus-visible:ring-offset-2 active:bg-[#114062] disabled:cursor-not-allowed disabled:opacity-70'
+        'focus-visible:ring-primary hover:bg-[#114062] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:bg-[#114062] disabled:cursor-not-allowed disabled:opacity-70'
       )}
       disabled={pending}
       type="submit"

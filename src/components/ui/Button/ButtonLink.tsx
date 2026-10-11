@@ -17,8 +17,8 @@ export function ButtonLink({
   return (
     <Link
       className={cn(
-        'rounded-md border-2 px-2 py-1.5 font-medium transition-colors duration-200',
-        'focus-visibile:outline-none focus-visible:ring-primary focus-visible:ring-2 focus-visible:ring-offset-2',
+        'inline-block rounded-md border-2 px-2 py-1.5 font-medium transition-colors duration-200',
+        'focus-visible:ring-primary focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
         className,
         buttonLinkVariants[variant]
       )}

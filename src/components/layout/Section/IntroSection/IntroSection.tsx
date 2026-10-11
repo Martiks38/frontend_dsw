@@ -31,7 +31,10 @@ export function IntroSection({
       aria-labelledby="intro-title"
     >
       <div>
-        <h1 id="intro-title" className="mb-4 text-4xl font-semibold">
+        <h1
+          id="intro-title"
+          className="mb-4 text-2xl font-semibold md:text-4xl"
+        >
           {title}
         </h1>
         {children}

@@ -29,16 +29,18 @@ export default function Home() {
           </>
         }
       >
-        <p className="w-[35ch] text-2xl">
+        <p className="w-[35ch] text-[1.125rem] md:text-2xl">
           Guardería náutica y servicios para que disfrutes de tu embarcación
           cuando quieras.
         </p>
         <nav
-          className="mt-10 text-xl font-semibold *:first:mr-6"
+          className="text-md mt-10 flex gap-6 font-semibold md:text-xl"
           aria-label="Servicios y solicitudes"
         >
-          <ButtonLink href="/servicios">Conocé nuestros servicios</ButtonLink>
-          <ButtonLink href="/contacto" variant="secondary">
+          <ButtonLink href="/servicios" className="">
+            Conocé nuestros servicios
+          </ButtonLink>
+          <ButtonLink href="/contacto" variant="secondary" className="">
             Solicitar guardado
           </ButtonLink>
         </nav>
@@ -48,7 +50,10 @@ export default function Home() {
       </PageSection>
       <PageSection heading="Nuestros servicios">
         <CardList cards={HOME_SERVICES} />
-        <ButtonLink href="/servicios" className="mx-auto mt-8 block w-fit">
+        <ButtonLink
+          href="/servicios"
+          className="mx-auto mt-8 block w-fit text-center sm:text-left"
+        >
           Ver todos los servicios
         </ButtonLink>
       </PageSection>

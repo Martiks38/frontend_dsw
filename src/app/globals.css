@@ -14,6 +14,7 @@
   --color-white: var(--background);
   --color-surface: var(--surface);
   --breakpoint-xs: 30rem;
+  --breakpoint-xmd: 54rem;
 }
 
 @layer base {

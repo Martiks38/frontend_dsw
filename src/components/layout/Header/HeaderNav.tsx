@@ -8,12 +8,17 @@ import { cn } from '@/lib/cn';
 
 import styles from './headernav.module.css';
 
-export function HeaderNav() {
+interface HeaderNavProps {
+  className?: string;
+  onItemClick?: () => void;
+}
+
+export function HeaderNav({ className, onItemClick }: HeaderNavProps) {
   const pathname = usePathname();
 
   return (
     <nav aria-label="Navegación principal">
-      <ul className="flex justify-between gap-x-1">
+      <ul className={cn('flex justify-between gap-2', className)}>
         {NAVIGATION_ITEMS.map(({ href, label }) => {
           const isActive = pathname === href;
 
@@ -27,6 +32,7 @@ export function HeaderNav() {
                 )}
                 href={href}
                 aria-current={isActive ? 'page' : undefined}
+                onClick={onItemClick}
               >
                 <span>{label}</span>
               </Link>
