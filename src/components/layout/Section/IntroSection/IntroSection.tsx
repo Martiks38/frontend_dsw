@@ -26,7 +26,7 @@ export function IntroSection({
       className={cn(
         variant === 'default' && styles.intro,
         className,
-        'flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 pb-20'
+        'flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 py-20'
       )}
       aria-labelledby="intro-title"
     >
