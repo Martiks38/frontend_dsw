@@ -26,12 +26,12 @@ export default function Marina() {
         }
         variant="shadowless"
       >
-        <p className="w-[35ch] text-xl">
+        <p className="w-full max-w-[35ch] text-xl">
           Contamos con instalaciones diseñadas para el guardado seguro de
           embarcaiones, con atención personalizada y servicios de primer nivel.
         </p>
       </IntroSection>
-      <PageSection heading="¿Cómo funciona?" className="[&>h2]:text-left">
+      <PageSection heading="¿Cómo funciona?" className="sm:[&>h2]:text-left">
         <StepsList steps={CONTRACT_PROCESS} />
       </PageSection>
       <hr
@@ -40,19 +40,19 @@ export default function Marina() {
       />
       <PageSection
         heading="¿Qué incluye el servicio?"
-        className="[&>h2]:text-left"
+        className="sm:[&>h2]:text-left"
       >
         <CheckList items={SERVICE_SCOPE} />
       </PageSection>
       <PageSection
         heading="Nuestras instalaciones"
-        className="[&>h2]:text-left"
+        className="sm:[&>h2]:text-left"
       >
-        <ul className="mt-8 flex gap-x-6">
+        <ul className="mx-auto mt-8 grid w-fit grid-cols-1 gap-6 sm:mx-0 sm:grid-cols-2 md:grid-cols-4">
           {GALLERY_IMAGES.map(({ id, src, alt }) => {
             return (
-              <li key={id}>
-                <figure className="overflow-clip rounded-2xl">
+              <li key={id} className="w-fit">
+                <figure className="w-fit overflow-clip rounded-2xl">
                   <Image
                     src={src}
                     alt={alt}
@@ -66,7 +66,7 @@ export default function Marina() {
           })}
         </ul>
       </PageSection>
-      <div className="mb-12 px-16">
+      <div className="mb-12 px-10 md:px-16">
         <Banner
           className="rounded-[10px]"
           heading="Solicitá disponibilidad para tu embarcación"

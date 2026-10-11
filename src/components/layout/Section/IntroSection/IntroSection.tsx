@@ -26,14 +26,14 @@ export function IntroSection({
       className={cn(
         variant === 'default' && styles.intro,
         className,
-        'flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-16 py-20'
+        'flex min-h-[70dvh] w-full flex-col justify-end bg-cover bg-top-left px-10 py-10 md:px-16 md:py-20'
       )}
       aria-labelledby="intro-title"
     >
       <div>
         <h1
           id="intro-title"
-          className="mb-4 text-2xl font-semibold md:text-4xl"
+          className="mb-4 text-3xl font-semibold sm:text-4xl"
         >
           {title}
         </h1>

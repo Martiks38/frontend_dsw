@@ -28,7 +28,7 @@ export default function Banner({
     <section
       role="banner"
       className={cn(
-        `bg-primary text-surface border-b-2 text-center md:text-left rounded-[${rounded}rem] mt-12 grid grid-cols-[1fr_auto] items-center gap-y-4 px-16 py-12 md:gap-x-8`,
+        `bg-primary text-surface border-b-2 text-center md:text-left rounded-[${rounded}rem] mt-12 grid grid-cols-[1fr_auto] items-center gap-y-4 px-10 py-8 md:gap-x-8 md:px-16 md:py-12`,
         'grid [grid-template-areas:"title""text""action"] md:[grid-template-areas:"title_action""text_action"]',
         className
       )}

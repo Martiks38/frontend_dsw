@@ -35,8 +35,10 @@ export default function CardGrid({ cards }: { cards: CardItem[] }) {
                 />
               </figure>
               <div className="flex grow flex-col p-6 text-left">
-                <h3 className="mb-2 text-2xl font-bold">{title}</h3>
-                <p className="mb-2 text-lg leading-relaxed">{description}</p>
+                <h3 className="mb-2 text-xl font-bold sm:text-2xl">{title}</h3>
+                <p className="mb-2 text-base leading-relaxed sm:text-lg">
+                  {description}
+                </p>
               </div>
             </article>
           </li>

@@ -30,7 +30,7 @@ function FooterItemContent({ item }: { item: FooterItem }) {
             type="button"
             className={cn(
               baseInteractiveStyles,
-              'hover:border-primary border-b-2 border-transparent text-center transition-colors duration-200 lg:text-left'
+              'hover:border-primary w-fit border-b-2 border-transparent text-center transition-colors duration-200 lg:text-left'
             )}
           >
             {item.label}
@@ -73,10 +73,10 @@ function FooterItemContent({ item }: { item: FooterItem }) {
 
 function FooterItemsList({ items }: { items: FooterItem[] }) {
   return (
-    <ul className="flex flex-col gap-y-1.5 font-medium">
+    <ul className="m-[0_auto] flex w-max flex-col gap-y-1.5 font-medium">
       {items.map((item) => {
         return (
-          <li key={item.label} className="leading-relaxed">
+          <li key={item.label} className="max-w-[25ch] leading-relaxed">
             <FooterItemContent item={item} />
           </li>
         );
@@ -126,7 +126,7 @@ function FooterColumnContent({
 
 export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
   return (
-    <footer className="px-16 py-12">
+    <footer className="px-10 py-6 md:px-16 md:py-12">
       <div className="mx-auto mb-6 w-fit lg:mx-0">
         <Image
           src={logoSrc}
@@ -143,7 +143,11 @@ export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
           const Wrapper = columnWrappers[wrapperKey];
 
           return (
-            <Wrapper key={col.title} titleId={titleId} className="h-full px-4">
+            <Wrapper
+              key={col.title}
+              titleId={titleId}
+              className="h-full sm:px-4"
+            >
               <FooterColumnContent col={col} titleId={titleId} />
             </Wrapper>
           );
