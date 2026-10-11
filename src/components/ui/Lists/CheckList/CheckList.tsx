@@ -30,7 +30,7 @@ export default function CheckList({ items }: { items: ListItem[] }) {
                 />
               </svg>
             </span>
-            <span className="m-0 max-w-[18ch] text-xl font-semibold">
+            <span className="m-0 max-w-[18ch] text-lg font-semibold sm:text-xl">
               {description}
             </span>
           </li>

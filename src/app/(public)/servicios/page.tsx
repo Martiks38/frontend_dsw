@@ -21,10 +21,10 @@ export default function Services() {
       className="mx-auto my-0 w-full px-10 py-16 md:px-16 md:py-20"
     >
       <header className="mb-12 text-center sm:mb-20 md:mb-24">
-        <h1 id="services-title" className="mb-2 text-3xl font-bold md:text-5xl">
+        <h1 id="services-title" className="mb-2 text-3xl font-bold md:text-4xl">
           Nuestros servicios
         </h1>
-        <p className="mt-4 text-xl md:mt-8 md:text-3xl">
+        <p className="mt-4 text-xl md:mt-8 md:text-2xl">
           Todo lo que tu embarcación necesita
         </p>
       </header>

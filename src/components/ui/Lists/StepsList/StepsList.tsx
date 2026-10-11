@@ -4,7 +4,7 @@ import styles from './stepsList.module.css';
 
 export default function StepsList({ steps }: { steps: ContractProcessStep[] }) {
   return (
-    <div className="my-8 flex w-full justify-center px-4">
+    <div className="mb-8 flex w-full justify-center px-4 sm:my-8">
       <ol className={`${styles.steps} flex flex-col font-bold md:flex-row`}>
         {steps.map(({ step, description }) => {
           return (

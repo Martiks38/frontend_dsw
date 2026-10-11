@@ -1,7 +1,17 @@
 .intro {
+  background-image: var(--hero-bg);
+}
+
+@media(max-width: 48rem){
+  .intro:not(.shadow) {
+    background-image: none;
+  }
+}
+
+.shadow{
   position: relative;
 
-  & > * {
+  &>* {
     z-index: 0;
     color: var(--color-white);
   }

@@ -30,6 +30,7 @@
 
 html {
   height: 100dvh;
+  interpolate-size: allow-keywords;
 }
 
 html,

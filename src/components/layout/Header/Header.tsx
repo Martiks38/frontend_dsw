@@ -39,7 +39,7 @@ export default function Header({ altLogo, srcLogo, className }: HeaderProps) {
         className
       )}
     >
-      <div className="relative mx-auto flex h-full max-w-screen-2xl items-center justify-between px-16">
+      <div className="relative mx-auto flex h-full max-w-screen-2xl items-center justify-between px-12">
         <Link href={'/'}>
           <Image
             src={srcLogo}

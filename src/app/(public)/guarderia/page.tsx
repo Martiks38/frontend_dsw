@@ -12,11 +12,12 @@ export const metadata = {
     'Conoce nuestras instalaciones: galpones techados, sistemas de monitoreo 24/7, elevadores de última generación y rampas accesibles.',
 };
 
-export default function Marina() {
+export default function MarinaPage() {
   return (
     <>
       <IntroSection
         heroImageUrl="/images/heroImages/hero-image-boat-storage.webp"
+        className="text-center sm:text-left"
         title={
           <>
             Guardamos tu embarcación,
@@ -24,9 +25,8 @@ export default function Marina() {
             cuidamos tu tranquilidad
           </>
         }
-        variant="shadowless"
       >
-        <p className="w-full max-w-[35ch] text-xl">
+        <p className="mx-auto w-full max-w-[35ch] text-lg sm:mx-0 md:text-xl">
           Contamos con instalaciones diseñadas para el guardado seguro de
           embarcaiones, con atención personalizada y servicios de primer nivel.
         </p>

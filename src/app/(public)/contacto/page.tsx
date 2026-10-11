@@ -22,9 +22,9 @@ export default function ContactPage() {
           </>
         }
         heroImageUrl="/images/heroImages/hero_image_contact.webp"
-        variant="shadowless"
+        className="text-center sm:text-left"
       >
-        <p className="w-[35ch] text-2xl">
+        <p className="mx-auto w-full max-w-[35ch] text-xl sm:mx-0">
           Estamos para ayudarte. Comunicate con nosotros o acercate a nuestas
           instalaciones.
         </p>

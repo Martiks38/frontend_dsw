@@ -8,7 +8,6 @@
   gap: 1rem 1.5rem;
 
   & > h2 {
-    text-align: center;
     padding: 0;
     grid-area: title;
   }
@@ -54,6 +53,9 @@
   .section_mission {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
+      grid-template-areas:
+          'icon title'
+          'icon text';
 
     & > svg{
       display:block;
@@ -71,11 +73,5 @@
 
   .item {
     min-height: auto;
-  }
-}
-
-@media(min-width: 40rem) {
-  .section_mission>h2 {
-    text-align: left;
   }
 }

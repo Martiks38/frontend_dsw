@@ -33,17 +33,16 @@ export default function AboutUs() {
       <IntroSection
         title="Sobre nosotros"
         heroImageUrl="/images/heroImages/hero-image-about-us.webp"
-        variant="shadowless"
         className="text-center md:text-left"
       >
-        <p className="max-w-[35ch] text-center text-xl sm:text-2xl md:text-left">
+        <p className="mx-auto max-w-[35ch] text-center text-lg md:mx-0 md:text-left md:text-xl">
           Somos una guardería náutica dedicada al cuidado y almacenamiento de
           embarcaciones, ofreciendo a nuestros clientes un servicio seguro,
           confiable y personalizado.
         </p>
       </IntroSection>
       <PageSection heading="Nuestra misión" className={styles.section_mission}>
-        <p className="text-center sm:text-left">
+        <p className="mx-auto text-center md:mx-0 md:text-left">
           Brindar soluciones integrales para el cuidado de embarcaciones,
           garantizando seguridad, calidad y atención personalizada.
         </p>
@@ -60,8 +59,10 @@ export default function AboutUs() {
                 key={label}
                 className="flex w-38 flex-col items-center text-center"
               >
-                <Icon size={60} />
-                <span className="pt-6 text-xl font-bold">{label}</span>
+                <Icon className="h-(--size-icon) w-(--size-icon) [--size-icon:2.75rem] sm:[--size-icon:3.75rem]" />
+                <span className="pt-6 text-lg font-bold sm:text-xl">
+                  {label}
+                </span>
               </li>
             );
           })}

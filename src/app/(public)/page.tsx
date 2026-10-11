@@ -21,6 +21,7 @@ export default function Home() {
     <>
       <IntroSection
         heroImageUrl="/images/heroImages/hero-image-home.webp"
+        shadowDefault
         title={
           <>
             Tu embarcación.
@@ -29,7 +30,7 @@ export default function Home() {
           </>
         }
       >
-        <p className="w-full max-w-[35ch] text-[1.125rem] md:text-2xl">
+        <p className="w-full max-w-[35ch] text-lg md:text-xl">
           Guardería náutica y servicios para que disfrutes de tu embarcación
           cuando quieras.
         </p>
