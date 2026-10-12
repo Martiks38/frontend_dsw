@@ -1,17 +1,14 @@
 'use server';
 
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { headers } from 'next/headers';
 
 export type FormState = {
   success: boolean;
   message: string;
 };
 
-const getTrimmedFormValue = (formData: FormData, field: string) => {
-  return (formData.get(field) as string)?.trim();
-};
+const getTrimmedFormValue = (formData: FormData, field: string) =>
+  String(formData.get(field) ?? '').trim();
 
 export async function submitContactForm(
   prevState: FormState,
@@ -30,44 +27,53 @@ export async function submitContactForm(
     };
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return {
-      success: false,
-      message: 'Por favor, ingresa un correo electrónico válido.',
-    };
-  }
-
   try {
-    const { error } = await resend.emails.send({
-      from: 'Contacto Web <onboarding@resend.dev>',
-      to: [process.env.CONTACT_EMAIL_RECIPIENT || 'test@test.com'],
-      replyTo: email,
-      subject: `Nueva consulta: ${subject}`,
-      html: `
-        <h2>Nueva consulta desde la web</h2>
-        <p><strong>Nombre y Apellido:</strong> ${fullname}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Teléfono:</strong> ${phone}</p>
-        <p><strong>Asunto:</strong> ${subject}</p>
-        <hr />
-        <h3>Mensaje:</h3>
-        <p style="white-space: pre-wrap;">${message}</p>
-      `,
+    const headersNext = await headers();
+    const forwardedFor = headersNext.get('x-forwarded-for');
+
+    const response = await fetch(`${process.env.BACKEND_URL}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(forwardedFor && { 'X-Forwarded-For': forwardedFor }),
+      },
+      body: JSON.stringify({
+        fullname,
+        email,
+        phone: phone || undefined,
+        subject,
+        message,
+      }),
+      cache: 'no-store',
     });
 
-    if (error) {
+    if (response.ok) {
+      return {
+        success: true,
+        message: '¡Gracias por tu mensaje! Tu consulta fue enviada con éxito.',
+      };
+    }
+
+    if (response.status === 400) {
       return {
         success: false,
-        message: 'Ocurrió un problema al enviar el correo. Intenta nuevamente.',
+        message: 'Revisá los datos ingresados e intentá nuevamente.',
+      };
+    }
+
+    if (response.status === 429) {
+      return {
+        success: false,
+        message:
+          'Enviaste demasiadas consultas. Esperá un minuto e intentá de nuevo.',
       };
     }
 
     return {
-      success: true,
-      message: '¡Gracias por tu mensaje! Tu consulta fue enviada con éxito.',
+      success: false,
+      message: 'Ocurrió un problema al enviar tu consulta. Intenta nuevamente.',
     };
-  } catch (error: unknown) {
+  } catch {
     return {
       success: false,
       message: 'Error en el servidor. Por favor intenta más tarde.',
