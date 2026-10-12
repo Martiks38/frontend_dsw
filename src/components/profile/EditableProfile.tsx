@@ -276,11 +276,6 @@ export function EditableProfileForm({ profile }: Props) {
         >
           {isProfilePending ? 'Guardando...' : 'Guardar cambios'}
         </button>
-        {[1, 1].map((_, ind) => {
-          console.log(profileState);
-
-          return <div key={ind}></div>;
-        })}
       </form>
 
       <form

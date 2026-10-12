@@ -2,7 +2,7 @@ import { type MyBoatCard } from '@/interfaces';
 
 export function BoatCard({ boat }: { boat: MyBoatCard }) {
   return (
-    <article className="rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-100">
+    <article className="w-fit rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-100">
       <h3 className="text-base font-semibold text-slate-900">{boat.name}</h3>
       <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-sm">
         <Dt>Modelo:</Dt>
