@@ -29,7 +29,7 @@ export function TaskList({
   emptyMessage = 'No tienes tareas asignadas hoy',
 }: TaskListProps) {
   const headingId = `tasklist-${title.toLowerCase().replace(/\s+/g, '-')}`;
-
+  console.log(items);
   return (
     <section
       aria-labelledby={headingId}
