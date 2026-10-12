@@ -3,8 +3,9 @@
 import { useActionState, useEffect, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 
-import { FormState, submitContactForm } from '@/app/actions/contact';
+import { type FormState, submitContactForm } from '@/app/actions/contact';
 import { cn } from '@/lib/cn';
+import { type ContactField } from '@/validations/contact';
 
 import styles from './contactForm.module.css';
 
@@ -30,9 +31,26 @@ function SubmitButton() {
   );
 }
 
+function FieldError({ id, messages }: { id: string; messages?: string[] }) {
+  if (!messages?.length) return null;
+
+  return (
+    <p id={id} className="mt-1 text-sm text-red-600">
+      {messages[0]}
+    </p>
+  );
+}
+
 export function ContactForm({ className }: { className?: string }) {
   const [state, formAction] = useActionState(submitContactForm, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const errors = state.zodErrors;
+
+  const fieldProps = (name: ContactField) => ({
+    defaultValue: state.data?.[name],
+    'aria-invalid': errors?.[name] ? true : undefined,
+    'aria-describedby': errors?.[name] ? `${name}-error` : undefined,
+  });
 
   useEffect(() => {
     if (state.success) {
@@ -40,10 +58,19 @@ export function ContactForm({ className }: { className?: string }) {
     }
   }, [state.success]);
 
+  useEffect(() => {
+    if (errors) {
+      formRef.current
+        ?.querySelector<HTMLElement>('[aria-invalid="true"]')
+        ?.focus();
+    }
+  }, [errors]);
+
   return (
     <form
       ref={formRef}
       action={formAction}
+      noValidate
       className={cn(styles.contact_form, className)}
     >
       {state.message && (
@@ -69,7 +96,9 @@ export function ContactForm({ className }: { className?: string }) {
           placeholder="Ej: Juan Pérez"
           autoComplete="name"
           required
+          {...fieldProps('fullname')}
         />
+        <FieldError id="fullname-error" messages={errors?.fullname} />
       </div>
       <div className={styles.form_group}>
         <label htmlFor="email">
@@ -82,7 +111,9 @@ export function ContactForm({ className }: { className?: string }) {
           placeholder="Ej: juan@correo.com"
           autoComplete="email"
           required
+          {...fieldProps('email')}
         />
+        <FieldError id="email-error" messages={errors?.email} />
       </div>
       <div className={styles.form_group}>
         <label htmlFor="phone">Teléfono</label>
@@ -92,7 +123,9 @@ export function ContactForm({ className }: { className?: string }) {
           name="phone"
           placeholder="+54 341 123 4567"
           autoComplete="tel"
+          {...fieldProps('phone')}
         />
+        <FieldError id="phone-error" messages={errors?.phone} />
       </div>
       <div className={styles.form_group}>
         <label htmlFor="subject">
@@ -104,7 +137,9 @@ export function ContactForm({ className }: { className?: string }) {
           name="subject"
           placeholder="¿En qué podemos ayudarte?"
           required
+          {...fieldProps('subject')}
         />
+        <FieldError id="subject-error" messages={errors?.subject} />
       </div>
       <div className={styles.form_group}>
         <label htmlFor="message">
@@ -116,9 +151,10 @@ export function ContactForm({ className }: { className?: string }) {
           rows={5}
           maxLength={256}
           placeholder="Escribí tu consulta..."
-          defaultValue=""
           required
+          {...fieldProps('message')}
         />
+        <FieldError id="message-error" messages={errors?.message} />
       </div>
       <SubmitButton />
     </form>

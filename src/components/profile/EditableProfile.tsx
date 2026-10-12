@@ -20,7 +20,8 @@ interface Props {
 }
 
 const styles = {
-  profileInput: 'mt-1 w-[40ch] rounded-md border border-slate-300 text-sm p-3',
+  profileInput:
+    'mt-1 w-full max-w-[40ch] rounded-md border border-slate-300 text-sm p-3',
   form: 'rounded-lg border border-slate-300 bg-white p-6 shadow-sm ring-1 ring-slate-100',
 };
 
@@ -272,7 +273,7 @@ export function EditableProfileForm({ profile }: Props) {
         <button
           type="submit"
           disabled={isProfilePending}
-          className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+          className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50 max-sm:w-full"
         >
           {isProfilePending ? 'Guardando...' : 'Guardar cambios'}
         </button>

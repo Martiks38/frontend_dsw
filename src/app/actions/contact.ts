@@ -2,34 +2,47 @@
 
 import { headers } from 'next/headers';
 
+import { type ContactField, contactSchema } from '@/validations/contact';
+
 export type FormState = {
   success: boolean;
   message: string;
+  zodErrors?: Partial<Record<ContactField, string[]>>;
+  data?: Record<ContactField, string>;
 };
 
-const getTrimmedFormValue = (formData: FormData, field: string) =>
+const getTrimmedFormValue = (formData: FormData, field: ContactField) =>
   String(formData.get(field) ?? '').trim();
 
 export async function submitContactForm(
   prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const fullname = getTrimmedFormValue(formData, 'fullname');
-  const email = getTrimmedFormValue(formData, 'email');
-  const phone = getTrimmedFormValue(formData, 'phone');
-  const subject = getTrimmedFormValue(formData, 'subject');
-  const message = getTrimmedFormValue(formData, 'message');
+  const data: Record<ContactField, string> = {
+    fullname: getTrimmedFormValue(formData, 'fullname'),
+    email: getTrimmedFormValue(formData, 'email'),
+    phone: getTrimmedFormValue(formData, 'phone'),
+    subject: getTrimmedFormValue(formData, 'subject'),
+    message: getTrimmedFormValue(formData, 'message'),
+  };
 
-  if (!fullname || !email || !subject || !message) {
+  const parsed = contactSchema.safeParse({
+    ...data,
+    phone: data.phone || undefined,
+  });
+
+  if (!parsed.success) {
     return {
       success: false,
-      message: 'Por favor, completa todos los campos obligatorios',
+      message: 'Revisá los campos marcados e intentá nuevamente.',
+      zodErrors: parsed.error.flatten().fieldErrors,
+      data,
     };
   }
 
+  // Todos los retornos de error devuelven `data` para no perder lo escrito.
   try {
-    const headersNext = await headers();
-    const forwardedFor = headersNext.get('x-forwarded-for');
+    const forwardedFor = (await headers()).get('x-forwarded-for');
 
     const response = await fetch(`${process.env.BACKEND_URL}/api/contact`, {
       method: 'POST',
@@ -37,13 +50,7 @@ export async function submitContactForm(
         'Content-Type': 'application/json',
         ...(forwardedFor && { 'X-Forwarded-For': forwardedFor }),
       },
-      body: JSON.stringify({
-        fullname,
-        email,
-        phone: phone || undefined,
-        subject,
-        message,
-      }),
+      body: JSON.stringify(parsed.data),
       cache: 'no-store',
     });
 
@@ -54,29 +61,25 @@ export async function submitContactForm(
       };
     }
 
-    if (response.status === 400) {
-      return {
-        success: false,
-        message: 'Revisá los datos ingresados e intentá nuevamente.',
-      };
-    }
-
     if (response.status === 429) {
       return {
         success: false,
         message:
           'Enviaste demasiadas consultas. Esperá un minuto e intentá de nuevo.',
+        data,
       };
     }
 
     return {
       success: false,
       message: 'Ocurrió un problema al enviar tu consulta. Intenta nuevamente.',
+      data,
     };
   } catch {
     return {
       success: false,
       message: 'Error en el servidor. Por favor intenta más tarde.',
+      data,
     };
   }
 }
