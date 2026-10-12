@@ -56,17 +56,6 @@ const DASHBOARD_DATA: NavIconItem[] = [
     },
   },
   {
-    label: 'Mi perfil',
-    href: getDashboardPath('perfil'),
-    icon: User,
-    roles: ['MEMBER', 'OPERATOR', 'ADMIN'],
-    helperText: {
-      MEMBER: 'Actualizá tus datos personales y de acceso.',
-      ADMIN: 'Actualizá tus datos personales y de acceso.',
-      OPERATOR: 'Actualizá tus datos personales y de acceso.',
-    },
-  },
-  {
     label: 'Clientes',
     href: getDashboardPath('clientes'),
     icon: Users,
@@ -93,6 +82,17 @@ const DASHBOARD_DATA: NavIconItem[] = [
     icon: ShipWheel,
     roles: ['OPERATOR'],
     helperText: { MEMBER: '' },
+  },
+  {
+    label: 'Mi perfil',
+    href: getDashboardPath('perfil'),
+    icon: User,
+    roles: ['MEMBER', 'OPERATOR', 'ADMIN'],
+    helperText: {
+      MEMBER: 'Actualizá tus datos personales y de acceso.',
+      ADMIN: 'Actualizá tus datos personales y de acceso.',
+      OPERATOR: 'Consulta tus datos personales y gestiona tus datos de acceso.',
+    },
   },
 ];
 

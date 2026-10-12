@@ -3,6 +3,8 @@
 import { Eye, EyeOff } from 'lucide-react';
 import { useId, useState } from 'react';
 
+import { cn } from '@/lib/cn';
+
 interface Props {
   label: string;
   name: string;
@@ -11,6 +13,7 @@ interface Props {
   minLength?: number;
   maxLength?: number;
   invalid?: boolean;
+  className?: string;
 }
 
 export function PasswordField({
@@ -21,6 +24,7 @@ export function PasswordField({
   maxLength,
   minLength,
   invalid,
+  className,
 }: Props) {
   const [visible, setVisible] = useState(false);
   const id = useId();
@@ -41,9 +45,11 @@ export function PasswordField({
           maxLength={maxLength}
           aria-invalid={invalid ? true : undefined}
           aria-describedby={invalid ? 'password-form-error' : undefined}
-          className={`w-full rounded-md border p-3 pr-10 text-sm ${
-            invalid ? 'border-red-500' : 'border-slate-300'
-          }`}
+          className={cn(
+            'w-full rounded-md border p-3 pr-10 text-sm',
+            invalid ? 'border-red-500' : 'border-slate-300',
+            className
+          )}
           required
         />
         <button

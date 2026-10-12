@@ -19,7 +19,7 @@ export default async function DashboardLayout({
 
       <div className="flex min-w-0 flex-1 flex-col peer-data-[expanded=true]:max-sm:hidden">
         <HeaderDashboard userName={user.name} role={user.role} />
-        <main id="main-content" className="flex-1 p-6.5">
+        <main id="main-content" className="flex-1 px-5 py-6.5 sm:px-6.5">
           {children}
         </main>
       </div>

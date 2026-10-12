@@ -40,22 +40,15 @@ export function OperatorProfileView({ profile }: { profile: EmployeeProfile }) {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <header>
-        <h1 className="text-xl font-semibold text-slate-900">Mi perfil</h1>
-        <p className="text-sm text-slate-500">
-          Gestioná tu información personal y de acceso.
-        </p>
-      </header>
-
-      <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 md:place-items-center">
         <section
           aria-labelledby="info-personal"
-          className="rounded-lg bg-white p-5 shadow-sm ring-1 ring-slate-100"
+          className="xs:px-5 w-fit rounded-lg bg-white py-5 shadow-sm ring-1 ring-slate-100"
         >
           <h2 id="info-personal" className={styles.headers}>
             Información personal
           </h2>
-          <dl className="mt-4 grid grid-cols-1 gap-y-3 text-sm">
+          <dl className="mt-4 flex flex-row flex-wrap gap-5 text-sm md:flex-col">
             <div>
               <Dt>Nombre</Dt>
               <Dd>{profile.firstName}</Dd>
@@ -77,7 +70,7 @@ export function OperatorProfileView({ profile }: { profile: EmployeeProfile }) {
           <h2 className="mt-6 text-base font-semibold text-slate-900">
             Información laboral
           </h2>
-          <dl className="mt-4 grid grid-cols-1 gap-y-3 text-sm">
+          <dl className="mt-4 flex flex-row flex-wrap gap-5 text-sm md:flex-col">
             <div>
               <Dt>Rol</Dt>
               <Dd>{profile.role === 'OPERATOR' ? 'Operador' : 'Admin'}</Dd>
@@ -91,7 +84,7 @@ export function OperatorProfileView({ profile }: { profile: EmployeeProfile }) {
 
         <section
           aria-labelledby="cambiar-password"
-          className="rounded-lg bg-white p-5 shadow-sm ring-1 ring-slate-100"
+          className="xs:px-5 xs:w-fit rounded-lg bg-white py-5 shadow-sm ring-1 ring-slate-100"
         >
           <h2 id="cambiar-password" className={styles.headers}>
             Cambiar contraseña
@@ -99,12 +92,13 @@ export function OperatorProfileView({ profile }: { profile: EmployeeProfile }) {
           <form
             ref={formRef}
             action={passwordFormAction}
-            className="mt-4 space-y-4"
+            className="mt-4 flex flex-col gap-5"
           >
             <PasswordField
               label="Contraseña actual"
               name="currentPassword"
               autoComplete="current-password"
+              className="xs:max-w-[45ch]"
               invalid={
                 (passwordState.zodErrors?.currentPassword?.length ?? 0) > 0
               }
@@ -115,6 +109,7 @@ export function OperatorProfileView({ profile }: { profile: EmployeeProfile }) {
               autoComplete="new-password"
               minLength={8}
               defaultValue={passwordState.data?.newPassword}
+              className="xs:max-w-[45ch]"
               invalid={(passwordState.zodErrors?.newPassword?.length ?? 0) > 0}
             />
             <PasswordField
@@ -123,6 +118,7 @@ export function OperatorProfileView({ profile }: { profile: EmployeeProfile }) {
               autoComplete="new-password"
               minLength={8}
               defaultValue={passwordState.data?.confirmPassword}
+              className="xs:max-w-[45ch]"
               invalid={
                 (passwordState.zodErrors?.confirmPassword?.length ?? 0) > 0
               }
