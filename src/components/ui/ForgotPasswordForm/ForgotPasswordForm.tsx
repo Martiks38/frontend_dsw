@@ -4,13 +4,14 @@ import { useState, useTransition } from 'react';
 
 import { forgotPassword } from '@/lib/auth-recovery';
 
-export default function ForgotPasswordPage() {
+export function ForgotPasswordForm() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+
     startTransition(async () => {
       try {
         await forgotPassword(email);
@@ -25,10 +26,11 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="mx-auto mt-16 max-w-sm">
+    <div className="xs:max-w-md w-full">
       <h1 className="text-xl font-semibold text-slate-900">
         Recuperar contraseña
       </h1>
+
       <form onSubmit={handleSubmit} className="mt-6">
         <label
           htmlFor="email"
@@ -56,7 +58,7 @@ export default function ForgotPasswordPage() {
           disabled={isPending}
           className="mt-4 w-full rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
         >
-          {isPending ? 'Enviando...' : 'Enviar instrucciones'}
+          {isPending ? 'Enviando...' : 'Recuperar'}
         </button>
       </form>
     </div>

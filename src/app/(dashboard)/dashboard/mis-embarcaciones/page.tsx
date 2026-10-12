@@ -21,7 +21,7 @@ export default async function MyBoatsPage() {
   if (boats.length === 0) {
     return (
       <p className="mt-6 text-base text-slate-700">
-        No hay embaraciones registradas en guardería.
+        No hay embarcaciones registradas en guardería.
       </p>
     );
   }
