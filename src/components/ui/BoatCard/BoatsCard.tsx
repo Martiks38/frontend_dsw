@@ -1,8 +1,20 @@
 import { type MyBoatCard } from '@/interfaces';
+import { cn } from '@/lib/cn';
 
-export function BoatCard({ boat }: { boat: MyBoatCard }) {
+export function BoatCard({
+  boat,
+  className,
+}: {
+  boat: MyBoatCard;
+  className?: string;
+}) {
   return (
-    <article className="w-fit rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-100">
+    <article
+      className={cn(
+        'w-fit rounded-lg bg-white p-4 shadow-sm ring-1 ring-slate-100',
+        className
+      )}
+    >
       <h3 className="text-base font-semibold text-slate-900">{boat.name}</h3>
       <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 text-sm">
         <Dt>Modelo:</Dt>

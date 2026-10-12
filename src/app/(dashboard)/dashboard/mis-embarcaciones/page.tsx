@@ -29,10 +29,10 @@ export default async function MyBoatsPage() {
   return (
     <section
       aria-labelledby="page-heading"
-      className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+      className="mt-6 flex w-full flex-wrap gap-4"
     >
       {boats.map((boat) => (
-        <BoatCard key={boat.id} boat={boat} />
+        <BoatCard key={boat.id} boat={boat} className="flex-none" />
       ))}
     </section>
   );

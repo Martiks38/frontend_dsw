@@ -270,13 +270,7 @@ export function EditableProfileForm({ profile }: Props) {
           {profileState.message}
         </div>
 
-        <button
-          type="submit"
-          disabled={isProfilePending}
-          className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50 max-sm:w-full"
-        >
-          {isProfilePending ? 'Guardando...' : 'Guardar cambios'}
-        </button>
+        <Button isDisabled={isProfilePending} />
       </form>
 
       <form
@@ -288,7 +282,7 @@ export function EditableProfileForm({ profile }: Props) {
           <legend className="text-base font-semibold text-slate-900">
             Seguridad
           </legend>
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
             <PasswordField
               label="Contraseña actual"
               name="currentPassword"
@@ -343,15 +337,20 @@ export function EditableProfileForm({ profile }: Props) {
             passwordState.message
           )}
         </div>
-
-        <button
-          type="submit"
-          disabled={isPasswordPending}
-          className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
-        >
-          {isPasswordPending ? 'Guardando...' : 'Guardar cambios'}
-        </button>
+        <Button isDisabled={isPasswordPending} />
       </form>
     </div>
+  );
+}
+
+function Button({ isDisabled }: { isDisabled: boolean }) {
+  return (
+    <button
+      type="submit"
+      disabled={isDisabled}
+      className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50 max-sm:w-full"
+    >
+      {isDisabled ? 'Guardando...' : 'Guardar cambios'}
+    </button>
   );
 }
