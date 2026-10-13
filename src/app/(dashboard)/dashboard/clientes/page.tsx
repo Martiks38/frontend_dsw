@@ -23,7 +23,7 @@ export default async function ClientsPage({ searchParams }: PageProps) {
   query.set('limit', '10');
 
   const overview = await serverFetch<ClientsOverview>(
-    `/api/clientes?${query.toString()}`
+    `/api/clients?${query.toString()}`
   );
 
   if (!overview) redirect('/iniciar-sesion');

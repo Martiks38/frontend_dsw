@@ -11,7 +11,7 @@ export default async function EmployeesPage() {
   const user = await getCurrentUser();
   if (!user || user.role !== 'ADMIN') redirect('/dashboard');
 
-  const employees = await serverFetch<EmployeeListItem[]>('/api/empleados');
+  const employees = await serverFetch<EmployeeListItem[]>('/api/employees');
   if (!employees) redirect('/iniciar-sesion');
 
   return <AdminEmployeesTable employees={employees} />;

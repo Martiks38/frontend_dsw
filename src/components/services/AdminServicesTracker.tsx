@@ -41,18 +41,6 @@ export function AdminServicesTracker({
 
   return (
     <div>
-      <header>
-        <h1
-          id="servicios-heading"
-          className="text-xl font-semibold text-slate-900"
-        >
-          Servicios
-        </h1>
-        <p className="text-sm text-slate-500">
-          Seguimiento de servicios y operaciones.
-        </p>
-      </header>
-
       <nav aria-label="Filtrar por estado" className="mt-4">
         <ul className="flex gap-2 border-b border-slate-200 text-sm">
           {TABS.map((tab) => (

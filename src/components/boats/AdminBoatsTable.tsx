@@ -26,38 +26,28 @@ export function AdminBoatsTable({
   );
 
   const filtered = useMemo(() => {
+    const term = search.trim().toLowerCase();
     return overview.data.filter((boat) => {
       const matchesStatus =
         statusFilter === 'ALL' || boat.status === statusFilter;
       const matchesSearch =
-        !search ||
-        boat.name.toLowerCase().includes(search.toLowerCase()) ||
-        boat.registrationNumber.toLowerCase().includes(search.toLowerCase()) ||
-        boat.ownerName.toLowerCase().includes(search.toLowerCase());
+        !term ||
+        boat.name.toLowerCase().includes(term) ||
+        boat.registrationNumber.toLowerCase().includes(term) ||
+        boat.ownerName.toLowerCase().includes(term);
       return matchesStatus && matchesSearch;
     });
   }, [overview.data, search, statusFilter]);
 
   return (
-    <div>
-      <header>
-        <h1
-          id="embarcaciones-heading"
-          className="text-xl font-semibold text-slate-900"
-        >
-          Embarcaciones
-        </h1>
-        <p className="text-sm text-slate-500">
-          Listado de embarcaciones registradas.
-        </p>
-      </header>
-
+    <div className="min-w-90">
       <form
         role="search"
         aria-label="Buscar embarcaciones"
-        className="mt-4 flex flex-wrap gap-3"
+        onSubmit={(e) => e.preventDefault()}
+        className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
       >
-        <div className="flex-1">
+        <div className="sm:flex-1">
           <label htmlFor="boat-search" className="sr-only">
             Buscar embarcación
           </label>
@@ -67,7 +57,7 @@ export function AdminBoatsTable({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar embarcación..."
-            className="w-full max-w-sm rounded-md border-slate-300 text-sm"
+            className="w-full rounded-md border-slate-300 text-sm sm:max-w-sm"
           />
         </div>
         <div>
@@ -80,7 +70,7 @@ export function AdminBoatsTable({
             onChange={(e) =>
               setStatusFilter(e.target.value as BoatAdminStatus | 'ALL')
             }
-            className="rounded-md border-slate-300 text-sm"
+            className="w-full rounded-md border-slate-300 text-sm sm:w-auto"
           >
             {STATUS_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -96,38 +86,79 @@ export function AdminBoatsTable({
           No se encontraron embarcaciones con estos filtros.
         </p>
       ) : (
-        <div className="mt-4 overflow-x-auto rounded-lg ring-1 ring-slate-100">
-          <table
-            className="min-w-full divide-y divide-slate-100 text-sm"
+        <>
+          <ul
+            role="list"
             aria-labelledby="embarcaciones-heading"
+            className="mt-4 space-y-3 md:hidden"
           >
-            <caption className="sr-only">
-              Listado de embarcaciones registradas
-            </caption>
-            <thead className="bg-slate-50">
-              <tr>
-                <Th>Matrícula</Th>
-                <Th>Nombre</Th>
-                <Th>Propietario</Th>
-                <Th>Tipo</Th>
-                <Th>Estado</Th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {filtered.map((boat) => (
-                <tr key={boat.id}>
-                  <Td className="text-slate-700">{boat.registrationNumber}</Td>
-                  <Td className="text-slate-700">{boat.name}</Td>
-                  <Td className="text-slate-700">{boat.ownerName}</Td>
-                  <Td className="text-slate-700">{boat.boatTypeName}</Td>
-                  <Td>
+            {filtered.map((boat) => (
+              <li
+                key={boat.id}
+                className="rounded-lg bg-white p-4 ring-1 ring-slate-100"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <p className="rap-break-word min-w-0 font-semibold text-slate-800">
+                    {boat.name}
+                  </p>
+                  <div className="shrink-0">
                     <BoatStatusBadge status={boat.status} />
-                  </Td>
+                  </div>
+                </div>
+
+                <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+                  <dt className="text-slate-500">Matrícula</dt>
+                  <dd className="min-w-0 wrap-break-word text-slate-700">
+                    {boat.registrationNumber}
+                  </dd>
+                  <dt className="text-slate-500">Propietario</dt>
+                  <dd className="min-w-0 wrap-break-word text-slate-700">
+                    {boat.ownerName}
+                  </dd>
+                  <dt className="text-slate-500">Tipo</dt>
+                  <dd className="min-w-0 wrap-break-word text-slate-700">
+                    {boat.boatTypeName}
+                  </dd>
+                </dl>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-4 hidden overflow-x-auto rounded-lg ring-1 ring-slate-100 md:block">
+            <table
+              className="min-w-full divide-y divide-slate-100 text-sm"
+              aria-labelledby="embarcaciones-heading"
+            >
+              <caption className="sr-only">
+                Listado de embarcaciones registradas
+              </caption>
+              <thead className="bg-slate-50">
+                <tr>
+                  <Th>Matrícula</Th>
+                  <Th>Nombre</Th>
+                  <Th>Propietario</Th>
+                  <Th>Tipo</Th>
+                  <Th>Estado</Th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {filtered.map((boat) => (
+                  <tr key={boat.id}>
+                    <Td className="text-slate-700">
+                      {boat.registrationNumber}
+                    </Td>
+                    <Td className="text-slate-700">{boat.name}</Td>
+                    <Td className="text-slate-700">{boat.ownerName}</Td>
+                    <Td className="text-slate-700">{boat.boatTypeName}</Td>
+                    <Td>
+                      <BoatStatusBadge status={boat.status} />
+                    </Td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
 
       <StatGrid heading="Resumen">

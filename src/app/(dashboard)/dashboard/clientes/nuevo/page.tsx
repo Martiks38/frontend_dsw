@@ -11,7 +11,6 @@ export default async function NewClientPage() {
 
   return (
     <div>
-      {/* ! Agregar en dashboard nav */}
       <header>
         <h1 className="text-xl font-semibold text-slate-900">Nuevo cliente</h1>
         <p className="text-sm text-slate-500">

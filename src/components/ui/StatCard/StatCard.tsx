@@ -28,7 +28,7 @@ export function StatCard({
   const isLoader = IconComponent.name?.toLowerCase().includes('loader');
 
   return (
-    <div className="flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="flex w-full max-w-[30ch] items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <span
         className={cn(
           'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
@@ -66,7 +66,7 @@ export function StatGrid({ heading, children }: StatGridProps) {
       <h2 id={headingId} className="sr-only">
         {heading}
       </h2>
-      <dl className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <dl className="grid grid-cols-1 place-items-center gap-5 md:grid-cols-2 lg:grid-cols-4">
         {children}
       </dl>
     </section>

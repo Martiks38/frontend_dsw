@@ -26,23 +26,12 @@ export function AdminEmployeesTable({
 
   return (
     <div>
-      <header className="flex items-center justify-between">
-        <div>
-          <h1
-            id="empleados-heading"
-            className="text-xl font-semibold text-slate-900"
-          >
-            Empleados
-          </h1>
-          <p className="text-sm text-slate-500">Gestión del personal.</p>
-        </div>
-        <Link
-          href="/empleados/nuevo"
-          className="rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white"
-        >
-          + Nuevo empleado
-        </Link>
-      </header>
+      <Link
+        href="/dashboard/empleados/nuevo"
+        className="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-800 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:outline-none sm:w-auto sm:shrink-0"
+      >
+        + Nuevo empleado
+      </Link>
 
       <form role="search" aria-label="Buscar empleados" className="mt-4">
         <label htmlFor="employee-search" className="sr-only">

@@ -32,7 +32,9 @@ const DASHBOARD_DATA: NavIconItem[] = [
     href: getDashboardPath('embarcaciones'),
     icon: Ship,
     roles: ['ADMIN'],
-    helperText: { ADMIN: 'Listado de embaracaciones registradas' },
+    helperText: {
+      ADMIN: 'Listado de embaracaciones registradas',
+    },
   },
   {
     label: 'Solicitudes',

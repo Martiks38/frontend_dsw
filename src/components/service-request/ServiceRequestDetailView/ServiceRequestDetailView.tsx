@@ -66,69 +66,71 @@ export function ServiceRequestDetailView({ detail, role, operators }: Props) {
     (detail.status === 'PENDING' || detail.status === 'SCHEDULED');
 
   return (
-    <div className="mx-auto w-fit">
-      <DetailInfo detail={detail} />
+    <div className="@container">
+      <div className="w-full @sm:mx-auto @sm:w-fit">
+        <DetailInfo detail={detail} />
 
-      <FormMessage message={message} error={error} />
+        <FormMessage message={message} error={error} />
 
-      {detail.canEditComment && (
-        <CommentSection
-          initialComment={detail.internalComment ?? ''}
-          disabled={isPending}
-          onSave={(comment) =>
-            runAction(
-              () =>
-                updateServiceRequestManagement(detail.id, {
-                  internalComment: comment,
-                }),
-              'Comentario guardado.'
-            )
-          }
-        />
-      )}
+        {detail.canEditComment && (
+          <CommentSection
+            initialComment={detail.internalComment ?? ''}
+            disabled={isPending}
+            onSave={(comment) =>
+              runAction(
+                () =>
+                  updateServiceRequestManagement(detail.id, {
+                    internalComment: comment,
+                  }),
+                'Comentario guardado.'
+              )
+            }
+          />
+        )}
 
-      {detail.canUpdateStatus && (
-        <StatusActionButton
-          status={detail.status}
-          isDepartureService={detail.isDepartureService}
-          disabled={isPending}
-          onUpdate={(status, estimatedReturnDatetime) =>
-            runAction(
-              () =>
-                updateServiceRequestManagement(detail.id, {
-                  status,
-                  estimatedReturnDatetime,
-                }),
-              'Estado actualizado.'
-            )
-          }
-        />
-      )}
+        {detail.canUpdateStatus && (
+          <StatusActionButton
+            status={detail.status}
+            isDepartureService={detail.isDepartureService}
+            disabled={isPending}
+            onUpdate={(status, estimatedReturnDatetime) =>
+              runAction(
+                () =>
+                  updateServiceRequestManagement(detail.id, {
+                    status,
+                    estimatedReturnDatetime,
+                  }),
+                'Estado actualizado.'
+              )
+            }
+          />
+        )}
 
-      {canAssign && (
-        <AssignmentSection
-          status={detail.status}
-          operators={operators}
-          disabled={isPending}
-          onSubmit={handleAssign}
-          onValidationError={(msg) => {
-            setMessage(null);
-            setError(msg);
-          }}
-        />
-      )}
+        {canAssign && (
+          <AssignmentSection
+            status={detail.status}
+            operators={operators}
+            disabled={isPending}
+            onSubmit={handleAssign}
+            onValidationError={(msg) => {
+              setMessage(null);
+              setError(msg);
+            }}
+          />
+        )}
 
-      {detail.canCancel && (
-        <CancelButton
-          disabled={isPending}
-          onCancel={() =>
-            runAction(
-              () => cancelServiceRequest(detail.id),
-              'Solicitud cancelada.'
-            )
-          }
-        />
-      )}
+        {detail.canCancel && (
+          <CancelButton
+            disabled={isPending}
+            onCancel={() =>
+              runAction(
+                () => cancelServiceRequest(detail.id),
+                'Solicitud cancelada.'
+              )
+            }
+          />
+        )}
+      </div>
     </div>
   );
 }

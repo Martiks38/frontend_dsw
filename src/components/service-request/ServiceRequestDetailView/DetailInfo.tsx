@@ -4,7 +4,7 @@ export function DetailInfo({ detail }: { detail: ServiceRequestDetail }) {
   return (
     <section
       aria-labelledby="detalle-heading"
-      className="mt-6 w-fit rounded-lg bg-white p-5 ring-1 ring-slate-100 md:shadow-sm"
+      className="mt-6 w-full rounded-lg bg-white p-4 ring-1 ring-slate-100 md:shadow-sm @sm:w-fit @sm:p-5"
     >
       <h2
         id="detalle-heading"
@@ -13,7 +13,7 @@ export function DetailInfo({ detail }: { detail: ServiceRequestDetail }) {
         Información general
       </h2>
 
-      <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm">
+      <dl className="mt-4 grid grid-cols-1 gap-y-0.5 text-sm @sm:grid-cols-[auto_1fr] @sm:gap-x-6 @sm:gap-y-2">
         <Dt>Servicio</Dt>
         <Dd>{detail.serviceTypeName}</Dd>
 
@@ -81,5 +81,9 @@ function Dt({ children }: { children: React.ReactNode }) {
 }
 
 function Dd({ children }: { children: React.ReactNode }) {
-  return <dd className="w-[20ch] text-slate-800">{children}</dd>;
+  return (
+    <dd className="mb-3 break-words text-slate-800 @sm:mb-0 @sm:w-[20ch]">
+      {children}
+    </dd>
+  );
 }

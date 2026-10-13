@@ -60,7 +60,7 @@ export function StatusActionButton({
         onClick={() =>
           onUpdate(nextStatus.value, needsReturnTime ? returnTime : undefined)
         }
-        className="rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+        className="rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50 max-sm:w-full"
       >
         {nextStatus.label}
       </button>

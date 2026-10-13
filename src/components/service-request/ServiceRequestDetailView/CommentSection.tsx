@@ -42,7 +42,7 @@ export function CommentSection({ initialComment, disabled, onSave }: Props) {
         type="button"
         disabled={disabled}
         onClick={() => onSave(comment)}
-        className="mt-2 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+        className="mt-2 rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50 max-sm:w-full"
       >
         Guardar comentario
       </button>
