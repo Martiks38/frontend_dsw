@@ -10,16 +10,8 @@ export default async function NewClientPage() {
   if (!user || user.role !== 'ADMIN') redirect('/dashboard');
 
   return (
-    <div>
-      <header>
-        <h1 className="text-xl font-semibold text-slate-900">Nuevo cliente</h1>
-        <p className="text-sm text-slate-500">
-          Se le enviará un correo con sus credenciales de acceso.
-        </p>
-      </header>
-      <div className="mt-6">
-        <NewClientForm />
-      </div>
+    <div className="mt-6">
+      <NewClientForm />
     </div>
   );
 }

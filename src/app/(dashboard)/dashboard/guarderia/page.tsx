@@ -11,7 +11,7 @@ export default async function GuardiaPage() {
   const user = await getCurrentUser();
   if (!user || user.role !== 'ADMIN') redirect('/dashboard');
 
-  const overview = await serverFetch<GuardiaOverview>('/api/boats/guarderia');
+  const overview = await serverFetch<GuardiaOverview>('/api/boats/marina');
   if (!overview) redirect('/iniciar-sesion');
 
   return <GuardiaTable overview={overview} />;

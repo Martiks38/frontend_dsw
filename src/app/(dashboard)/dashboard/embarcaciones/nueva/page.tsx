@@ -12,9 +12,9 @@ export default async function NewBoatPage() {
   if (!user || user.role !== 'ADMIN') redirect('/dashboard');
 
   const [clients, boatTypes, cradles] = await Promise.all([
-    serverFetch<ClientOption[]>('/api/clientes/opciones'),
+    serverFetch<ClientOption[]>('/api/clients/options'),
     serverFetch<BoatTypeOption[]>('/api/boat-types'),
-    serverFetch<CradleOption[]>('/api/cradles/disponibles'),
+    serverFetch<CradleOption[]>('/api/cradles/available'),
   ]);
 
   if (!clients || !boatTypes) redirect('/iniciar-sesion');

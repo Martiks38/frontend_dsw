@@ -26,7 +26,7 @@ export default async function ServiceRequestDetailPage({ params }: PageProps) {
     user.role === 'ADMIN' &&
     (detail.status === 'PENDING' || detail.status === 'SCHEDULED');
   const operators = canAssign
-    ? await serverFetch<OperatorOption[]>('/api/empleados/operadores')
+    ? await serverFetch<OperatorOption[]>('/api/employees/operators')
     : null;
 
   return (
