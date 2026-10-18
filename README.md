@@ -177,7 +177,7 @@ Si el backend se cargó con los datos de ejemplo (`pnpm db:seed` en el repositor
 ## Documentación
 
 - Instrucciones de instalación y ejecución: este documento.
-- Documentación de la API y del modelo de datos: ver el repositorio del backend [readme backend](`docs/README.md`).
+- Documentación de la API y del modelo de datos: ver el repositorio del backend [readme backend](https://github.com/Martiks38/backend_dsw/blob/main/README.md).
 - Propuesta del trabajo práctico: [proposal.md](https://github.com/Martiks38/tp_desarrollo_software/blob/main/proposal.md).
 
 ## Contacto
