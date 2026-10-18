@@ -9,7 +9,7 @@ async function loginAsMember(page: Page) {
   await page.goto('/iniciar-sesion');
 
   await page.getByLabel('Email', { exact: true }).fill(MEMBER.email);
-  // exact: el botón de mostrar/ocultar contraseña también puede contener "contraseña"
+  // el botón de mostrar/ocultar contraseña también puede contener "contraseña"
   await page.getByLabel('Contraseña', { exact: true }).fill(MEMBER.password);
   await page.getByRole('button', { name: 'Iniciar sesión' }).click();
 
@@ -32,7 +32,6 @@ test('un socio inicia sesión y ve sus embarcaciones', async ({ page }) => {
   const cards = main.locator('section[aria-labelledby="page-heading"]');
   const emptyMessage = main.getByText(/No hay embar\w*ciones registradas/);
 
-  // Depende de los datos del seed: o hay tarjetas o el mensaje vacío.
   await expect(cards.or(emptyMessage)).toBeVisible();
 });
 
@@ -56,7 +55,6 @@ test('el sidebar se expande y se contrae', async ({ page }) => {
     await expect(page.getByRole('main')).toBeHidden();
   }
 
-  // Escape contrae y el foco queda en el botón.
   await page.keyboard.press('Escape');
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   await expect(toggle).toBeFocused();
