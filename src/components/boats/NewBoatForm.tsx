@@ -40,7 +40,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
           <select
             id="ownerPublicId"
             name="ownerPublicId"
-            // defaultValue={state.data?.ownerPublicId ?? ''}
             aria-invalid={state.zodErrors?.ownerPublicId ? true : undefined}
             aria-describedby={
               state.zodErrors?.ownerPublicId ? 'ownerPublicId-error' : undefined
@@ -71,7 +70,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
           <input
             id="name"
             name="name"
-            // defaultValue={state.data?.name}
             aria-invalid={state.zodErrors?.name ? true : undefined}
             aria-describedby={state.zodErrors?.name ? 'name-error' : undefined}
             className="mt-1 w-full rounded-md border-slate-300 text-sm"
@@ -93,7 +91,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
           <input
             id="model"
             name="model"
-            // defaultValue={state.data?.model}
             aria-invalid={state.zodErrors?.model ? true : undefined}
             aria-describedby={
               state.zodErrors?.model ? 'model-error' : undefined
@@ -117,7 +114,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
           <input
             id="registrationNumber"
             name="registrationNumber"
-            // defaultValue={state.data?.registrationNumber}
             aria-invalid={
               state.zodErrors?.registrationNumber ? true : undefined
             }
@@ -148,7 +144,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
           <select
             id="boatTypeId"
             name="boatTypeId"
-            // defaultValue={state.data?.boatTypeId ?? ''}
             aria-invalid={state.zodErrors?.boatTypeId ? true : undefined}
             aria-describedby={
               state.zodErrors?.boatTypeId ? 'boatTypeId-error' : undefined
@@ -180,7 +175,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
             id="description"
             name="description"
             rows={2}
-            // defaultValue={state.data?.description}
             aria-invalid={state.zodErrors?.description ? true : undefined}
             aria-describedby={
               state.zodErrors?.description ? 'description-error' : undefined
@@ -210,7 +204,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
           <select
             id="cradleId"
             name="cradleId"
-            // defaultValue={state.data?.cradleId ?? ''}
             aria-invalid={state.zodErrors?.cradleId ? true : undefined}
             aria-describedby={
               state.zodErrors?.cradleId ? 'cradleId-error' : undefined
@@ -247,7 +240,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
             id="startDatetime"
             name="startDatetime"
             type="date"
-            // defaultValue={state.data?.startDatetime}
             aria-invalid={state.zodErrors?.startDatetime ? true : undefined}
             aria-describedby={
               state.zodErrors?.startDatetime ? 'startDatetime-error' : undefined
@@ -272,7 +264,6 @@ export function NewBoatForm({ clients, boatTypes, cradles }: Props) {
             id="plannedEndDate"
             name="plannedEndDate"
             type="date"
-            // defaultValue={state.data?.plannedEndDate}
             aria-invalid={state.zodErrors?.plannedEndDate ? true : undefined}
             aria-describedby={
               state.zodErrors?.plannedEndDate

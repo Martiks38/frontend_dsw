@@ -41,12 +41,12 @@ export function NewEmployeeForm() {
           <input
             id="firstName"
             name="firstName"
-            // defaultValue={state.data?.firstName}
+            defaultValue={String(state.data?.firstName ?? '')}
             aria-invalid={state.zodErrors?.firstName ? true : undefined}
             aria-describedby={
               state.zodErrors?.firstName ? 'firstName-error' : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.firstName && (
             <p id="firstName-error" className="mt-1 text-sm text-red-600">
@@ -65,12 +65,12 @@ export function NewEmployeeForm() {
           <input
             id="lastName"
             name="lastName"
-            // defaultValue={state.data?.lastName}
+            defaultValue={String(state.data?.lastName ?? '')}
             aria-invalid={state.zodErrors?.lastName ? true : undefined}
             aria-describedby={
               state.zodErrors?.lastName ? 'lastName-error' : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.lastName && (
             <p id="lastName-error" className="mt-1 text-sm text-red-600">
@@ -90,12 +90,12 @@ export function NewEmployeeForm() {
             id="email"
             name="email"
             type="email"
-            // defaultValue={state.data?.email}
+            defaultValue={String(state.data?.email ?? '')}
             aria-invalid={state.zodErrors?.email ? true : undefined}
             aria-describedby={
               state.zodErrors?.email ? 'email-error' : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.email && (
             <p id="email-error" className="mt-1 text-sm text-red-600">
@@ -114,12 +114,12 @@ export function NewEmployeeForm() {
           <input
             id="phoneNumber"
             name="phoneNumber"
-            // defaultValue={state.data?.phoneNumber}
+            defaultValue={String(state.data?.phoneNumber ?? '')}
             aria-invalid={state.zodErrors?.phoneNumber ? true : undefined}
             aria-describedby={
               state.zodErrors?.phoneNumber ? 'phoneNumber-error' : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.phoneNumber && (
             <p id="phoneNumber-error" className="mt-1 text-sm text-red-600">
@@ -138,14 +138,14 @@ export function NewEmployeeForm() {
           <input
             id="documentNumber"
             name="documentNumber"
-            // defaultValue={state.data?.documentNumber}
+            defaultValue={String(state.data?.documentNumber ?? '')}
             aria-invalid={state.zodErrors?.documentNumber ? true : undefined}
             aria-describedby={
               state.zodErrors?.documentNumber
                 ? 'documentNumber-error'
                 : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.documentNumber && (
             <p id="documentNumber-error" className="mt-1 text-sm text-red-600">
@@ -164,14 +164,14 @@ export function NewEmployeeForm() {
           <input
             id="employeeNumber"
             name="employeeNumber"
-            // defaultValue={state.data?.employeeNumber}
+            defaultValue={String(state.data?.employeeNumber ?? '')}
             aria-invalid={state.zodErrors?.employeeNumber ? true : undefined}
             aria-describedby={
               state.zodErrors?.employeeNumber
                 ? 'employeeNumber-error'
                 : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.employeeNumber && (
             <p id="employeeNumber-error" className="mt-1 text-sm text-red-600">

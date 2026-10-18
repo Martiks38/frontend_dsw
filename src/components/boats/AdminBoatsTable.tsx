@@ -6,7 +6,6 @@ import { useMemo, useState } from 'react';
 import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { BoatStatusBadge } from '@/components/ui/StatusBadge/BoatStatusBadge';
 import type { BoatAdminStatus, BoatsAdminOverview } from '@/interfaces';
-import { cn } from '@/lib/cn';
 
 const STATUS_OPTIONS: { value: BoatAdminStatus | 'ALL'; label: string }[] = [
   { value: 'ALL', label: 'Todos los estados' },
@@ -40,12 +39,12 @@ export function AdminBoatsTable({
   }, [overview.data, search, statusFilter]);
 
   return (
-    <div className="min-w-90">
+    <div className="xs:min-w-90 w-full">
       <form
         role="search"
         aria-label="Buscar embarcaciones"
         onSubmit={(e) => e.preventDefault()}
-        className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+        className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap"
       >
         <div className="sm:flex-1">
           <label htmlFor="boat-search" className="sr-only">
@@ -57,7 +56,7 @@ export function AdminBoatsTable({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Buscar embarcación..."
-            className="w-full rounded-md border-slate-300 text-sm sm:max-w-sm"
+            className="w-full rounded-md border border-slate-300 p-2 text-sm sm:max-w-sm"
           />
         </div>
         <div>
@@ -86,7 +85,7 @@ export function AdminBoatsTable({
           No se encontraron embarcaciones con estos filtros.
         </p>
       ) : (
-        <>
+        <div className="my-6">
           <ul
             role="list"
             aria-labelledby="embarcaciones-heading"
@@ -97,8 +96,8 @@ export function AdminBoatsTable({
                 key={boat.id}
                 className="rounded-lg bg-white p-4 ring-1 ring-slate-100"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <p className="rap-break-word min-w-0 font-semibold text-slate-800">
+                <div className="max-xs:mb-2 max-xs:items-center xs:flex-row flex flex-col items-start justify-between gap-3">
+                  <p className="min-w-0 font-semibold wrap-break-word text-slate-800">
                     {boat.name}
                   </p>
                   <div className="shrink-0">
@@ -106,19 +105,13 @@ export function AdminBoatsTable({
                   </div>
                 </div>
 
-                <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
-                  <dt className="text-slate-500">Matrícula</dt>
-                  <dd className="min-w-0 wrap-break-word text-slate-700">
-                    {boat.registrationNumber}
-                  </dd>
-                  <dt className="text-slate-500">Propietario</dt>
-                  <dd className="min-w-0 wrap-break-word text-slate-700">
-                    {boat.ownerName}
-                  </dd>
-                  <dt className="text-slate-500">Tipo</dt>
-                  <dd className="min-w-0 wrap-break-word text-slate-700">
-                    {boat.boatTypeName}
-                  </dd>
+                <dl className="xs:grid-cols-[auto_1fr] xs:gap-y-2 max-xs:[&>dd]:mb-2.5 mt-3 grid grid-cols-1 gap-x-4 text-sm">
+                  <Dt>Matrícula</Dt>
+                  <Dd>{boat.registrationNumber}</Dd>
+                  <Dt>Propietario</Dt>
+                  <Dd>{boat.ownerName}</Dd>
+                  <Dt>Tipo</Dt>
+                  <Dd>{boat.boatTypeName}</Dd>
                 </dl>
               </li>
             ))}
@@ -144,12 +137,10 @@ export function AdminBoatsTable({
               <tbody className="divide-y divide-slate-100">
                 {filtered.map((boat) => (
                   <tr key={boat.id}>
-                    <Td className="text-slate-700">
-                      {boat.registrationNumber}
-                    </Td>
-                    <Td className="text-slate-700">{boat.name}</Td>
-                    <Td className="text-slate-700">{boat.ownerName}</Td>
-                    <Td className="text-slate-700">{boat.boatTypeName}</Td>
+                    <Td>{boat.registrationNumber}</Td>
+                    <Td>{boat.name}</Td>
+                    <Td>{boat.ownerName}</Td>
+                    <Td>{boat.boatTypeName}</Td>
                     <Td>
                       <BoatStatusBadge status={boat.status} />
                     </Td>
@@ -158,7 +149,7 @@ export function AdminBoatsTable({
               </tbody>
             </table>
           </div>
-        </>
+        </div>
       )}
 
       <StatGrid heading="Resumen">
@@ -198,12 +189,14 @@ function Th({ children }: { children?: React.ReactNode }) {
   );
 }
 
-function Td({
-  children,
-  className,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-}) {
-  return <td className={cn('px-4 py-3', className)}>{children}</td>;
+function Td({ children }: { children?: React.ReactNode }) {
+  return <td className="px-4 py-3 text-slate-700">{children}</td>;
+}
+
+function Dt({ children }: { children?: React.ReactNode }) {
+  return <dt className="text-slate-500">{children}</dt>;
+}
+
+function Dd({ children }: { children?: React.ReactNode }) {
+  return <dd className="min-w-0 wrap-break-word text-slate-700">{children}</dd>;
 }

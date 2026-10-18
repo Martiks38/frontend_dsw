@@ -1,4 +1,3 @@
-// components/clients/NewClientForm.tsx
 'use client';
 
 import { useActionState, useState } from 'react';
@@ -65,12 +64,12 @@ export function NewClientForm() {
             <input
               id="businessName"
               name="businessName"
-              // defaultValue={state.data?.businessName}
+              defaultValue={String(state.data?.businessName ?? '')}
               aria-invalid={state.zodErrors?.businessName ? true : undefined}
               aria-describedby={
                 state.zodErrors?.businessName ? 'businessName-error' : undefined
               }
-              className="mt-1 w-full rounded-md border-slate-300 text-sm"
+              className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
             />
             {state.zodErrors?.businessName && (
               <p id="businessName-error" className="mt-1 text-sm text-red-600">
@@ -90,12 +89,12 @@ export function NewClientForm() {
               <input
                 id="firstName"
                 name="firstName"
-                // defaultValue={state.data?.firstName}
+                defaultValue={String(state.data?.firstName ?? '')}
                 aria-invalid={state.zodErrors?.firstName ? true : undefined}
                 aria-describedby={
                   state.zodErrors?.firstName ? 'firstName-error' : undefined
                 }
-                className="mt-1 w-full rounded-md border-slate-300 text-sm"
+                className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
               />
               {state.zodErrors?.firstName && (
                 <p id="firstName-error" className="mt-1 text-sm text-red-600">
@@ -113,12 +112,12 @@ export function NewClientForm() {
               <input
                 id="lastName"
                 name="lastName"
-                // defaultValue={state.data?.lastName}
+                defaultValue={String(state.data?.lastName ?? '')}
                 aria-invalid={state.zodErrors?.lastName ? true : undefined}
                 aria-describedby={
                   state.zodErrors?.lastName ? 'lastName-error' : undefined
                 }
-                className="mt-1 w-full rounded-md border-slate-300 text-sm"
+                className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
               />
               {state.zodErrors?.lastName && (
                 <p id="lastName-error" className="mt-1 text-sm text-red-600">
@@ -140,12 +139,12 @@ export function NewClientForm() {
             id="email"
             name="email"
             type="email"
-            // defaultValue={state.data?.email}
+            defaultValue={String(state.data?.email ?? '')}
             aria-invalid={state.zodErrors?.email ? true : undefined}
             aria-describedby={
               state.zodErrors?.email ? 'email-error' : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.email && (
             <p id="email-error" className="mt-1 text-sm text-red-600">
@@ -164,12 +163,12 @@ export function NewClientForm() {
           <input
             id="phoneNumber"
             name="phoneNumber"
-            // defaultValue={state.data?.phoneNumber}
+            defaultValue={String(state.data?.phoneNumber ?? '')}
             aria-invalid={state.zodErrors?.phoneNumber ? true : undefined}
             aria-describedby={
               state.zodErrors?.phoneNumber ? 'phoneNumber-error' : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.phoneNumber && (
             <p id="phoneNumber-error" className="mt-1 text-sm text-red-600">
@@ -188,10 +187,11 @@ export function NewClientForm() {
           <select
             id="documentType"
             name="documentType"
-            // defaultValue={
-            //   state.data?.documentType ?? (type === 'business' ? 'CUIT' : 'DNI')
-            // }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            defaultValue={
+              String(state.data?.documentType ?? '') ||
+              (type === 'business' ? 'CUIT' : 'DNI')
+            }
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           >
             <option value="DNI">DNI</option>
             <option value="CUIT">CUIT</option>
@@ -208,14 +208,14 @@ export function NewClientForm() {
           <input
             id="documentNumber"
             name="documentNumber"
-            // defaultValue={state.data?.documentNumber}
+            defaultValue={String(state.data?.documentNumber ?? '')}
             aria-invalid={state.zodErrors?.documentNumber ? true : undefined}
             aria-describedby={
               state.zodErrors?.documentNumber
                 ? 'documentNumber-error'
                 : undefined
             }
-            className="mt-1 w-full rounded-md border-slate-300 text-sm"
+            className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
           />
           {state.zodErrors?.documentNumber && (
             <p id="documentNumber-error" className="mt-1 text-sm text-red-600">

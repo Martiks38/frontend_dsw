@@ -7,9 +7,16 @@ import { type UserRole } from '@/lib/auth';
 
 export function PageTitle({ role }: { role: UserRole }) {
   const pathname = usePathname();
-  const currentPage = DASHBOARD_PAGE_TITLE.find(
-    (item) => item.href === pathname && item.roles.includes(role)
+
+  const accessiblePages = DASHBOARD_PAGE_TITLE.filter((item) =>
+    item.roles.includes(role)
   );
+
+  const currentPage =
+    accessiblePages.find((item) => item.href === pathname) ??
+    accessiblePages
+      .filter((item) => pathname.startsWith(`${item.href}/`))
+      .sort((a, b) => b.href.length - a.href.length)[0];
 
   return (
     <div>
@@ -19,6 +26,7 @@ export function PageTitle({ role }: { role: UserRole }) {
       >
         {currentPage?.label ?? 'Dashboard'}
       </h1>
+
       {currentPage?.helperText && (
         <p className="text-sm text-slate-700">{currentPage.helperText[role]}</p>
       )}

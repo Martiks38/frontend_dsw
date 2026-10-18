@@ -67,7 +67,7 @@ export function DetailInfo({ detail }: { detail: ServiceRequestDetail }) {
 
         {detail.observations && (
           <>
-            <Dt>Observaciones</Dt>
+            <Dt>Comentario</Dt>
             <Dd>{detail.observations}</Dd>
           </>
         )}
@@ -82,7 +82,7 @@ function Dt({ children }: { children: React.ReactNode }) {
 
 function Dd({ children }: { children: React.ReactNode }) {
   return (
-    <dd className="mb-3 break-words text-slate-800 @sm:mb-0 @sm:w-[20ch]">
+    <dd className="mb-3 wrap-break-word text-slate-800 @sm:mb-0 @sm:w-[20ch]">
       {children}
     </dd>
   );

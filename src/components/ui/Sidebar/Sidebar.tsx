@@ -3,7 +3,7 @@
 import { ChevronsLeft, ChevronsRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import { DASHBOARD_SIDEBAR_NAV } from '@/data';
@@ -21,6 +21,7 @@ const focusRing =
 
 export function Sidebar() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { user } = useSession();
   const role = user?.role;
 
@@ -119,7 +120,13 @@ export function Sidebar() {
       <nav id={NAV_ID} aria-label="Secciones del panel">
         <ul className="text-surface space-y-2" role="list">
           {itemsVisibles.map((item) => {
-            const active = pathname === item.href;
+            const [itemPath, itemQuery] = item.href.split('?');
+            const itemParams = new URLSearchParams(itemQuery ?? '');
+
+            const active =
+              pathname === itemPath &&
+              searchParams.get('fecha') === itemParams.get('fecha');
+
             const ItemIcon = item.icon;
 
             return (

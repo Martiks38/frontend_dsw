@@ -16,9 +16,7 @@ export function ForgotPasswordForm() {
       try {
         await forgotPassword(email);
 
-        setMessage(
-          'Si el email existe, vas a recibir un correo con instrucciones.'
-        );
+        setMessage('Se ha enviado un correo con instrucciones.');
       } catch {
         setMessage('Ocurrió un error. Intentá de nuevo.');
       }
@@ -44,7 +42,7 @@ export function ForgotPasswordForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="mt-1 w-full rounded-md border-slate-300 text-sm"
+          className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
         />
         <div
           role="status"
