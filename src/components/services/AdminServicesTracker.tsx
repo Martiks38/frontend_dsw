@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { StatusBadge } from '@/components/ui/StatusBadge/StatusBadge';
 import type { RequestStatus, ServiceRequestRow } from '@/interfaces';
 import { cn } from '@/lib/cn';
+import { formatDateTimeAR } from '@/utils/datetime.util';
 
 const TABS: { key: RequestStatus; label: string }[] = [
   { key: 'IN_PROGRESS', label: 'En proceso' },
@@ -115,7 +116,9 @@ export function AdminServicesTracker({
                   <Td className="text-slate-700">{r.serviceTypeName}</Td>
                   <Td className="text-slate-700">{r.employeeName ?? '—'}</Td>
                   <Td className="text-slate-700">
-                    <time dateTime={r.dateISO}>{r.dateLabel}</time>
+                    <time dateTime={r.dateISO}>
+                      {formatDateTimeAR(r.dateISO)}
+                    </time>
                   </Td>
                   <Td>
                     <StatusBadge status={r.status} />

@@ -11,6 +11,7 @@ import type {
   StatusCounts,
 } from '@/interfaces';
 import { cn } from '@/lib/cn';
+import { formatDateTimeAR } from '@/utils/datetime.util';
 
 import { StatusBadge } from '../ui/StatusBadge/StatusBadge';
 
@@ -142,7 +143,9 @@ export function AdminServiceRequestsTable({
                   <Td className="text-slate-700">{r.boatName}</Td>
                   <Td className="text-slate-700">{r.clientName}</Td>
                   <Td className="text-slate-700">
-                    <time dateTime={r.dateISO}>{r.dateLabel}</time>
+                    <time dateTime={r.dateISO}>
+                      {formatDateTimeAR(r.dateISO)}
+                    </time>
                   </Td>
                   <Td>
                     <StatusBadge status={r.status} />

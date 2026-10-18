@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Td, Th } from '@/components/ui/Table';
 import { type PendingRequestRow } from '@/interfaces/dashboard.interface';
 import { cn } from '@/lib/cn';
+import { formatDateTimeAR } from '@/utils/datetime.util';
 
 interface ColumnHeader {
   label: string;
@@ -29,7 +30,7 @@ export function PendingRequestsTable({
   return (
     <section
       aria-labelledby="pending-req-heading"
-      className={cn('min-w-90', className)}
+      className={cn('xs:min-w-90 w-full', className)}
     >
       <h2
         id="pending-req-heading"
@@ -48,28 +49,28 @@ export function PendingRequestsTable({
             key={row.id}
             className="rounded-lg bg-white p-4 ring-1 ring-slate-100"
           >
-            <div className="flex items-start justify-between gap-3">
-              <p className="min-w-0 font-semibold wrap-break-word text-slate-900">
+            <div className="flex items-center gap-3">
+              <p className="font-semibold wrap-break-word text-slate-900">
                 {row.clientName}
               </p>
               <span className="text-sm text-slate-500">#{row.id}</span>
             </div>
 
-            <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+            <dl className="xs:grid-cols-[auto_1fr] xs:gap-y-2 max-xs:[&>dd]:mb-2.5 mt-3 grid grid-cols-1 gap-x-4 text-sm">
               <dt className="text-slate-500">Embarcación</dt>
-              <dd className="min-w-0 wrap-break-word text-slate-700">
-                {row.boatName}
-              </dd>
+              <dd className="wrap-break-word text-slate-700">{row.boatName}</dd>
               <dt className="text-slate-500">Fecha</dt>
               <dd className="text-slate-700">
-                <time dateTime={row.dateISO}>{row.dateLabel}</time>
+                <time dateTime={row.dateISO}>
+                  {formatDateTimeAR(row.dateISO)}
+                </time>
               </dd>
             </dl>
 
             <Link
               href={row.href}
               aria-label={`Ver solicitud #${row.id} de ${row.clientName}`}
-              className="mt-3 inline-flex min-h-10 items-center gap-2 rounded text-sm font-medium text-blue-600 hover:underline focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
+              className="xs:mt-3 inline-flex min-h-10 items-center gap-2 rounded text-sm font-medium text-blue-600 hover:underline focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
             >
               <Eye className="h-4 w-4" aria-hidden="true" />
               Ver detalle
@@ -100,7 +101,9 @@ export function PendingRequestsTable({
                 <Td className="text-slate-900">{row.clientName}</Td>
                 <Td className="text-slate-900">{row.boatName}</Td>
                 <Td className="text-slate-500">
-                  <time dateTime={row.dateISO}>{row.dateLabel}</time>
+                  <time dateTime={row.dateISO}>
+                    {formatDateTimeAR(row.dateISO)}
+                  </time>
                 </Td>
                 <Td>
                   <Link

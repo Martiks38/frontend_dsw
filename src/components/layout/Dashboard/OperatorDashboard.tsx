@@ -4,9 +4,12 @@ import {
   Hourglass,
   ListChecks,
 } from 'lucide-react';
+import Link from 'next/link';
 
 import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { type DashboardVariant } from '@/interfaces';
+import { formatTimeAR } from '@/utils/datetime.util';
+import { getDashboardPath } from '@/utils/routes';
 
 import { ServiceRankingList } from './ServiceRankingList';
 import { TaskList } from './TaskList';
@@ -52,7 +55,7 @@ export function OperatorDashboard({ data }: DashboardVariant<'OPERATOR'>) {
             title="Mis tareas de hoy"
             description="Solicitudes asignadas para el día de hoy"
             items={data.todayTasks}
-            viewAllHref="/solicitudes?fecha=hoy"
+            viewAllHref={getDashboardPath('solicitudes?fecha=hoy')}
           />
         </div>
 
@@ -70,19 +73,19 @@ export function OperatorDashboard({ data }: DashboardVariant<'OPERATOR'>) {
               </h2>
               <p className="text-2xl font-semibold text-slate-900">
                 <time dateTime={nextTask.scheduledAtISO}>
-                  {nextTask.scheduledAtLabel}
+                  {formatTimeAR(nextTask.scheduledAtISO)}
                 </time>
               </p>
               <p className="text-sm text-slate-500">
                 {nextTask.serviceTypeName}
               </p>
               <p className="mt-2 text-sm text-slate-700">{nextTask.boatName}</p>
-              <a
+              <Link
                 href={nextTask.href}
                 className="mt-3 inline-block rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
               >
                 Ver detalles
-              </a>
+              </Link>
             </section>
           ) : null}
 

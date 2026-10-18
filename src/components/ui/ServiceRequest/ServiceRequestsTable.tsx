@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { ServiceRequestRow } from '@/interfaces';
 import { cn } from '@/lib/cn';
+import { formatDateTimeAR } from '@/utils/datetime.util';
 
 import { StatusBadge } from '../StatusBadge/StatusBadge';
 
@@ -46,13 +47,13 @@ export function ServiceRequestsTable({
               <dd className="text-slate-700">{r.boatName}</dd>
               <dt className="text-slate-500">Fecha</dt>
               <dd className="text-slate-700">
-                <time dateTime={r.dateISO}>{r.dateLabel}</time>
+                <time dateTime={r.dateISO}>{formatDateTimeAR(r.dateISO)}</time>
               </dd>
             </dl>
 
             <Link
               href={r.href}
-              aria-label={`Ver detalle de ${r.serviceTypeName} del ${r.dateLabel}`}
+              aria-label={`Ver detalle de ${r.serviceTypeName} del ${formatDateTimeAR(r.dateISO)}`}
               className="mt-3 inline-flex min-h-10 items-center rounded text-sm font-medium text-blue-600 hover:underline focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none"
             >
               Ver detalle
@@ -88,7 +89,9 @@ export function ServiceRequestsTable({
                 <Td className="text-slate-700">{r.serviceTypeName}</Td>
                 <Td className="text-slate-700">{r.boatName}</Td>
                 <Td className="text-slate-700">
-                  <time dateTime={r.dateISO}>{r.dateLabel}</time>
+                  <time dateTime={r.dateISO}>
+                    {formatDateTimeAR(r.dateISO)}
+                  </time>
                 </Td>
                 <Td>
                   <StatusBadge status={r.status} />
@@ -96,7 +99,7 @@ export function ServiceRequestsTable({
                 <Td>
                   <Link
                     href={r.href}
-                    aria-label={`Ver detalle de ${r.serviceTypeName} del ${r.dateLabel}`}
+                    aria-label={`Ver detalle de ${r.serviceTypeName} del ${formatDateTimeAR(r.dateISO)}`}
                     className="font-medium text-blue-600 hover:underline"
                   >
                     Ver detalle

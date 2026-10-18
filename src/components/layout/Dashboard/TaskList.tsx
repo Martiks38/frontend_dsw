@@ -1,8 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 
 import { StatusBadge } from '@/components/ui/StatusBadge/StatusBadge';
+import { useSession } from '@/hooks/useSession.hook';
 import { type TaskItem } from '@/interfaces/dashboard.interface';
 import { cn } from '@/lib/cn';
+import { formatTimeAR } from '@/utils/datetime.util';
 
 interface TaskListProps {
   title: string;
@@ -28,6 +32,8 @@ export function TaskList({
   viewAllHref,
   emptyMessage = 'No tienes tareas asignadas hoy',
 }: TaskListProps) {
+  const session = useSession();
+  const { user } = session;
   const headingId = `tasklist-${title.toLowerCase().replace(/\s+/g, '-')}`;
 
   return (
@@ -35,7 +41,7 @@ export function TaskList({
       aria-labelledby={headingId}
       className="bg-surface rounded-xl border border-slate-200 p-5 shadow-sm"
     >
-      <div className="mb-4 flex items-baseline justify-between">
+      <div className="mb-4 flex items-baseline justify-between gap-2">
         <div>
           <h2>{title}</h2>
           {description && (
@@ -60,17 +66,19 @@ export function TaskList({
               <Link
                 href={item.href}
                 className={cn(
-                  'flex items-center gap-4 rounded-md',
-                  'focus-visible:outline-2 focus-visible:outline-offset-2'
+                  'xs:flex-row flex flex-col items-center rounded-md sm:gap-4',
+                  'sx:space-y-0 space-y-2 focus-visible:outline-2 focus-visible:outline-offset-2'
                 )}
               >
-                <time
-                  dateTime={item.scheduledAtISO}
-                  className="w-14 shrink-0 text-sm font-medium text-slate-600"
-                >
-                  {item.scheduledAtLabel}
-                </time>
-                <div className="min-w-0 flex-1">
+                {user?.role !== 'MEMBER' && (
+                  <time
+                    dateTime={item.scheduledAtISO}
+                    className="max-xs:text-center w-14 shrink-0 text-sm font-medium text-slate-600"
+                  >
+                    {formatTimeAR(item.scheduledAtISO)}
+                  </time>
+                )}
+                <div className="max-xs:text-center min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-slate-900">
                     {item.serviceTypeName}
                   </p>
@@ -87,7 +95,7 @@ export function TaskList({
             href={viewAllHref}
             className={cn(styles.viewAllButton, 'mx-auto block w-fit pt-3')}
           >
-            Ver todas mis tareas
+            Ver todas mis {user?.role === 'MEMBER' ? 'solicitudes' : 'tareas'}
           </Link>
         </ul>
       )}
