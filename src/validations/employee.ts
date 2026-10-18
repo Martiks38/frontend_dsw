@@ -21,6 +21,6 @@ export const CreateEmployeeFormSchema = z.object({
 export type CreateEmployeeFormState = {
   success?: boolean;
   message?: string;
-  data?: Record<string, FormDataEntryValue>;
+  data?: Record<string, string>;
   zodErrors?: Record<string, string[]> | null;
 };

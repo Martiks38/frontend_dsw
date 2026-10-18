@@ -17,11 +17,13 @@ export async function createClient(
 ): Promise<void> {
   const cookieStore = await cookies();
   const jwt = cookieStore.get('access_token');
+
   if (!jwt) throw new Error('Tu sesión expiró.');
 
   let res: Response;
+
   try {
-    res = await fetch(`${process.env.API_URL}/api/clientes`, {
+    res = await fetch(`${process.env.API_URL}/api/clients`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,12 +38,14 @@ export async function createClient(
 
   if (!res.ok) {
     const errorBody = await res.json().catch(() => null);
+
     if (errorBody?.fieldErrors) {
       throw new ClientConflictError(
         errorBody.message ?? 'Algunos datos ya están registrados.',
         errorBody.fieldErrors
       );
     }
+
     throw new Error(errorBody?.message ?? 'No pudimos crear el cliente.');
   }
 }

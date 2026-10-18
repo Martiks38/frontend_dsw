@@ -9,24 +9,28 @@ export async function serverFetch<T>(
   const cookieStore = await cookies();
   const jwt = cookieStore.get('access_token');
 
-  if (!jwt) return null;
+  if (!jwt) {
+    return null;
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), timeoutMs);
-
     const response = await fetch(`${process.env.API_URL}${path}`, {
       headers: { Cookie: `access_token=${jwt.value}` },
       signal: controller.signal,
       cache: 'no-store',
     });
 
-    clearTimeout(timeout);
-
-    if (!response.ok) return null;
+    if (!response.ok) {
+      return null;
+    }
 
     return (await response.json()) as T;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeout);
   }
 }

@@ -1,8 +1,9 @@
 'use server';
 
 import { headers } from 'next/headers';
+import z from 'zod';
 
-import { type ContactField, contactSchema } from '@/validations/contact';
+import { type ContactField, ContactSchema } from '@/validations/contact';
 
 export type FormState = {
   success: boolean;
@@ -26,21 +27,22 @@ export async function submitContactForm(
     message: getTrimmedFormValue(formData, 'message'),
   };
 
-  const parsed = contactSchema.safeParse({
+  const validatedFields = ContactSchema.safeParse({
     ...data,
     phone: data.phone || undefined,
   });
 
-  if (!parsed.success) {
+  if (!validatedFields.success) {
+    const flattenedErrors = z.flattenError(validatedFields.error);
+
     return {
       success: false,
       message: 'Revisá los campos marcados e intentá nuevamente.',
-      zodErrors: parsed.error.flatten().fieldErrors,
+      zodErrors: flattenedErrors.fieldErrors,
       data,
     };
   }
 
-  // Todos los retornos de error devuelven `data` para no perder lo escrito.
   try {
     const forwardedFor = (await headers()).get('x-forwarded-for');
 
@@ -50,7 +52,7 @@ export async function submitContactForm(
         'Content-Type': 'application/json',
         ...(forwardedFor && { 'X-Forwarded-For': forwardedFor }),
       },
-      body: JSON.stringify(parsed.data),
+      body: JSON.stringify(validatedFields.data),
       cache: 'no-store',
     });
 

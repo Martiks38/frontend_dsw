@@ -1,16 +1,15 @@
 import { z } from 'zod';
 
-export const contactSchema = z.object({
+export const ContactSchema = z.object({
   fullname: z
     .string()
     .trim()
     .min(1, 'Ingresá tu nombre y apellido.')
     .max(100, 'Máximo 100 caracteres.'),
   email: z
-    .string()
+    .email('Ingresá un email válido.')
     .trim()
     .min(1, 'Ingresá tu email.')
-    .email('Ingresá un email válido.')
     .max(254, 'Máximo 254 caracteres.'),
   phone: z.string().trim().max(30, 'Máximo 30 caracteres.').optional(),
   subject: z
@@ -25,4 +24,4 @@ export const contactSchema = z.object({
     .max(256, 'Máximo 256 caracteres.'),
 });
 
-export type ContactField = keyof z.infer<typeof contactSchema>;
+export type ContactField = keyof z.infer<typeof ContactSchema>;

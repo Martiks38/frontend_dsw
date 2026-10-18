@@ -1,8 +1,13 @@
-import { loginUserAction, logoutUserAction } from './auth';
-import { createBoatAction } from './boat/createBoatAction';
+import { loginUserAction, logoutUserAction, resetPasswordAction } from './auth';
+import { createBoatAction, findBoatsAction } from './boat';
 import { createClientAction } from './client/createClientAction';
 import { submitContactForm } from './contact';
 import { createEmployeeAction } from './employee/createEmployeeAction';
+import {
+  createDepartureAction,
+  listActiveDeparturesAction,
+  registerReturnAction,
+} from './operations';
 import { changePasswordAction, updateProfileAction } from './profile';
 import {
   assignServiceRequest,
@@ -12,7 +17,7 @@ import {
 } from './service-request';
 
 export const actions = {
-  auth: { loginUserAction, logoutUserAction },
+  auth: { loginUserAction, logoutUserAction, resetPasswordAction },
   contact: { submitContactForm },
   serviceRequest: {
     createServiceRequest,
@@ -23,5 +28,10 @@ export const actions = {
   profile: { changePasswordAction, updateProfileAction },
   client: { createClientAction },
   employee: { createEmployeeAction },
-  boat: { createBoatAction },
+  boat: { createBoatAction, findBoatsAction },
+  boatDeparture: {
+    createDepartureAction,
+    registerReturnAction,
+    listActiveDeparturesAction,
+  },
 };

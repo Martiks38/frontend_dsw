@@ -21,7 +21,7 @@ export async function createEmployee(
 
   let res: Response;
   try {
-    res = await fetch(`${process.env.API_URL}/api/empleados`, {
+    res = await fetch(`${process.env.API_URL}/api/employees`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

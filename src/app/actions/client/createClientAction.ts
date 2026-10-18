@@ -19,6 +19,7 @@ export async function createClientAction(
 
   if (!validatedFields.success) {
     const flattenedErrors = z.flattenError(validatedFields.error);
+
     return {
       success: false,
       message: 'Error de validación',
@@ -29,6 +30,7 @@ export async function createClientAction(
 
   try {
     await createClient(validatedFields.data);
+
     return {
       success: true,
       message: 'Cliente creado e invitado por correo.',

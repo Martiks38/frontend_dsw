@@ -12,7 +12,7 @@ export async function createEmployeeAction(
   _prevState: CreateEmployeeFormState,
   formData: FormData
 ): Promise<CreateEmployeeFormState> {
-  const fields = Object.fromEntries(formData);
+  const fields = Object.fromEntries(formData) as Record<string, string>;
   const validatedFields = CreateEmployeeFormSchema.safeParse(fields);
 
   if (!validatedFields.success) {
