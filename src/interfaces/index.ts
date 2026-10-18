@@ -7,6 +7,7 @@ export * from './contact.interface';
 export * from './dashboard.interface';
 export * from './footer.interface';
 export * from './navigation.interface';
+export * from './operations.interface';
 export * from './profile.interface';
 export * from './schedule.interface';
 export * from './service.interface';
