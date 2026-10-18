@@ -13,12 +13,32 @@ import {
 import { type NavIconItem } from '@/interfaces';
 import { getDashboardPath } from '@/utils/routes';
 
+type DashboardPageTitle = Omit<NavIconItem, 'icon'> & {
+  matchNested?: boolean;
+};
+
 const DASHBOARD_DATA: NavIconItem[] = [
   {
     label: 'Inicio',
     href: getDashboardPath(),
     icon: House,
     roles: ['MEMBER', 'ADMIN', 'OPERATOR'],
+  },
+  {
+    label: 'Clientes',
+    href: getDashboardPath('clientes'),
+    icon: Users,
+    roles: ['ADMIN'],
+    helperText: {
+      ADMIN: 'Gestioná la información de los clientes.',
+    },
+  },
+  {
+    label: 'Empleados',
+    href: getDashboardPath('empleados'),
+    icon: UserCog,
+    roles: ['ADMIN'],
+    helperText: { ADMIN: 'Gestioná del personal.' },
   },
   {
     label: 'Mis embarcaciones',
@@ -58,32 +78,22 @@ const DASHBOARD_DATA: NavIconItem[] = [
     },
   },
   {
-    label: 'Clientes',
-    href: getDashboardPath('clientes'),
-    icon: Users,
-    roles: ['ADMIN'],
-    helperText: { ADMIN: 'Gestioná la información de los clientes.' },
-  },
-  {
-    label: 'Empleados',
-    href: getDashboardPath('empleados'),
-    icon: UserCog,
-    roles: ['ADMIN'],
-    helperText: { ADMIN: 'Gestioná del personal.' },
-  },
-  {
     label: 'Mis tareas de hoy',
-    href: getDashboardPath('tareas-hoy'),
+    href: getDashboardPath('solicitudes?fecha=hoy'),
     icon: CalendarCheck,
     roles: ['OPERATOR'],
-    helperText: { OPERATOR: 'Solicitudes asignadas para el día de hoy.' },
+    helperText: {
+      OPERATOR: 'Solicitudes asignadas para el día de hoy.',
+    },
   },
   {
     label: 'Operaciones',
     href: getDashboardPath('operaciones'),
     icon: ShipWheel,
     roles: ['OPERATOR'],
-    helperText: { MEMBER: '' },
+    helperText: {
+      OPERATOR: 'Registrá la salida y el retorno de las embarcaciones.',
+    },
   },
   {
     label: 'Mi perfil',
@@ -110,7 +120,7 @@ export const DASHBOARD_SIDEBAR_NAV: Omit<NavIconItem, 'helperText'>[] =
     };
   });
 
-export const DASHBOARD_PAGE_TITLE: Omit<NavIconItem, 'icon'>[] = [
+export const DASHBOARD_PAGE_TITLE: DashboardPageTitle[] = [
   ...DASHBOARD_DATA.map((item) => {
     const { href, label, roles, helperText } = item;
 
@@ -125,5 +135,21 @@ export const DASHBOARD_PAGE_TITLE: Omit<NavIconItem, 'icon'>[] = [
     label: 'Solicitar servicios',
     href: getDashboardPath('servicios/solicitar'),
     roles: ['MEMBER'],
+  },
+  {
+    label: 'Nuevo cliente',
+    href: getDashboardPath('clientes/nuevo'),
+    roles: ['ADMIN'],
+    helperText: {
+      ADMIN: 'Se le enviará un correo con sus credenciales de acceso.',
+    },
+  },
+  {
+    label: 'Nuevo empleado',
+    href: getDashboardPath('empleados/nuevo'),
+    roles: ['ADMIN'],
+    helperText: {
+      ADMIN: 'Se le enviará un correo con sus credenciales de acceso.',
+    },
   },
 ];
