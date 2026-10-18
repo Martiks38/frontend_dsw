@@ -66,7 +66,7 @@ export function StatGrid({ heading, children }: StatGridProps) {
       <h2 id={headingId} className="sr-only">
         {heading}
       </h2>
-      <dl className="grid grid-cols-1 place-items-center gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <dl className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(200px,1fr))] place-items-center gap-5 *:h-full">
         {children}
       </dl>
     </section>

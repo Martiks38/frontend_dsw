@@ -1,3 +1,4 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 import type { PaginationMeta, ServiceRequestSearchParams } from '@/interfaces';
@@ -38,7 +39,8 @@ export function Pagination({ meta, currentSearchParams }: Props) {
       <ul className="flex items-center justify-between gap-3 sm:hidden">
         <li>
           <StepLink href={meta.page > 1 ? buildHref(meta.page - 1) : undefined}>
-            Anterior
+            <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Anterior</span>
           </StepLink>
         </li>
         <li>
@@ -50,7 +52,8 @@ export function Pagination({ meta, currentSearchParams }: Props) {
               meta.page < meta.totalPages ? buildHref(meta.page + 1) : undefined
             }
           >
-            Siguiente
+            <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Siguiente</span>
           </StepLink>
         </li>
       </ul>

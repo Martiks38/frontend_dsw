@@ -88,7 +88,7 @@ export function AssignmentSection({
               value={employeePublicId}
               onChange={(e) => setEmployeePublicId(e.target.value)}
               required
-              className="mt-1 w-full rounded-md border-slate-300 text-sm"
+              className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
             >
               <option value="">Seleccioná un operario</option>
               {operators.map((op) => (
@@ -114,7 +114,7 @@ export function AssignmentSection({
               value={scheduledDate}
               onChange={(e) => setScheduledDate(e.target.value)}
               required
-              className="mt-1 w-full rounded-md border-slate-300 text-sm"
+              className="mt-1 w-full rounded-md border border-slate-300 p-2 text-sm"
             />
           </div>
 
@@ -131,7 +131,7 @@ export function AssignmentSection({
               value={scheduledTime}
               onChange={(e) => setScheduledTime(e.target.value)}
               required
-              className="mt-1 w-full rounded-md border-slate-300 text-sm"
+              className="mt-1 w-full rounded-md border border-slate-300 p-2 text-sm"
             />
           </div>
 
@@ -146,7 +146,7 @@ export function AssignmentSection({
               id="sector"
               value={sector}
               onChange={(e) => setSector(e.target.value)}
-              className="mt-1 w-full rounded-md border-slate-300 text-sm"
+              className="mt-1 w-full rounded-md border border-slate-300 px-4 py-2 text-sm"
             />
           </div>
         </fieldset>

@@ -75,7 +75,6 @@ function FooterItemsList({ items }: { items: FooterItem[] }) {
     <ul className="m-[0_auto] flex w-max flex-col gap-y-2 font-medium lg:m-0">
       {items.map((item) => {
         return (
-          // Aquí aplicamos el max-w-[25ch] junto con un ancho automático seguro
           <li key={item.label} className="w-auto max-w-[25ch] leading-relaxed">
             <FooterItemContent item={item} />
           </li>

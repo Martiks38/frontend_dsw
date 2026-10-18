@@ -21,7 +21,8 @@ interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   children?: React.ReactNode;
 }
 
-const inputStyles = 'mt-1 w-full rounded-md border-slate-300 text-sm';
+const inputStyles =
+  'mt-1 w-full rounded-md border p-2 border-slate-300 text-sm';
 const focusRing =
   'focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none';
 

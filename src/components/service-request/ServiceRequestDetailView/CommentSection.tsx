@@ -35,7 +35,7 @@ export function CommentSection({ initialComment, disabled, onSave }: Props) {
         onChange={(e) => setComment(e.target.value)}
         rows={3}
         maxLength={1000}
-        className="mt-2 w-full rounded-md border-slate-300 text-sm"
+        className="mt-2 w-full rounded-md border border-slate-300 p-2 py-2 text-sm"
       />
 
       <button

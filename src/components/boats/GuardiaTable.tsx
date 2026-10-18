@@ -6,7 +6,6 @@ import { useMemo, useState } from 'react';
 import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
 import { BoatStatusBadge } from '@/components/ui/StatusBadge/BoatStatusBadge';
 import { type GuardiaOverview } from '@/interfaces';
-import { cn } from '@/lib/cn';
 
 export function GuardiaTable({ overview }: { overview: GuardiaOverview }) {
   const [search, setSearch] = useState('');
@@ -71,12 +70,10 @@ export function GuardiaTable({ overview }: { overview: GuardiaOverview }) {
             <tbody className="divide-y divide-slate-100">
               {filtered.map((boat) => (
                 <tr key={boat.id}>
-                  <Td className="text-slate-700">{boat.registrationNumber}</Td>
-                  <Td className="text-slate-700">{boat.name}</Td>
-                  <Td className="text-slate-700">{boat.cradleCode ?? '—'}</Td>
-                  <Td className="text-slate-700">
-                    {boat.plannedEndDatetimeLabel ?? 'Sin definir'}
-                  </Td>
+                  <Td>{boat.registrationNumber}</Td>
+                  <Td>{boat.name}</Td>
+                  <Td>{boat.cradleCode ?? '—'}</Td>
+                  <Td>{boat.plannedEndDatetimeLabel ?? 'Sin definir'}</Td>
                   <Td>
                     <BoatStatusBadge status={boat.status} />
                   </Td>
@@ -125,12 +122,6 @@ function Th({ children }: { children?: React.ReactNode }) {
   );
 }
 
-function Td({
-  children,
-  className,
-}: {
-  children?: React.ReactNode;
-  className?: string;
-}) {
-  return <td className={cn('px-4 py-3', className)}>{children}</td>;
+function Td({ children }: { children?: React.ReactNode }) {
+  return <td className="px-4 py-3 text-slate-700">{children}</td>;
 }

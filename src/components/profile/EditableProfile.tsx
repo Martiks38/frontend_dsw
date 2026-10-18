@@ -60,7 +60,7 @@ export function EditableProfileForm({ profile }: Props) {
   }, [passwordState.success]);
 
   return (
-    <div className="flex flex-col gap-8 px-4">
+    <div className="flex max-w-250 flex-col gap-8">
       <form action={profileFormAction} className={styles.form}>
         <input type="hidden" name="type" value={profile.type} />
         <fieldset>
@@ -282,7 +282,7 @@ export function EditableProfileForm({ profile }: Props) {
           <legend className="text-base font-semibold text-slate-900">
             Seguridad
           </legend>
-          <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
+          <div className="mt-4 grid grid-cols-1 gap-5 md:grid-cols-2">
             <PasswordField
               label="Contraseña actual"
               name="currentPassword"
