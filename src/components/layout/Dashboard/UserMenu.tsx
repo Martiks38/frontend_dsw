@@ -1,9 +1,9 @@
 'use client';
 
+import { ChevronDown, CircleUser } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import Icon from '@/components/ui/Icon/Icon';
 import { Logout } from '@/components/ui/Logout/Logout';
 import { cn } from '@/lib/cn';
 
@@ -35,15 +35,15 @@ export function UserMenu({
           'hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:outline-none'
         )}
       >
-        <Icon id="user-circle" className="h-8 w-8 text-slate-400" />
+        <CircleUser aria-hidden="true" className="h-8 w-8 text-slate-400" />
         <span className="text-left">
           <span className="block text-sm font-semibold text-slate-900">
             {userName}
           </span>
           <span className="block text-xs text-slate-700">{roleLabel}</span>
         </span>
-        <Icon
-          id="chevron-down"
+        <ChevronDown
+          aria-hidden="true"
           className="bg-surface h-6 w-6 py-1 text-slate-900 shadow-lg"
         />
       </button>

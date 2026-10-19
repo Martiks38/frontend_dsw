@@ -6,6 +6,7 @@
 
 .contact_form {
   max-width: 55ch;
+  width: 100%;
   padding-top: 24px;
   gap: 2.5rem;
 }

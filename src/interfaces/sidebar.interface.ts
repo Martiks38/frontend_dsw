@@ -1,10 +1,11 @@
+import { type LucideIcon } from 'lucide-react';
+
 import { UserRole } from '@/lib/auth';
-import { type IconName } from '@/types';
 
 import { type LinkItem } from './navigation.interface';
 
 export interface NavIconItem extends LinkItem {
-  iconId: IconName;
+  icon: LucideIcon;
   roles: UserRole[];
   helperText?: Partial<Record<UserRole, string>>;
 }

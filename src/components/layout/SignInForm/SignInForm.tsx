@@ -24,12 +24,7 @@ import { type SignInFormState } from '@/validations/auth';
 import { SIGN_IN_FIELDS } from './constants';
 
 const styles = {
-  card: 'rounded-2xl xs:bg-white/95 px-8 py-6 xs:py-10 xs:shadow-[0_0_40px_rgba(0,0,0,0.12)] xs:backdrop-blur-sm',
-  header: 'mb-6 flex flex-col items-center justify-center gap-4',
-  content: 'space-y-4',
   fieldGroup: 'flex flex-col gap-1.5',
-  formActions:
-    'mb-6 gap-1.5 xs:gap-0 xs:flex-row flex-col flex items-center justify-between',
 };
 
 const INITIAL_STATE: SignInFormState = {
@@ -49,8 +44,8 @@ export default function SignInForm() {
   return (
     <div className="xs:max-w-md w-full">
       <form action={formAction} className="flex flex-col gap-5">
-        <Card className={styles.card}>
-          <CardHeader className={styles.header}>
+        <Card className="xs:bg-white/95 xs:py-10 xs:shadow-[0_0_40px_rgba(0,0,0,0.12)] xs:backdrop-blur-sm rounded-2xl px-8 py-6">
+          <CardHeader className="mb-6 flex flex-col items-center justify-center gap-4">
             <Link href={'/'} aria-label="Ir a la página de inicio">
               <Image
                 src="/logo_2.png"
@@ -67,7 +62,7 @@ export default function SignInForm() {
             </CardDescription>
           </CardHeader>
 
-          <CardContent className={styles.content}>
+          <CardContent className="space-y-4">
             <FormError
               error={
                 !formState.success && formState.message
@@ -103,7 +98,7 @@ export default function SignInForm() {
               <FormError error={formState.zodErrors?.password} />
             </div>
 
-            <div className={styles.formActions}>
+            <div className="xs:gap-0 xs:flex-row mb-6 flex flex-col items-center justify-between gap-1.5">
               <div className="flex items-center gap-2">
                 <CheckboxInput
                   id={SIGN_IN_FIELDS.remember}
@@ -113,7 +108,7 @@ export default function SignInForm() {
                 />
                 <Label htmlFor={SIGN_IN_FIELDS.remember}>Recordar</Label>
               </div>
-              <Link href="/recuperar-cuenta" className="hover:underline">
+              <Link href="/recuperar-clave" className="hover:underline">
                 ¿Olvidaste tu contraseña?
               </Link>
             </div>

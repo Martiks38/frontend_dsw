@@ -3,7 +3,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
-import IconSprite from '@/components/ui/IconSprite/IconSprite';
 import { getCurrentUser } from '@/lib/auth';
 import { SessionProvider } from '@/providers/Session/SessionProvider';
 import { ToastProvider } from '@/providers/Toast/ToastProvider';
@@ -29,7 +28,6 @@ export default async function RootLayout({
   return (
     <html lang="es">
       <body className={`${poppinsSans.className}`}>
-        <IconSprite />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg focus:outline-2 focus:outline-offset-2"

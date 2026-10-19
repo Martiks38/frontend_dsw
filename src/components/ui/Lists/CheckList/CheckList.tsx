@@ -7,10 +7,10 @@ interface ListItem {
 
 export default function CheckList({ items }: { items: ListItem[] }) {
   return (
-    <ul className={styles.features_list}>
+    <ul className="grid list-none justify-items-center gap-6 p-0 sm:grid-cols-2 lg:grid-cols-4">
       {items.map(({ id, description }) => {
         return (
-          <li key={id} className={styles.feature_item}>
+          <li key={id} className="xs:pl-0 flex flex-1 gap-3 pl-9">
             <span className={styles.feature_icon} aria-hidden="true">
               <svg
                 className="relative -top-2.25"
@@ -30,7 +30,9 @@ export default function CheckList({ items }: { items: ListItem[] }) {
                 />
               </svg>
             </span>
-            <span className={styles.feature_text}>{description}</span>
+            <span className="m-0 max-w-[18ch] text-lg font-semibold sm:text-xl">
+              {description}
+            </span>
           </li>
         );
       })}

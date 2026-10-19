@@ -22,12 +22,12 @@ export const ProgressiveButtonsPanel = memo(function ProgressiveButtonsPanel({
   isPending,
 }: Props) {
   return (
-    <div className="mt-6 flex justify-between">
+    <div className="mt-6 flex flex-wrap-reverse justify-between gap-4">
       <button
         type="button"
         onClick={fn.goBack}
         disabled={stepIndex === 0 || isPending}
-        className="rounded-md px-4 py-2 text-sm font-medium text-slate-600 disabled:opacity-0"
+        className="max-xs:ml-auto rounded-md px-4 py-2 text-sm font-medium text-slate-600 disabled:opacity-0"
       >
         Atrás
       </button>
@@ -47,7 +47,7 @@ export const ProgressiveButtonsPanel = memo(function ProgressiveButtonsPanel({
           type="button"
           onClick={fn.handleConfirm}
           disabled={isPending}
-          className="rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+          className="max-xs:w-full rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
         >
           {isPending ? 'Enviando...' : 'Confirmar solicitud'}
         </button>

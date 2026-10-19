@@ -18,13 +18,15 @@ export default function Services() {
   return (
     <section
       aria-labelledby="services-title"
-      className="mx-auto my-0 w-full px-16 pt-20 pb-20"
+      className="mx-auto my-0 w-full px-10 py-16 md:px-16 md:py-20"
     >
-      <header className="mb-24 text-center">
-        <h1 id="services-title" className="mb-2 text-5xl font-bold">
+      <header className="mb-12 text-center sm:mb-20 md:mb-24">
+        <h1 id="services-title" className="mb-2 text-3xl font-bold md:text-4xl">
           Nuestros servicios
         </h1>
-        <p className="mt-8 text-3xl">Todo lo que tu embarcación necesita</p>
+        <p className="mt-4 text-xl md:mt-8 md:text-2xl">
+          Todo lo que tu embarcación necesita
+        </p>
       </header>
       <CardGrid cards={PAGE_SERVICES} />
       <Banner

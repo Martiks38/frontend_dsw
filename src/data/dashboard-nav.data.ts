@@ -1,26 +1,60 @@
+import {
+  CalendarCheck,
+  FileText,
+  House,
+  Ship,
+  ShipWheel,
+  User,
+  UserCog,
+  Users,
+  Wrench,
+} from 'lucide-react';
+
 import { type NavIconItem } from '@/interfaces';
 import { getDashboardPath } from '@/utils/routes';
+
+type DashboardPageTitle = Omit<NavIconItem, 'icon'> & {
+  matchNested?: boolean;
+};
 
 const DASHBOARD_DATA: NavIconItem[] = [
   {
     label: 'Inicio',
     href: getDashboardPath(),
-    iconId: 'init',
+    icon: House,
     roles: ['MEMBER', 'ADMIN', 'OPERATOR'],
+  },
+  {
+    label: 'Clientes',
+    href: getDashboardPath('clientes'),
+    icon: Users,
+    roles: ['ADMIN'],
+    helperText: {
+      ADMIN: 'Gestioná la información de los clientes.',
+    },
+  },
+  {
+    label: 'Empleados',
+    href: getDashboardPath('empleados'),
+    icon: UserCog,
+    roles: ['ADMIN'],
+    helperText: { ADMIN: 'Gestioná del personal.' },
   },
   {
     label: 'Mis embarcaciones',
     helperText: { MEMBER: 'Visualizá tus embarcaciones y sus datos.' },
     href: getDashboardPath('mis-embarcaciones'),
-    iconId: 'boat-launch-and-retrieval',
+    icon: Ship,
     roles: ['MEMBER'],
   },
   {
     label: 'Embarcaciones',
     href: getDashboardPath('embarcaciones'),
-    iconId: 'boat-launch-and-retrieval',
+    icon: Ship,
     roles: ['ADMIN'],
-    helperText: { ADMIN: 'Listado de embaracaciones registradas' },
+    helperText: {
+      ADMIN: 'Listado de embaracaciones registradas',
+    },
   },
   {
     label: 'Solicitudes',
@@ -30,13 +64,13 @@ const DASHBOARD_DATA: NavIconItem[] = [
       OPERATOR: 'Consulá y filtra todas las solicitudes.',
     },
     href: getDashboardPath('solicitudes'),
-    iconId: 'documents',
+    icon: FileText,
     roles: ['MEMBER', 'ADMIN', 'OPERATOR'],
   },
   {
     label: 'Servicios',
     href: getDashboardPath('servicios'),
-    iconId: 'maintenance',
+    icon: Wrench,
     roles: ['MEMBER', 'ADMIN'],
     helperText: {
       ADMIN: 'Seguimiento de servicios y operaciones',
@@ -44,59 +78,49 @@ const DASHBOARD_DATA: NavIconItem[] = [
     },
   },
   {
-    label: 'Mi perfil',
-    href: getDashboardPath('perfil'),
-    iconId: 'user',
-    roles: ['MEMBER', 'OPERATOR', 'ADMIN'],
-    helperText: {
-      MEMBER: 'Actualizá tus datos personales y de acceso.',
-      ADMIN: 'Actualizá tus datos personales y de acceso.',
-      OPERATOR: 'Actualizá tus datos personales y de acceso.',
-    },
-  },
-  {
-    label: 'Clientes',
-    href: getDashboardPath('clientes'),
-    iconId: 'users',
-    roles: ['ADMIN'],
-    helperText: { ADMIN: 'Gestioná la información de los clientes.' },
-  },
-  {
-    label: 'Empleados',
-    href: getDashboardPath('empleados'),
-    iconId: 'users',
-    roles: ['ADMIN'],
-    helperText: { ADMIN: 'Gestioná del personal.' },
-  },
-  {
     label: 'Mis tareas de hoy',
-    href: getDashboardPath('tareas-hoy'),
-    iconId: 'users',
+    href: getDashboardPath('solicitudes?fecha=hoy'),
+    icon: CalendarCheck,
     roles: ['OPERATOR'],
-    helperText: { OPERATOR: 'Solicitudes asignadas para el día de hoy.' },
+    helperText: {
+      OPERATOR: 'Solicitudes asignadas para el día de hoy.',
+    },
   },
   {
     label: 'Operaciones',
     href: getDashboardPath('operaciones'),
-    iconId: 'ship-wheel',
+    icon: ShipWheel,
     roles: ['OPERATOR'],
-    helperText: { MEMBER: '' },
+    helperText: {
+      OPERATOR: 'Registrá la salida y el retorno de las embarcaciones.',
+    },
+  },
+  {
+    label: 'Mi perfil',
+    href: getDashboardPath('perfil'),
+    icon: User,
+    roles: ['MEMBER', 'OPERATOR', 'ADMIN'],
+    helperText: {
+      MEMBER: 'Actualizá tus datos personales y de acceso.',
+      ADMIN: 'Actualizá tus datos personales y de acceso.',
+      OPERATOR: 'Consulta tus datos personales y gestiona tus datos de acceso.',
+    },
   },
 ];
 
 export const DASHBOARD_SIDEBAR_NAV: Omit<NavIconItem, 'helperText'>[] =
   DASHBOARD_DATA.map((item) => {
-    const { label, href, iconId, roles } = item;
+    const { label, href, icon, roles } = item;
 
     return {
       label,
       href,
-      iconId,
+      icon,
       roles,
     };
   });
 
-export const DASHBOARD_PAGE_TITLE: Omit<NavIconItem, 'iconId'>[] = [
+export const DASHBOARD_PAGE_TITLE: DashboardPageTitle[] = [
   ...DASHBOARD_DATA.map((item) => {
     const { href, label, roles, helperText } = item;
 
@@ -111,5 +135,21 @@ export const DASHBOARD_PAGE_TITLE: Omit<NavIconItem, 'iconId'>[] = [
     label: 'Solicitar servicios',
     href: getDashboardPath('servicios/solicitar'),
     roles: ['MEMBER'],
+  },
+  {
+    label: 'Nuevo cliente',
+    href: getDashboardPath('clientes/nuevo'),
+    roles: ['ADMIN'],
+    helperText: {
+      ADMIN: 'Se le enviará un correo con sus credenciales de acceso.',
+    },
+  },
+  {
+    label: 'Nuevo empleado',
+    href: getDashboardPath('empleados/nuevo'),
+    roles: ['ADMIN'],
+    helperText: {
+      ADMIN: 'Se le enviará un correo con sus credenciales de acceso.',
+    },
   },
 ];

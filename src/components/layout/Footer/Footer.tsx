@@ -9,11 +9,8 @@ import type { FooterColumn, FooterItem, FooterProps } from '@/interfaces';
 import { cn } from '@/lib/cn';
 import { normalizeString } from '@/utils/normalizeString.util';
 
-import styles from './Footer.module.css';
-
-const titleStyles = 'font-semibold text-lg mb-4';
 const baseInteractiveStyles =
-  'hover:text-blue-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-blue-900 text-left w-full';
+  'hover:text-blue-900 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-blue-900 w-full';
 
 function FooterItemContent({ item }: { item: FooterItem }) {
   const showToast = useToast();
@@ -32,7 +29,7 @@ function FooterItemContent({ item }: { item: FooterItem }) {
             type="button"
             className={cn(
               baseInteractiveStyles,
-              'hover:border-primary border-b-2 border-transparent transition-colors duration-200'
+              'hover:border-primary w-fit border-b-2 border-transparent text-center transition-colors duration-200 lg:text-left'
             )}
           >
             {item.label}
@@ -59,10 +56,10 @@ function FooterItemContent({ item }: { item: FooterItem }) {
 
     case 'schedule': {
       return (
-        <>
-          {item.label}{' '}
-          <span className="inline-block whitespace-nowrap">{item.value}</span>
-        </>
+        <div className="flex flex-wrap justify-center gap-x-2 lg:justify-start">
+          <span>{item.label}</span>
+          <span className="whitespace-nowrap">{item.value}</span>
+        </div>
       );
     }
 
@@ -75,10 +72,10 @@ function FooterItemContent({ item }: { item: FooterItem }) {
 
 function FooterItemsList({ items }: { items: FooterItem[] }) {
   return (
-    <ul className="flex flex-col gap-y-1.5 font-medium">
+    <ul className="m-[0_auto] flex w-max flex-col gap-y-2 font-medium lg:m-0">
       {items.map((item) => {
         return (
-          <li key={item.label} className="leading-relaxed">
+          <li key={item.label} className="w-auto max-w-[25ch] leading-relaxed">
             <FooterItemContent item={item} />
           </li>
         );
@@ -114,7 +111,7 @@ function FooterColumnContent({
 
   return (
     <>
-      <h3 id={titleId} className={titleStyles}>
+      <h3 id={titleId} className="mb-4 text-lg font-semibold">
         {col.title}
       </h3>
       {col.variant === 'address' ? (
@@ -128,27 +125,33 @@ function FooterColumnContent({
 
 export default function Footer({ columns, logoSrc, logoAlt }: FooterProps) {
   return (
-    <footer className={styles.footer}>
-      <div className="max-w-48 lg:w-full">
+    <footer className="px-10 py-6 md:px-16 md:py-12">
+      <div className="mx-auto mb-6 w-fit lg:mx-0">
         <Image
           src={logoSrc}
           alt={logoAlt}
-          width={195}
-          height={65}
-          className="h-auto w-full object-contain"
+          width={180}
+          height={60}
+          className="aspect-3/1 h-auto w-full object-contain"
         />
       </div>
-      {columns.map((col) => {
-        const titleId = `footer-${normalizeString(col.title)}`;
-        const wrapperKey = col.variant === 'nav' ? 'nav' : 'default';
-        const Wrapper = columnWrappers[wrapperKey];
+      <div className="custom-lg:grid-cols-[repeat(4,auto)] grid grid-cols-1 gap-8 text-center sm:grid-cols-2 lg:gap-10 lg:text-left">
+        {columns.map((col) => {
+          const titleId = `footer-${normalizeString(col.title)}`;
+          const wrapperKey = col.variant === 'nav' ? 'nav' : 'default';
+          const Wrapper = columnWrappers[wrapperKey];
 
-        return (
-          <Wrapper key={col.title} titleId={titleId} className="h-full">
-            <FooterColumnContent col={col} titleId={titleId} />
-          </Wrapper>
-        );
-      })}
+          return (
+            <Wrapper
+              key={col.title}
+              titleId={titleId}
+              className="h-full sm:px-4"
+            >
+              <FooterColumnContent col={col} titleId={titleId} />
+            </Wrapper>
+          );
+        })}
+      </div>
     </footer>
   );
 }

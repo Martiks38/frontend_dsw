@@ -19,7 +19,7 @@ export function BoatStep({ boatId, boats, onBoatChange }: BoatStepProps) {
         id="boat"
         value={boatId}
         onChange={(e) => onBoatChange(e.target.value)}
-        className="mt-1 w-full rounded-md border-slate-300 text-sm"
+        className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
       >
         {boats.map((boat) => (
           <option key={boat.id} value={boat.id}>

@@ -1,9 +1,11 @@
+import { FileText, Ship, Users, Wrench } from 'lucide-react';
+
 import { StatCard, StatGrid } from '@/components/ui/StatCard/StatCard';
-import { type AdminDashboardProps } from '@/interfaces/dashboard.interface';
+import { type DashboardVariant } from '@/interfaces';
 
 import { PendingRequestsTable } from './PendingRequestsTask';
 
-export function AdminDashboard({ data }: AdminDashboardProps) {
+export function AdminDashboard({ data }: DashboardVariant<'ADMIN'>) {
   return (
     <>
       <StatGrid heading="Resumen general">
@@ -11,27 +13,27 @@ export function AdminDashboard({ data }: AdminDashboardProps) {
           label="Clientes"
           value={data.stats.clients}
           helperText={`+${data.stats.newClientsThisMonth} este mes`}
-          iconName="users"
+          icon={Users}
         />
         <StatCard
           label="Embarcaciones"
           value={data.stats.boats}
           helperText={`+${data.stats.newBoatsThisMonth} este mes`}
-          iconName="anchor"
+          icon={Ship}
           accent="blue"
         />
         <StatCard
           label="Solicitudes"
           value={data.stats.pendingRequests}
           helperText="Pendientes"
-          iconName="documents"
+          icon={FileText}
           accent="amber"
         />
         <StatCard
           label="Servicios hoy"
           value={data.stats.servicesInProgressToday}
           helperText="En proceso"
-          iconName="maintenance"
+          icon={Wrench}
           accent="green"
         />
       </StatGrid>

@@ -1,10 +1,7 @@
-'use client';
-
-import { useToast } from '@/hooks/useToast.hook';
-import type { ContactItem } from '@/interfaces';
+import { type ContactItem } from '@/interfaces';
 import { cn } from '@/lib/cn';
 
-import Icon from '../Icon/Icon';
+import { CopyButton } from '../Button/CopyButton';
 
 function ContactInfoItem({
   item,
@@ -13,44 +10,27 @@ function ContactInfoItem({
   item: ContactItem;
   className?: string;
 }) {
-  const showToast = useToast();
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(item.value.replaceAll(' ', ''));
-    showToast('Copiado al portapapeles');
-  };
+  const { label, value, action, icon: Icon } = item;
 
   return (
-    <li className={`${className} flex items-start gap-6`}>
-      <Icon
-        id={item.type}
-        title={item.label}
-        size={32}
-        className="mt-0.5 shrink-0"
-      />
+    <li className={cn('flex items-start gap-6', className)}>
+      <div className="xs:block hidden">
+        <Icon aria-hidden="true" className="mt-0.5 h-8 w-8 shrink-0" />
+      </div>
       <div>
-        <h3 className="mb-2 text-lg font-semibold">{item.label}</h3>
+        <h3 className="mb-2 text-lg font-semibold">{label}</h3>
 
-        {item.action === 'copy' ? (
-          <button
-            type="button"
-            onClick={handleCopy}
-            className={cn(
-              'w-full rounded text-left transition-colors duration-200',
-              'hover:text-blue-900 focus-visible:outline-2 focus-visible:outline-blue-900'
-            )}
-          >
-            {item.value}
-          </button>
+        {action === 'copy' ? (
+          <CopyButton value={value} />
         ) : (
-          <p className="leading-8">{item.value}</p>
+          <p className="leading-8">{value}</p>
         )}
       </div>
     </li>
   );
 }
 
-export default function ContactInfoPanel({ items }: { items: ContactItem[] }) {
+export function ContactInfoPanel({ items }: { items: ContactItem[] }) {
   return (
     <address className="not-italic">
       <ul className="flex flex-col gap-y-7" role="list">

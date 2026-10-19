@@ -20,7 +20,8 @@ interface Props {
 }
 
 const styles = {
-  profileInput: 'mt-1 w-[40ch] rounded-md border border-slate-300 text-sm p-3',
+  profileInput:
+    'mt-1 w-full max-w-[40ch] rounded-md border border-slate-300 text-sm p-3',
   form: 'rounded-lg border border-slate-300 bg-white p-6 shadow-sm ring-1 ring-slate-100',
 };
 
@@ -59,7 +60,7 @@ export function EditableProfileForm({ profile }: Props) {
   }, [passwordState.success]);
 
   return (
-    <div className="flex flex-col gap-8 px-4">
+    <div className="flex max-w-250 flex-col gap-8">
       <form action={profileFormAction} className={styles.form}>
         <input type="hidden" name="type" value={profile.type} />
         <fieldset>
@@ -269,18 +270,7 @@ export function EditableProfileForm({ profile }: Props) {
           {profileState.message}
         </div>
 
-        <button
-          type="submit"
-          disabled={isProfilePending}
-          className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
-        >
-          {isProfilePending ? 'Guardando...' : 'Guardar cambios'}
-        </button>
-        {[1, 1].map((_, ind) => {
-          console.log(profileState);
-
-          return <div key={ind}></div>;
-        })}
+        <Button isDisabled={isProfilePending} />
       </form>
 
       <form
@@ -292,7 +282,7 @@ export function EditableProfileForm({ profile }: Props) {
           <legend className="text-base font-semibold text-slate-900">
             Seguridad
           </legend>
-          <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-5 md:grid-cols-2">
             <PasswordField
               label="Contraseña actual"
               name="currentPassword"
@@ -347,15 +337,20 @@ export function EditableProfileForm({ profile }: Props) {
             passwordState.message
           )}
         </div>
-
-        <button
-          type="submit"
-          disabled={isPasswordPending}
-          className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
-        >
-          {isPasswordPending ? 'Guardando...' : 'Guardar cambios'}
-        </button>
+        <Button isDisabled={isPasswordPending} />
       </form>
     </div>
+  );
+}
+
+function Button({ isDisabled }: { isDisabled: boolean }) {
+  return (
+    <button
+      type="submit"
+      disabled={isDisabled}
+      className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50 max-sm:w-full"
+    >
+      {isDisabled ? 'Guardando...' : 'Guardar cambios'}
+    </button>
   );
 }

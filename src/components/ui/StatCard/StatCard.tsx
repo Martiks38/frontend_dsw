@@ -1,20 +1,20 @@
-import { cn } from '@/lib/cn';
-import { type IconName } from '@/types';
+import { LucideIcon } from 'lucide-react';
 
-import Icon from '../Icon/Icon';
+import { cn } from '@/lib/cn';
 
 interface StatCardProps {
   label: string;
   value: string | number;
   helperText?: string;
-  iconName: IconName;
-  accent?: 'slate' | 'blue' | 'green' | 'amber';
+  icon: LucideIcon;
+  accent?: 'slate' | 'blue' | 'green' | 'red' | 'amber';
 }
 
 const accentClasses: Record<NonNullable<StatCardProps['accent']>, string> = {
   slate: 'bg-slate-100 text-slate-600',
   blue: 'bg-blue-100 text-blue-600',
   green: 'bg-emerald-100 text-emerald-600',
+  red: 'bg-red-100 text-red-600',
   amber: 'bg-amber-100 text-amber-600',
 };
 
@@ -22,23 +22,24 @@ export function StatCard({
   label,
   value,
   helperText,
-  iconName,
+  icon: IconComponent,
   accent = 'slate',
 }: StatCardProps) {
+  const isLoader = IconComponent.name?.toLowerCase().includes('loader');
+
   return (
-    <div className="flex items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+    <div className="flex w-full max-w-[30ch] items-start gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <span
         className={cn(
           'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg',
           accentClasses[accent]
         )}
       >
-        <Icon
-          id={iconName}
+        <IconComponent
           className="h-5 w-5"
-          role={iconName === 'loader' ? 'status' : undefined}
-          aria-label={iconName === 'loader' ? 'Cargando' : undefined}
-          aria-hidden={iconName === 'loader' ? undefined : true}
+          role={isLoader ? 'status' : undefined}
+          aria-label={isLoader ? 'Cargando' : undefined}
+          aria-hidden={isLoader ? undefined : true}
         />
       </span>
       <div>
@@ -65,7 +66,7 @@ export function StatGrid({ heading, children }: StatGridProps) {
       <h2 id={headingId} className="sr-only">
         {heading}
       </h2>
-      <dl className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <dl className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(200px,1fr))] place-items-center gap-5 *:h-full">
         {children}
       </dl>
     </section>

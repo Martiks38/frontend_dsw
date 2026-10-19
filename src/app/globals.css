@@ -14,6 +14,8 @@
   --color-white: var(--background);
   --color-surface: var(--surface);
   --breakpoint-xs: 30rem;
+  --breakpoint-custom-md: 54rem;
+  --breakpoint-custom-lg: 72rem;
 }
 
 @layer base {
@@ -28,6 +30,7 @@
 
 html {
   height: 100dvh;
+  interpolate-size: allow-keywords;
 }
 
 html,

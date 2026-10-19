@@ -17,7 +17,7 @@ export function HeaderDashboard({
   role: UserRole;
 }) {
   return (
-    <header className="flex items-center justify-between border-b border-slate-200 bg-white px-6 py-4">
+    <header className="xs:flex-row xs:gap-8 flex flex-col items-center justify-between gap-6 border-b border-slate-200 bg-white px-6 py-4">
       <PageTitle role={role} />
       <UserMenu userName={userName} roleLabel={ROLE_LABELS[role]} />
     </header>

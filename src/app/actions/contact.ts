@@ -1,76 +1,87 @@
 'use server';
 
-import { Resend } from 'resend';
+import { headers } from 'next/headers';
+import z from 'zod';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { type ContactField, ContactSchema } from '@/validations/contact';
 
 export type FormState = {
   success: boolean;
   message: string;
+  zodErrors?: Partial<Record<ContactField, string[]>>;
+  data?: Record<ContactField, string>;
 };
 
-const getTrimmedFormValue = (formData: FormData, field: string) => {
-  return (formData.get(field) as string)?.trim();
-};
+const getTrimmedFormValue = (formData: FormData, field: ContactField) =>
+  String(formData.get(field) ?? '').trim();
 
 export async function submitContactForm(
   prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const fullname = getTrimmedFormValue(formData, 'fullname');
-  const email = getTrimmedFormValue(formData, 'email');
-  const phone = getTrimmedFormValue(formData, 'phone');
-  const subject = getTrimmedFormValue(formData, 'subject');
-  const message = getTrimmedFormValue(formData, 'message');
+  const data: Record<ContactField, string> = {
+    fullname: getTrimmedFormValue(formData, 'fullname'),
+    email: getTrimmedFormValue(formData, 'email'),
+    phone: getTrimmedFormValue(formData, 'phone'),
+    subject: getTrimmedFormValue(formData, 'subject'),
+    message: getTrimmedFormValue(formData, 'message'),
+  };
 
-  if (!fullname || !email || !subject || !message) {
+  const validatedFields = ContactSchema.safeParse({
+    ...data,
+    phone: data.phone || undefined,
+  });
+
+  if (!validatedFields.success) {
+    const flattenedErrors = z.flattenError(validatedFields.error);
+
     return {
       success: false,
-      message: 'Por favor, completa todos los campos obligatorios',
-    };
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    return {
-      success: false,
-      message: 'Por favor, ingresa un correo electrónico válido.',
+      message: 'Revisá los campos marcados e intentá nuevamente.',
+      zodErrors: flattenedErrors.fieldErrors,
+      data,
     };
   }
 
   try {
-    const { error } = await resend.emails.send({
-      from: 'Contacto Web <onboarding@resend.dev>',
-      to: [process.env.CONTACT_EMAIL_RECIPIENT || 'test@test.com'],
-      replyTo: email,
-      subject: `Nueva consulta: ${subject}`,
-      html: `
-        <h2>Nueva consulta desde la web</h2>
-        <p><strong>Nombre y Apellido:</strong> ${fullname}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Teléfono:</strong> ${phone}</p>
-        <p><strong>Asunto:</strong> ${subject}</p>
-        <hr />
-        <h3>Mensaje:</h3>
-        <p style="white-space: pre-wrap;">${message}</p>
-      `,
+    const forwardedFor = (await headers()).get('x-forwarded-for');
+
+    const response = await fetch(`${process.env.BACKEND_URL}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(forwardedFor && { 'X-Forwarded-For': forwardedFor }),
+      },
+      body: JSON.stringify(validatedFields.data),
+      cache: 'no-store',
     });
 
-    if (error) {
+    if (response.ok) {
+      return {
+        success: true,
+        message: '¡Gracias por tu mensaje! Tu consulta fue enviada con éxito.',
+      };
+    }
+
+    if (response.status === 429) {
       return {
         success: false,
-        message: 'Ocurrió un problema al enviar el correo. Intenta nuevamente.',
+        message:
+          'Enviaste demasiadas consultas. Esperá un minuto e intentá de nuevo.',
+        data,
       };
     }
 
     return {
-      success: true,
-      message: '¡Gracias por tu mensaje! Tu consulta fue enviada con éxito.',
+      success: false,
+      message: 'Ocurrió un problema al enviar tu consulta. Intenta nuevamente.',
+      data,
     };
-  } catch (error: unknown) {
+  } catch {
     return {
       success: false,
       message: 'Error en el servidor. Por favor intenta más tarde.',
+      data,
     };
   }
 }

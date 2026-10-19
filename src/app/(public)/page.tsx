@@ -21,6 +21,7 @@ export default function Home() {
     <>
       <IntroSection
         heroImageUrl="/images/heroImages/hero-image-home.webp"
+        shadowDefault
         title={
           <>
             Tu embarcación.
@@ -29,16 +30,18 @@ export default function Home() {
           </>
         }
       >
-        <p className="w-[35ch] text-2xl">
+        <p className="w-full max-w-[35ch] text-lg md:text-xl">
           Guardería náutica y servicios para que disfrutes de tu embarcación
           cuando quieras.
         </p>
         <nav
-          className="mt-10 text-xl font-semibold *:first:mr-6"
+          className="text-md mt-10 flex flex-col gap-6 font-semibold sm:flex-row md:text-xl"
           aria-label="Servicios y solicitudes"
         >
-          <ButtonLink href="/servicios">Conocé nuestros servicios</ButtonLink>
-          <ButtonLink href="/contacto" variant="secondary">
+          <ButtonLink href="/servicios" className="w-fit">
+            Conocé nuestros servicios
+          </ButtonLink>
+          <ButtonLink href="/contacto" variant="secondary" className="w-fit">
             Solicitar guardado
           </ButtonLink>
         </nav>
@@ -48,7 +51,10 @@ export default function Home() {
       </PageSection>
       <PageSection heading="Nuestros servicios">
         <CardList cards={HOME_SERVICES} />
-        <ButtonLink href="/servicios" className="mx-auto mt-8 block w-fit">
+        <ButtonLink
+          href="/servicios"
+          className="mx-auto mt-14 block w-fit text-center sm:text-left"
+        >
           Ver todos los servicios
         </ButtonLink>
       </PageSection>

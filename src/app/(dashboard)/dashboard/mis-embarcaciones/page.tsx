@@ -21,7 +21,7 @@ export default async function MyBoatsPage() {
   if (boats.length === 0) {
     return (
       <p className="mt-6 text-base text-slate-700">
-        No hay embaraciones registradas en guardería.
+        No hay embarcaciones registradas en guardería.
       </p>
     );
   }
@@ -29,10 +29,10 @@ export default async function MyBoatsPage() {
   return (
     <section
       aria-labelledby="page-heading"
-      className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      className="mt-6 flex w-full flex-wrap gap-4"
     >
       {boats.map((boat) => (
-        <BoatCard key={boat.id} boat={boat} />
+        <BoatCard key={boat.id} boat={boat} className="flex-none" />
       ))}
     </section>
   );
