@@ -22,7 +22,7 @@ Este repositorio contiene el **frontend** (Next.js). El backend (NestJS) vive en
 
 - Node.js 20.9 o superior (requisito de Next.js 16)
 - [pnpm](https://pnpm.io/installation)
-- El **backend** de MarinaGuard corriendo y accesible
+- Una instancia de la **base de datos** configurada y el **backend** de MarinaGuard corriendo y accesible.
 
 ## Instalación
 
@@ -48,8 +48,6 @@ Este repositorio contiene el **frontend** (Next.js). El backend (NestJS) vive en
    | Variable  | Descripción                                                                                                                            |
    | --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
    | `API_URL` | URL base del backend, **sin** el sufijo `/api` ni barra final. Solo se usa del lado del servidor (Server Components y Server Actions). |
-
-   <!-- TODO: agregar acá cualquier otra variable de entorno que use el proyecto, si existiera -->
 
 4. Asegurate de que el backend esté corriendo en esa URL y de que su variable `FRONTEND_URL` apunte a donde corre este frontend (por defecto `http://localhost:3000`), porque de eso depende la configuración de CORS y los links de los emails.
 
@@ -93,7 +91,9 @@ pnpm test:e2e
 pnpm test:e2e:ui
 ```
 
-<!-- TODO: confirmar si playwright.config.ts levanta el servidor de desarrollo por su cuenta y si los tests e2e requieren el backend corriendo con datos del seed -->
+### Ejecución de tests
+
+![Tests Unitarios Vitest](./docs/images/unit-tests-result.png)
 
 ## Calidad de código
 
@@ -169,10 +169,8 @@ Si el backend se cargó con los datos de ejemplo (`pnpm db:seed` en el repositor
 
 ## Despliegue
 
-<!-- TODO: completar con las URLs reales una vez definidas -->
-
-- **Aplicación en producción (Vercel):** _pendiente_
-- **API en producción (Render):** _pendiente_
+- **Aplicación en producción (Vercel):** https://frontend-dsw-xjmx.vercel.app
+- **API en producción (Render):** https://backend-dsw-nc3p.onrender.com/api/docs
 
 ## Documentación
 
