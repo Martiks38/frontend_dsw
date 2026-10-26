@@ -1,5 +1,6 @@
 'use client';
 
+import { Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useActionState } from 'react';
@@ -19,6 +20,7 @@ import { CheckboxInput } from '@/components/ui/Input/CheckboxInput';
 import { Input } from '@/components/ui/Input/Input';
 import { PasswordInput } from '@/components/ui/Input/PasswordInput';
 import { Label } from '@/components/ui/Label/Label';
+import { cn } from '@/lib/cn';
 import { type SignInFormState } from '@/validations/auth';
 
 import { SIGN_IN_FIELDS } from './constants';
@@ -35,8 +37,8 @@ const INITIAL_STATE: SignInFormState = {
     remember: true,
   },
 };
-export default function SignInForm() {
-  const [formState, formAction] = useActionState(
+export function SignInForm() {
+  const [formState, formAction, isPending] = useActionState(
     actions.auth.loginUserAction,
     INITIAL_STATE
   );
@@ -114,7 +116,22 @@ export default function SignInForm() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="xs:w-full">Iniciar sesión</Button>
+            <Button
+              type="submit"
+              disabled={isPending}
+              aria-busy={isPending}
+              className={cn(
+                'xs:w-full flex items-center justify-center gap-2',
+                isPending
+                  ? 'pointer-events-none cursor-auto opacity-85'
+                  : 'cursor-pointer'
+              )}
+            >
+              {isPending && (
+                <Loader2 className="size-4 animate-spin" aria-hidden="true" />
+              )}
+              {isPending ? 'Iniciando sesión...' : 'Iniciar sesión'}
+            </Button>
           </CardFooter>
         </Card>
       </form>

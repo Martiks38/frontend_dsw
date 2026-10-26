@@ -94,6 +94,7 @@ pnpm test:e2e:ui
 ### Ejecución de tests
 
 ![Tests Unitarios Vitest](./docs/images/unit-tests-result.png)
+![Tests E2E Playwright](./docs/images/e2e-tests-result.jpg)
 
 ## Calidad de código
 

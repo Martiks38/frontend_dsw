@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 
-import SignInForm from '@/components/layout/SignInForm/SignInForm';
+import { SignInForm } from '@/components/layout/SignInForm/SignInForm';
 
 export const metadata: Metadata = {
   title: 'Iniciar sesión | Guardería Náutica',
